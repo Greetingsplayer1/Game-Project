@@ -31,7 +31,7 @@ let swingTimer = 0;        // Animation duration
 let isAttacking = false; // Add this to stop the error!
 let bladeCooldown = 0; //makes hidden blade have a cooldown
 let swordCooldown = 0; // 0 means ready to swing
-const SWORD_COOLDOWN_TIME = 60; // 60 frames = 1 second at 60FPS
+const SWORD_COOLDOWN_TIME = 50; // 60 frames = 1 second at 60FPS
 let playerHP = 100;
 const playerMaxHP = 100;
 let damageCooldown = 0; // Prevents losing all health in one frame
@@ -537,6 +537,7 @@ if (damageCooldown > 0) damageCooldown--;
     civ.x = civ.homeX;
     civ.y = civ.homeY;
     civ.isScared = false;
+
 });
 
     // 1. Reset Player Stat
@@ -566,14 +567,14 @@ if (key === 'f') {
             swordEquipped = true;  // Press F to draw sword
         } else {
             isSwinging = true;     // Press F while drawn to swing
-            swingTimer = 15;
+            swingTimer = 30; // Duration of swing animation
             
             if (key === 'f') {
     if (!swordEquipped) {
         swordEquipped = true; 
     } else if (swordCooldown === 0) { // <--- ONLY swing if cooldown is 0
         isSwinging = true;
-        swingTimer = 50;
+        swingTimer = 30; // Swing animation lasts for 30 frames
         swordCooldown = SWORD_COOLDOWN_TIME; // <--- Start the 1-second timer
 
         enemies.forEach(enemy => {
