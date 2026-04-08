@@ -120,11 +120,13 @@ spawnItem(500, 500);
         if (isSwinging) ctx.rotate(Math.PI / 2); 
         else ctx.rotate(-Math.PI / 4); 
 
-        ctx.fillStyle = "silver";
+        ctx.shadowColor = 'red';
+        ctx.shadowBlur = 20;
+        ctx.fillStyle = 'red';
         ctx.fillRect(0, -5, 60, 10); 
-        ctx.fillStyle = "gold";
+        ctx.fillStyle = "silver";
         ctx.fillRect(5, -15, 5, 30);
-        ctx.fillStyle = "brown";
+        ctx.fillStyle = "black";
         ctx.fillRect(-10, -3, 15, 6);
 
       ctx.restore();
