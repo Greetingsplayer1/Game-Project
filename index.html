@@ -479,7 +479,13 @@ if (stealthActive) {
     ctx.fillText("STATUS: VISIBLE", 20, 70);
 }
 
-// --- 1. DRAW DEATH SCREEN ---
+// --- 4. Add Weapon Status ---
+ctx.fillStyle = "white";
+let weaponText = swordEquipped ? "SWORD DRAWN" : "NO WEAPON";
+let weaponText2 = bladeActive ? "HIDDEN BLADE" : "NO WEAPON";
+ctx.fillText(weaponText, 20, 100)
+ctx.fillText(weaponText2, 20, 130)
+// --- 5. DRAW DEATH SCREEN ---
 if (isGameOver) {
     ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
