@@ -468,7 +468,18 @@ ctx.fillRect(20, 20, healthWidth, 25);
 ctx.strokeStyle = "white";
 ctx.strokeRect(20, 20, 200, 25);
 
-// --- 3. DRAW DEATH SCREEN ---
+// --- 3. Add Hidden Status ---
+ctx.font = "bold 18px sans-serif";
+ctx.textAlign = "left";
+if (stealthActive) {
+    ctx.fillStyle = "cyan";
+    ctx.fillText("STATUS: HIDDEN", 20, 70);
+} else {
+    ctx.fillStyle = "white";
+    ctx.fillText("STATUS: VISIBLE", 20, 70);
+}
+
+// --- 1. DRAW DEATH SCREEN ---
 if (isGameOver) {
     ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
