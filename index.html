@@ -36,9 +36,20 @@ let playerHP = 100;
 const playerMaxHP = 100;
 let damageCooldown = 0; // Prevents losing all health in one frame
 let collectibles = [];
-
-
-
+let currentGameState = "playing"; // Options: "playing", "cutscene"
+let cutsceneText = "";
+let bossTriggered = false;
+let bossHostile = false; // Boss only fights AFTER the cutscene
+let bossEnemy = {
+    x: 300, 
+    y: 2500, // Much further away
+    size: 60, 
+    color: 'purple',
+    hp: 500, 
+    maxHp: 500,
+    isDead: false,
+    angle: 0
+};
 
         const mapObjects = [
             // MOAT SECTIONS (Solid borders)
@@ -207,6 +218,16 @@ spawnItem(500, 500);
     }
       ctx.restore();
 } ;
+
+function triggerCutscene(text) {
+    currentGameState = "cutscene";
+    cutsceneText = text;
+    // Set a timer to end the cutscene after 3 seconds
+    setTimeout(() => {
+        currentGameState = "playing";
+    }, 3000);
+}
+
             
 
         function animate() {  
@@ -220,6 +241,19 @@ spawnItem(500, 500);
     ctx.fillRect(0, 0, canvas.width, canvas.height); 
     
     ctx.translate(-cameraX, -cameraY);
+
+if (currentGameState === "cutscene") {
+    // Cinematic black bars
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, 100);
+    ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
+
+    // Dialogue text
+    ctx.fillStyle = "white";
+    ctx.font = "24px serif";
+    ctx.textAlign = "center";
+    ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
+}
 
     // Movement
 if (!isGameOver) {
@@ -239,11 +273,52 @@ if (!isGameOver) {
     if (bladeActive && bladeHeight < 25) bladeHeight += 5;
     if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
+    if (posY > 2100 && !bossTriggered) {
+    bossTriggered = true;
+    triggerCutscene("HA! You think you can defeat me?");
+}
+
     // Draw World
     mapObjects.forEach(obj => {
         ctx.fillStyle = obj.color;
         ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
     });
+
+    if (!bossEnemy.isDead) {
+    ctx.fillStyle = bossEnemy.color;
+    ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
+
+    let bBarWidth = 100;
+    let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
+    let bBarY = bossEnemy.y - 20;
+    ctx.fillStyle = "red";
+    ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
+    ctx.fillStyle = "lime";
+    ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
+}
+
+// --- BOSS LOGIC ---
+if (bossHostile && currentGameState === "playing") {
+
+    let bDx = posX - bossEnemy.x;
+    let bDy = posY - bossEnemy.y;
+    let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
+    
+    let angle = Math.atan2(bDy, bDx);
+    bossEnemy.x += Math.cos(angle) * 3;
+    bossEnemy.y += Math.sin(angle) * 3;
+
+    // 2. BOSS DAMAGE TO PLAYER
+    if (bDist < bossEnemy.size && damageCooldown === 0) {
+        playerHP -= 20; // Boss deals 20 damage
+        damageCooldown = 40;
+        
+        if (playerHP <= 0) {
+            playerHP = 0;
+            isGameOver = true;
+        }
+    }
+}
 
 
     // --- ENEMY LOGIC ---
@@ -524,8 +599,19 @@ if (swordCooldown > 0) {
 
 if (damageCooldown > 0) damageCooldown--;
 
-
-
+if (currentGameState === "cutscene") {
+    ctx.setTransform(1, 0, 0, 1, 0, 0); 
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // Dim everything
+    
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, canvas.height - 200, canvas.width, 200); // Big text box
+    
+    ctx.fillStyle = "white";
+    ctx.font = "bold 32px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 100);
+}
         requestAnimationFrame(animate)
 
         }   
@@ -580,6 +666,15 @@ if (damageCooldown > 0) damageCooldown--;
         enemy.isDead = false;
         enemy.color = 'white';
     });
+
+    boss.forEach(boss => {
+        boss.isDead = false;
+    bossEnemy.hp = bossEnemy.maxHp;
+    bossEnemy.x = 0;
+    bossEnemy.y = 2200;
+    bossTriggered = false;
+    bossHostile = false;
+    })
 }
 
 if (key === 'f') {
@@ -627,6 +722,11 @@ if (key === 'f') {
                 }
             }
         });
+        let dToBoss = Math.sqrt((posX - bossEnemy.x)**2 + (posY - bossEnemy.y)**2);
+if (dToBoss < 150 && !bossEnemy.isDead) {
+    bossEnemy.hp -= 50; 
+    if (bossEnemy.hp <= 0) bossEnemy.isDead = true;
+}
     }
 }
         }
