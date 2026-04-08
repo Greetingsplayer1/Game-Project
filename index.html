@@ -10,66 +10,10 @@
     <h2>Stealth Game - Press 'E' for Stealth, 'Space' to Attack, 'Shift' to Sprint, 'f' to engadge sword (cant use whils in stealth), 'Shift f' to sheathe it.</h2>
     <canvas id="myCanvas" width="1000" height="800"></canvas>
 
+    <script src="constants.js"></script>
+    <script src="variales.js"></script>
+
     <script>
-        const canvas = document.getElementById("myCanvas");
-        const ctx = canvas.getContext("2d");
-
-        // 1. Variables
-        let posX = -10; 
-        let posY = 1500;
-        let keys = {};
-        let stealthActive = false;
-        let bladeActive = false;
-        let bladeHeight = 0; 
-        let speedMultiplier = 1; 
-        const sprintSpeed = 2; 
-let isGameOver = false; // Tracks if the player is dead
-const playerSize = 30;  // Used for collision math
-let swordEquipped = false; // Is the sword drawn?
-let isSwinging = false;    // Is the player currently attacking?
-let swingTimer = 0;        // Animation duration
-let isAttacking = false; // Add this to stop the error!
-let bladeCooldown = 0; //makes hidden blade have a cooldown
-let swordCooldown = 0; // 0 means ready to swing
-const SWORD_COOLDOWN_TIME = 50; // 60 frames = 1 second at 60FPS
-let playerHP = 100;
-const playerMaxHP = 100;
-let damageCooldown = 0; // Prevents losing all health in one frame
-let collectibles = [];
-let currentGameState = "playing"; // Options: "playing", "cutscene"
-let cutsceneText = "";
-let bossTriggered = false;
-let bossHostile = false; // Boss only fights AFTER the cutscene
-let bossEnemy = {
-    x: 300, 
-    y: 2500, // Much further away
-    size: 60, 
-    color: 'purple',
-    hp: 500, 
-    maxHp: 500,
-    isDead: false,
-    angle: 0
-};
-
-        const mapObjects = [
-            // MOAT SECTIONS (Solid borders)
-    {x: -1500, y: -1400, w: 3000, h: 200, color: '#006994', isSolid: true},  // Top
-    {x: -1500, y: -1200, w: 500,  h: 2300, color: '#006994', isSolid: true}, // Left
-    {x: 1000,  y: -1200, w: 500,  h: 2300, color: '#006994', isSolid: true}, // Right
-    {x: -1500, y: 1100,  w: 1300, h: 200,  color: '#006994', isSolid: true}, // Bottom Left
-    {x: 200,   y: 1100,  w: 1300, h: 200,  color: '#006994', isSolid: true}, // Bottom Right (Gap in middle)
-    // BUILDINGS (Solid)
-    {x: -200, y: -400, w: 400, h: 1600, color: '#a89968', isSolid: false},
-            {x: -1000, y: -1200, w: 2000, h: 2000, color: '#2d8a2d', isSolid: false}, 
-            {x: -200, y: -400, w: 400, h: 1600, color: '#a89968', isSolid: false},    
-            {x: -200, y: -300, w: 400, h: 200, color: '#5d4037', isSolid: false},     
-            {x: -200, y: -250, w: 400, h: 10, color: '#3e2723', isSolid: false},      
-            {x: -800, y: -900, w: 1600, h: 600, color: '#808080',isSolid: true},   
-            {x: -800, y: -1100, w: 250, h: 800, color: '#666',isSolid: true},      
-            {x: 550, y: -1100, w: 250, h: 800, color: '#666',isSolid: true},       
-            {x: -250, y: -950, w: 500, h: 650, color: '#555',isSolid: false},  
-            {x: -150, y: -600, w: 300, h: 300, color: '#3e2723', isGate: true,isSolid: true},
-    ];
 
     function isSpaceBlocked(newX, newY) {
     for (let obj of mapObjects) {
@@ -86,37 +30,6 @@ let bossEnemy = {
     return false; // Path is clear or object is walkable
 }
 
-
-
-
-        //this is guards that patrol need normal players
-        let enemies = [
-    { 
-        x: 300, y: 300, 
-           hp: 100, maxHp: 100, // <--- New Health Variables
-        homeX: 300, homeY: 300, 
-        patrolX: 300, patrolY: 1020, // The "other end" of their walk
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true // To track which way they are walking
-    },
-    { 
-        x: -400, y: 300, 
-           hp: 100, maxHp: 100, // <--- New Health Variables
-        homeX: -400, homeY: 300, 
-        patrolX: -400, patrolY: 1020, // The "other end" of their walk
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true // To track which way they are walking
-    }
-];
-
-let civilians = [
-    { x: 100, y: 100, homeX : 100, homeY: 500, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false},
-    { x: -600, y: 200, homeX : -600, homeY: 200, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false}
-];
 
 
 function spawnItem(newX, newY) {
