@@ -1,27 +1,29 @@
 window.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
     keys[key] = true;
-      if (e.key === 'q') bowEquipped = !bowEquipped;
-if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
-    arrowCounter--;
-    isShooting = true;
-    shotTimer = 20;
+    if (e.key === 'q') bowEquipped = !bowEquipped;
+    if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
+        arrowCounter--;
+        isShooting = true;
+        shotTimer = 20;
     
-    let vx, vy;
-    if (typeof aimAngle === 'number') {
-        vx = Math.cos(aimAngle) * ARROW_SPEED;
-        vy = Math.sin(aimAngle) * ARROW_SPEED;
-    } else {
-        vx = keys['a'] ? -ARROW_SPEED : ARROW_SPEED;
-        vy = 0;
+        let vx, vy;
+
+        if (typeof aimAngle === 'number') {
+            vx = Math.cos(aimAngle) * ARROW_SPEED;
+            vy = Math.sin(aimAngle) * ARROW_SPEED;
+        } else {
+            vx = keys['a'] ? -ARROW_SPEED : ARROW_SPEED;
+            vy = 0;
+        }
+        arrow.push({
+            x: posX + 15,
+            y: posY + 40,
+            vx: vx,
+            vy: vy,
+            lifetime: ARROW_LIFETIME
+        });
     }
-    arrow.push({
-        x: posX + 15,
-        y: posY + 40,
-        vx: vx,
-        vy: vy,
-        lifetime: ARROW_LIFETIME
-    });
 
     if (key === 'e') stealthActive = !stealthActive;
     if (key === 'shift') speedMultiplier = sprintSpeed;
@@ -55,6 +57,7 @@ if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
     }
 
     if (key === 'r' && isGameOver) {
+        console.log("Reset game");
 
         civilians.forEach(civ => {
             civ.x = civ.homeX;
@@ -162,7 +165,6 @@ if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
             }
         }
     }
-}
 });
 
  
