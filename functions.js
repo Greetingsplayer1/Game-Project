@@ -558,6 +558,14 @@ function animate() {
         ctx.fillText("BLADE READY", 20, 160)
         }
 
+        if (arrowCounter <= 0) {
+            ctx.font = "18px sans-serif";
+            ctx.fillText("BOW EMPTY", 20, 190)
+        } else {
+            ctx.font = "18px sans-serif";
+        ctx.fillText("ARROWS: " + arrowCounter, 20, 190)
+        }
+
         
         if (isGameOver) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";

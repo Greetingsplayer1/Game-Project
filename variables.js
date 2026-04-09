@@ -28,6 +28,7 @@ let aimAngle = 0;
 let ARROW_SPEED = 14;
 let ARROW_LIFETIME = 240;
 let ARROW_DAMAGE = 5;
+let arrowCounter = 40;
 let bossEnemy = {
     x: 300, 
     y: 2500,

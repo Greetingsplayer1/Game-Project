@@ -38,8 +38,9 @@ window.addEventListener('mousemove', (e) => {
 });
 
 window.addEventListener('mousedown', (e) => {
-    if (e.button === 0 && bowEquipped) {
+    if (e.button === 0 && bowEquipped && arrowCounter > 0) {
         isShooting = true;
+        arrowCounter--;
         shotTimer = 20;
         const vx = Math.cos(aimAngle) * ARROW_SPEED;
         const vy = Math.sin(aimAngle) * ARROW_SPEED;
