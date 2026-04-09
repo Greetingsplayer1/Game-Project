@@ -14,8 +14,8 @@ function isSpaceBlocked(newX, newY) {
 
 
 
-function spawnItem(newX, newY) {
-    let item = {x: newX, y: newY, size: 10};
+function spawnItem(newX, newY, img) {
+    let item = {x: newX, y: newY, size: 10, isTaken: false, img: img};
     collectibles.push(item);
 }
 
@@ -391,11 +391,24 @@ function animate() {
         }
         );
 
-        collectibles.forEach(col => {
-            ctx.fillStyle = 'gold';
-            ctx.fillRect(col.x, col.y, col.size, col.size);
-        }
-        );
+        // --- COLLISIONS WITH COLLECTIBLES ---
+        collectibles.forEach(coin => {
+            let isColliding = 
+                coin.x < posX + coinCollisionSize &&
+                coin.x + coin.size > posX &&
+                coin.y < posY + coinCollisionSize &&
+                coin.y + coin.size > posY;
+
+            if (isColliding && !coin.isTaken) {
+                coin.isTaken = true;
+                placeImage(coin.img);
+            }
+
+            if (!coin.isTaken) {
+                ctx.fillStyle = 'gold';
+                ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
+            }
+        });
 
 
         // --- DRAW PLAYER ---
@@ -483,6 +496,8 @@ function animate() {
             ctx.textAlign = "center";
             ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 100);
         }
+
+        
     }
     requestAnimationFrame(animate)
 }

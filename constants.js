@@ -5,6 +5,7 @@ const sprintSpeed = 2;
 const SWORD_COOLDOWN_TIME = 50; // 60 frames = 1 second at 60FPS
 const playerMaxHP = 100;
 const playerSize = 30;  // Used for collision math
+const coinCollisionSize = 100;
 
 const mapObjects = [
     // MOAT SECTIONS (Solid borders)
