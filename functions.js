@@ -153,7 +153,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
         const enemy = enemies[j];
         if (enemy.isDead) continue;
         if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
-            enemy.hp -= ARROW_DAMAGE;
+            enemy.hp -= a.damage;
             if (enemy.hp <= 0) {
                 enemy.isDead = true;
                 enemy.respawnTimer = 400;
@@ -170,7 +170,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
             const civ = civilians[j];
             if (civ.isDead) continue;
             if (a.x >= civ.x && a.x <= civ.x + civ.size && a.y >= civ.y && a.y <= civ.y + civ.size) {
-                civ.hp -= Math.floor(ARROW_DAMAGE / 2);
+                civ.hp -= Math.floor(a.damage / 2);
                 if (civ.hp <= 0) {
                     civ.isDead = true;
                     civ.respawnTimer = 400;
