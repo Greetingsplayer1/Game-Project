@@ -109,8 +109,8 @@ function triggerCutscene(text) {
     }, 3000);
 }
 
-function placeImage(src, alt) {
-    coinImg.innerHTML = "<img id=\"coinImg\" src=\"" + src + "\" alt=\"" + alt + "\">"
+function placeImage(src) {
+    coinImg.innerHTML = "<img id=\"coinImg\" src=\"../" + src + ".png\" alt=\"Picture of the picked up coin.\">"
 }
 
 function animate() {
