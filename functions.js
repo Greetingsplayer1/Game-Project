@@ -552,6 +552,10 @@ function animate() {
         ctx.fillText("ARROWS: " + arrowCounter, 20, 190)
         }
 
+        ctx.fillStyle = "white";
+        let weaponText3 = swordEquipped ? "BOW READY" : "BOW NOT EQUIPPED";
+        ctx.fillText(weaponText3, 20, 220)
+    
         
         if (isGameOver) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
