@@ -199,8 +199,6 @@ for (let i = arrow.length - 1; i >= 0; i--) {
      }
 
 
-
-
 function triggerCutscene(text) {
     currentGameState = "cutscene";
     cutsceneText = text;
@@ -211,6 +209,7 @@ function triggerCutscene(text) {
 }
 
 function placeImage(src) {
+    document.getElementById("imgHolder").style.display = "block";
     document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\"><p>&#x2191;  When you get a coin, it goes here. &#x2191;</p>"
 }
 

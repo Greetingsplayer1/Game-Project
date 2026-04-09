@@ -5,6 +5,7 @@ canvas {
 
 #imgHolder {
     position: absolute;
+    display: none;
     border: 1px solid black;
     right: 30px;
     top: 150px;
