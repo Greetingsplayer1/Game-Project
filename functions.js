@@ -236,12 +236,6 @@ function animate() {
             ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
         }
         
-        
-        
-        
-        
-        
-        
         if (!isGameOver && !isGamePaused) {
             let baseSpeed = stealthActive ? 4 : 10;
             let currentSpeed = baseSpeed * speedMultiplier;
@@ -378,11 +372,6 @@ function animate() {
                     isGameOver = true;
                 }
             }
-
-
-            
-            
-            
             
             ctx.save();
             ctx.translate(enemy.x + 20, enemy.y + 20);
@@ -494,8 +483,6 @@ function animate() {
         }
         );
 
-        
-        
         collectibles.forEach(coin => {
             let isColliding = 
                 coin.x < posX + coinCollisionSize &&
