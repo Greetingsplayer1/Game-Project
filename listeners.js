@@ -84,7 +84,7 @@ window.addEventListener('keydown', (e) => {
             ctx.fillText("Press 'P' to Unpause", canvas.width / 2, canvas.height / 2 + 60);
 
             ctx.font = "17px sans-serif";
-            ctx.fillText("Keybinds: E - Stealth, Space - Attack, Shift - Sprint, F - Draw/Weild Sword, Shift + F - Sheath Sword.", canvas.width / 2, canvas.height / 2 + 100);
+            ctx.fillText("Keybinds: E - Stealth, Space - Attack, Shift - Sprint, F - Draw/Weild Sword, Shift + F - Sheath Sword, P - Pause.", canvas.width / 2, canvas.height / 2 + 100);
         }
     }
 
