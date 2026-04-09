@@ -22,32 +22,6 @@ if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
         vy: vy,
         lifetime: ARROW_LIFETIME
     });
-}
-
- 
-window.addEventListener('mousemove', (e) => {
-    const cvs = document.getElementById('myCanvas');
-    if (!cvs) return;
-    const rect = cvs.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const cameraX = posX - (cvs.width / 2) + 15;
-    const cameraY = posY - (cvs.height / 2) + 15;
-    const worldX = mouseX + cameraX;
-    const worldY = mouseY + cameraY;
-    aimAngle = Math.atan2(worldY - (posY + 40), worldX - (posX + 15));
-});
-
-window.addEventListener('mousedown', (e) => {
-    if (e.button === 0 && bowEquipped && arrowCounter > 0) {
-        isShooting = true;
-        arrowCounter--;
-        shotTimer = 20;
-        const vx = Math.cos(aimAngle) * ARROW_SPEED;
-        const vy = Math.sin(aimAngle) * ARROW_SPEED;
-        arrow.push({ x: posX + 15, y: posY + 40, vx: vx, vy: vy, lifetime: ARROW_LIFETIME });
-    }
-});
 
     if (key === 'e') stealthActive = !stealthActive;
     if (key === 'shift') speedMultiplier = sprintSpeed;
@@ -188,7 +162,21 @@ window.addEventListener('mousedown', (e) => {
             }
         }
     }
+}
+});
 
+ 
+window.addEventListener('mousemove', (e) => {
+    const cvs = document.getElementById('myCanvas');
+    if (!cvs) return;
+    const rect = cvs.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const cameraX = posX - (cvs.width / 2) + 15;
+    const cameraY = posY - (cvs.height / 2) + 15;
+    const worldX = mouseX + cameraX;
+    const worldY = mouseY + cameraY;
+    aimAngle = Math.atan2(worldY - (posY + 40), worldX - (posX + 15));
 });
 
 window.addEventListener('keyup', (e) => {
