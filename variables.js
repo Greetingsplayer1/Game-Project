@@ -5,24 +5,32 @@ let stealthActive = false;
 let bladeActive = false;
 let bladeHeight = 0; 
 let speedMultiplier = 1;
-let isGameOver = false; // Tracks if the player is dead
-let swordEquipped = false; // Is the sword drawn?
-let isSwinging = false;    // Is the player currently attacking?
-let swingTimer = 0;        // Animation duration
-let isAttacking = false; // Add this to stop the error!
-let bladeCooldown = 0; //makes hidden blade have a cooldown
-let swordCooldown = 0; // 0 means ready to swing
+let isGameOver = false;
+let swordEquipped = false;
+let isSwinging = false;    
+let swingTimer = 0;      
+let isAttacking = false; 
+let bladeCooldown = 0; 
+let swordCooldown = 0;
 let playerHP = 100;
-let damageCooldown = 0; // Prevents losing all health in one frame
+let damageCooldown = 0;
 let collectibles = [];
-let currentGameState = "playing"; // Options: "playing", "cutscene"
+let currentGameState = "playing";
 let cutsceneText = "";
 let bossTriggered = false;
-let bossHostile = false; // Boss only fights AFTER the cutscene
+let bossHostile = false; 
 let isGamePaused = false;
+let bowEquipped = false;
+let isShooting = false;
+let shotTimer = 0;
+let arrow = [];
+let aimAngle = 0;
+let ARROW_SPEED = 14;
+let ARROW_LIFETIME = 240;
+let ARROW_DAMAGE = 5;
 let bossEnemy = {
     x: 300, 
-    y: 2500, // Much further away
+    y: 2500,
     size: 60, 
     color: 'purple',
     hp: 500, 
@@ -34,23 +42,23 @@ let bossEnemy = {
 let enemies = [
     { 
         x: 300, y: 300, 
-           hp: 100, maxHp: 100, // <--- New Health Variables
+           hp: 100, maxHp: 100,
         homeX: 300, homeY: 300, 
-        patrolX: 300, patrolY: 1020, // The "other end" of their walk
+        patrolX: 300, patrolY: 1020,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
-        movingToPatrol: true // To track which way they are walking
+        movingToPatrol: true
     },
     { 
         x: -400, y: 300, 
-           hp: 100, maxHp: 100, // <--- New Health Variables
+           hp: 100, maxHp: 100,
         homeX: -400, homeY: 300, 
-        patrolX: -400, patrolY: 1020, // The "other end" of their walk
+        patrolX: -400, patrolY: 1020,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
-        movingToPatrol: true // To track which way they are walking
+        movingToPatrol: true
     }
 ];
 

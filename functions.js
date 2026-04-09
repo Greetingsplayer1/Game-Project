@@ -75,7 +75,7 @@ function drawVader(x, y) {
         ctx.fillRect(x - 14, y + 65, 4, bladeHeight); 
     }
     
-    //sword
+    
     if (swordEquipped) {
         ctx.save();
         ctx.translate(x + 15, y + 40); 
@@ -95,8 +95,109 @@ function drawVader(x, y) {
       ctx.restore();
     }
 
+    
+if (bowEquipped) {
+    ctx.save();
+    ctx.translate(posX + 15, posY + 40);
+    if (typeof aimAngle === 'number') ctx.rotate(aimAngle);
+
+    
+    ctx.beginPath();
+    ctx.strokeStyle = 'brown';
+    ctx.lineWidth = 4;
+    ctx.arc(0, 0, 20, -Math.PI / 2, Math.PI / 2);
+    ctx.stroke();
+
+    
+    ctx.beginPath();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    ctx.moveTo(0, -20);
+    if (isShooting && shotTimer > 0) {
+        const pullDist = 18;
+        ctx.lineTo(-pullDist, 0);
+        ctx.lineTo(0, 20);
+        shotTimer--; 
+    } else {
+        ctx.lineTo(0, 20);
+    }
+    ctx.stroke();
     ctx.restore();
 }
+
+ 
+for (let i = arrow.length - 1; i >= 0; i--) {
+    const a = arrow[i];
+
+    if (typeof a.vx !== 'number' || isNaN(a.vx)) a.vx = 0;
+    if (typeof a.vy !== 'number' || isNaN(a.vy)) a.vy = 0;
+
+    a.x += a.vx;
+    a.y += a.vy;
+
+    
+    ctx.save();
+    ctx.translate(a.x, a.y);
+    const aAngle = Math.atan2(a.vy, a.vx);
+    ctx.rotate(aAngle);
+    ctx.fillStyle = 'silver';
+    ctx.fillRect(-7.5, -1.5, 15, 3);
+    ctx.restore();
+
+    if (typeof a.lifetime !== 'number') a.lifetime = ARROW_LIFETIME;
+    a.lifetime--;
+
+    
+    let hit = false;
+    for (let j = 0; j < enemies.length; j++) {
+        const enemy = enemies[j];
+        if (enemy.isDead) continue;
+        if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
+            enemy.hp -= ARROW_DAMAGE;
+            if (enemy.hp <= 0) {
+                enemy.isDead = true;
+                enemy.respawnTimer = 400;
+                enemy.hp = enemy.maxHp;
+            }
+            hit = true;
+            break;
+        }
+    }
+
+    
+    if (!hit) {
+        for (let j = 0; j < civilians.length; j++) {
+            const civ = civilians[j];
+            if (civ.isDead) continue;
+            if (a.x >= civ.x && a.x <= civ.x + civ.size && a.y >= civ.y && a.y <= civ.y + civ.size) {
+                civ.hp -= Math.floor(ARROW_DAMAGE / 2);
+                if (civ.hp <= 0) {
+                    civ.isDead = true;
+                    civ.respawnTimer = 400;
+                    civ.hp = civ.maxHp;
+                }
+                hit = true;
+                break;
+            }
+        }
+    }
+
+    
+    if (!hit && !bossEnemy.isDead) {
+        if (a.x >= bossEnemy.x && a.x <= bossEnemy.x + bossEnemy.size && a.y >= bossEnemy.y && a.y <= bossEnemy.y + bossEnemy.size) {
+            bossEnemy.hp -= ARROW_DAMAGE;
+            if (bossEnemy.hp <= 0) bossEnemy.isDead = true;
+            hit = true;
+        }
+    }
+
+    
+    if (hit || a.lifetime <= 0 || Math.abs(a.x - posX) > 4000 || Math.abs(a.y - posY) > 4000) {
+        arrow.splice(i, 1);
+    }
+}
+     }
+
 
 
 
@@ -127,33 +228,33 @@ function animate() {
         ctx.translate(-cameraX, -cameraY);
 
         if (currentGameState === "cutscene") {
-            // Cinematic black bars
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, 100);
             ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
-
-            // Dialogue text
             ctx.fillStyle = "white";
             ctx.font = "24px serif";
             ctx.textAlign = "center";
             ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
         }
-
-        // Movement
+        
+        
+        
+        
+        
+        
+        
         if (!isGameOver && !isGamePaused) {
             let baseSpeed = stealthActive ? 4 : 10;
             let currentSpeed = baseSpeed * speedMultiplier;
 
-            // Check Horizontal movement
             if (keys['d'] && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
             if (keys['a'] && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
 
-            // Check Vertical movement
             if (keys['w'] && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
             if (keys['s'] && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
         }
-
-        // Blade Animation
+        
+        
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
@@ -162,7 +263,6 @@ function animate() {
             triggerCutscene("HA! You think you can defeat me?");
         }   
 
-        // Draw World
         mapObjects.forEach(obj => {
             ctx.fillStyle = obj.color;
             ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
@@ -181,7 +281,9 @@ function animate() {
             ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
     }
 
-    // --- BOSS LOGIC ---
+        
+        
+        
         if (bossHostile && currentGameState === "playing") {
 
             let bDx = posX - bossEnemy.x;
@@ -193,7 +295,7 @@ function animate() {
             bossEnemy.y += Math.sin(angle) * 3;
 
             if (bDist < bossEnemy.size && damageCooldown === 0) {
-                playerHP -= 20; // Boss deals 20 damage
+                playerHP -= 20;
                 damageCooldown = 40;
                 
                 if (playerHP <= 0) {
@@ -204,7 +306,8 @@ function animate() {
         }
 
 
-        // --- ENEMY LOGIC ---
+        
+        
         enemies.forEach(enemy => {
             if (enemy.isDead) {
                 enemy.respawnTimer--;
@@ -238,7 +341,6 @@ function animate() {
                 let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
                 let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
-                // Only move if the NEW space is not blocked
                 if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
                 if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
 
@@ -279,7 +381,10 @@ function animate() {
             }
 
 
-            // Draw Vision Cone
+            
+            
+            
+            
             ctx.save();
             ctx.translate(enemy.x + 20, enemy.y + 20);
             ctx.rotate(enemy.angle || 0);
@@ -290,7 +395,6 @@ function animate() {
             ctx.fill();
             ctx.restore();
 
-            // Draw Enemy
             ctx.fillStyle = enemy.color;
             ctx.fillRect(enemy.x, enemy.y, enemy.size, enemy.size);
             ctx.fillRect(enemy.x + -12, enemy.y + 5, 10, 25);
@@ -391,7 +495,8 @@ function animate() {
         }
         );
 
-        // --- COLLISIONS WITH COLLECTIBLES ---
+        
+        
         collectibles.forEach(coin => {
             let isColliding = 
                 coin.x < posX + coinCollisionSize &&
@@ -411,12 +516,12 @@ function animate() {
         });
 
 
-        // --- DRAW PLAYER ---
+        
         drawVader(posX, posY);
 
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
 
-        // --- 2. DRAW PLAYER HEALTH BAR ---
+        
         ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
         ctx.fillRect(20, 20, 200, 25);
 
@@ -427,7 +532,7 @@ function animate() {
         ctx.strokeStyle = "white";
         ctx.strokeRect(20, 20, 200, 25);
 
-        // --- 3. Add Hidden Status ---
+        
         ctx.font = "bold 18px sans-serif";
         ctx.textAlign = "left";
         if (stealthActive) {
@@ -438,7 +543,7 @@ function animate() {
             ctx.fillText("STATUS: VISIBLE", 20, 70);
         }
 
-        // --- 4. Add Weapon Status ---
+        
         ctx.fillStyle = "white";
         let weaponText = swordEquipped ? "SWORD DRAWN" : "NO WEAPON";
         let weaponText2 = bladeActive ? "HIDDEN BLADE ACTIVE" : "NO WEAPON";
@@ -453,7 +558,7 @@ function animate() {
         ctx.fillText("BLADE READY", 20, 160)
         }
 
-        // --- 5. death Screen ---
+        
         if (isGameOver) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -486,10 +591,10 @@ function animate() {
         if (currentGameState === "cutscene") {
             ctx.setTransform(1, 0, 0, 1, 0, 0); 
             ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height); // Dim everything
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             ctx.fillStyle = "black";
-            ctx.fillRect(0, canvas.height - 200, canvas.width, 200); // Big text box
+            ctx.fillRect(0, canvas.height - 200, canvas.width, 200);
             
             ctx.fillStyle = "white";
             ctx.font = "bold 32px Arial";

@@ -1,6 +1,52 @@
 window.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();
     keys[key] = true;
+      if (e.key === 'q') bowEquipped = !bowEquipped;
+if (e.key === 'b' && bowEquipped) {
+    isShooting = true;
+    shotTimer = 20;
+    
+    let vx, vy;
+    if (typeof aimAngle === 'number') {
+        vx = Math.cos(aimAngle) * ARROW_SPEED;
+        vy = Math.sin(aimAngle) * ARROW_SPEED;
+    } else {
+        vx = keys['a'] ? -ARROW_SPEED : ARROW_SPEED;
+        vy = 0;
+    }
+    arrow.push({
+        x: posX + 15,
+        y: posY + 40,
+        vx: vx,
+        vy: vy,
+        lifetime: ARROW_LIFETIME
+    });
+}
+
+ 
+window.addEventListener('mousemove', (e) => {
+    const cvs = document.getElementById('myCanvas');
+    if (!cvs) return;
+    const rect = cvs.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const cameraX = posX - (cvs.width / 2) + 15;
+    const cameraY = posY - (cvs.height / 2) + 15;
+    const worldX = mouseX + cameraX;
+    const worldY = mouseY + cameraY;
+    aimAngle = Math.atan2(worldY - (posY + 40), worldX - (posX + 15));
+});
+
+window.addEventListener('mousedown', (e) => {
+    if (e.button === 0 && bowEquipped) {
+        isShooting = true;
+        shotTimer = 20;
+        const vx = Math.cos(aimAngle) * ARROW_SPEED;
+        const vy = Math.sin(aimAngle) * ARROW_SPEED;
+        arrow.push({ x: posX + 15, y: posY + 40, vx: vx, vy: vy, lifetime: ARROW_LIFETIME });
+    }
+});
+
     if (key === 'e') stealthActive = !stealthActive;
     if (key === 'shift') speedMultiplier = sprintSpeed;
     if (key === ' ' && bladeCooldown === 0) {
@@ -10,7 +56,7 @@ window.addEventListener('keydown', (e) => {
         enemies.forEach(enemy => {
             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
             if (d < 150 && !enemy.isDead) { 
-                enemy.hp -= 100; // Instant kill
+                enemy.hp -= 100;
                 if (enemy.hp <= 0) {
                     enemy.isDead = true; 
                     enemy.respawnTimer = 400; 
@@ -22,7 +68,7 @@ window.addEventListener('keydown', (e) => {
         civilians.forEach(civ => {
             let d = Math.sqrt((posX - civ.x)**2 + (posY - civ.y)**2);
             if (d < 150 && !civ.isDead) { 
-                civ.hp -= 100; // Instant kill
+                civ.hp -= 100;
                 if (civ.hp <= 0) {
                     civ.isDead = true; 
                     civ.respawnTimer = 400; 
@@ -71,7 +117,7 @@ window.addEventListener('keydown', (e) => {
         } else {
             isGamePaused = true;
 
-            // --- Pause Screen ---
+            
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
