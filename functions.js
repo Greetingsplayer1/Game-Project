@@ -553,7 +553,7 @@ function animate() {
         }
 
         ctx.fillStyle = "white";
-        let weaponText3 = swordEquipped ? "BOW READY" : "BOW NOT EQUIPPED";
+        let weaponText3 = bowEquipped? "BOW EQUIPED" : "BOW NOT EQUIPPED";
         ctx.fillText(weaponText3, 20, 220)
     
         
