@@ -1,6 +1,7 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
+const coinImg = document.getElementById("coinImg");
 
 const sprintSpeed = 2;
 const SWORD_COOLDOWN_TIME = 50; // 60 frames = 1 second at 60FPS

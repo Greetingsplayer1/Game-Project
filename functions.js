@@ -109,7 +109,9 @@ function triggerCutscene(text) {
     }, 3000);
 }
 
-
+function placeImage(src, alt) {
+    coinImg.innerHTML = "<img id=\"coinImg\" src=\"" + src + "\" alt=\"" + alt + "\">"
+}
 
 function animate() {
     if (!isGamePaused) {
@@ -484,5 +486,3 @@ function animate() {
     }
     requestAnimationFrame(animate)
 }
-
-

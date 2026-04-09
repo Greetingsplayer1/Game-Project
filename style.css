@@ -1,0 +1,15 @@
+canvas {
+    border: 1px solid black;
+    background: #2d8a2d;
+}
+
+#imgHolder {
+    position: absolute;
+    border: 1px solid black;
+    right: 30px;
+    top: 150px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    align-content: center;
+}
