@@ -576,15 +576,15 @@ if (key === 'f') {
     
       if (stealthActive) stealthActive = false;
       if (keys['shift']) {
-            swordEquipped = false; // Hold Shift + F to sheathe
+            swordEquipped = false; 
             isSwinging = false;
         } else if (!swordEquipped) {
-            swordEquipped = true;  // Press F to draw sword
+            swordEquipped = true;  
         } else {
-            isSwinging = true;     // Press F while drawn to swing
-            swingTimer = 30; // Duration of swing animation
+            isSwinging = true;     
+            swingTimer = 30; 
             
-            if (key === 'f') {
+        {
     if (!swordEquipped) {
         swordEquipped = true; 
     } else if (swordCooldown === 0) {
