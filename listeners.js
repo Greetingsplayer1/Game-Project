@@ -65,6 +65,29 @@ window.addEventListener('keydown', (e) => {
         })
     }
 
+    if (key === 'p') {
+        if (isGamePaused) {
+            isGamePaused = false;
+        } else {
+            isGamePaused = true;
+
+            // --- Pause Screen ---
+            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "white";
+            ctx.font = "bold 60px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText("GAME PAUSED", canvas.width / 2, canvas.height / 2);
+            
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Press 'P' to Unpause", canvas.width / 2, canvas.height / 2 + 60);
+
+            ctx.font = "17px sans-serif";
+            ctx.fillText("Keybinds: E - Stealth, Space - Attack, Shift - Sprint, F - Draw/Weild Sword, Shift + F - Sheath Sword.", canvas.width / 2, canvas.height / 2 + 100);
+        }
+    }
+
     if (key === 'f') {
     
         if (stealthActive) stealthActive = false;

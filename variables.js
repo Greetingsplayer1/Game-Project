@@ -19,6 +19,7 @@ let currentGameState = "playing"; // Options: "playing", "cutscene"
 let cutsceneText = "";
 let bossTriggered = false;
 let bossHostile = false; // Boss only fights AFTER the cutscene
+let isGamePaused = false;
 let bossEnemy = {
     x: 300, 
     y: 2500, // Much further away

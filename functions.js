@@ -111,376 +111,377 @@ function triggerCutscene(text) {
 
 
 
-function animate() {  
-    let cameraX = posX - (canvas.width / 2) + 15; 
-    let cameraY = posY - (canvas.height / 2) + 15;
+function animate() {
+    if (!isGamePaused) {
+        let cameraX = posX - (canvas.width / 2) + 15; 
+        let cameraY = posY - (canvas.height / 2) + 15;
 
-    ctx.setTransform(1, 0, 0, 1, 0, 0); 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
-
-    ctx.fillStyle = "#2d8a2d"; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height); 
-    
-    ctx.translate(-cameraX, -cameraY);
-
-    if (currentGameState === "cutscene") {
-        // Cinematic black bars
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, 100);
-        ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
-
-        // Dialogue text
-        ctx.fillStyle = "white";
-        ctx.font = "24px serif";
-        ctx.textAlign = "center";
-        ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
-    }
-
-    // Movement
-    if (!isGameOver) {
-        let baseSpeed = stealthActive ? 4 : 10;
-        let currentSpeed = baseSpeed * speedMultiplier;
-
-        // Check Horizontal movement
-        if (keys['d'] && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
-        if (keys['a'] && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
-
-        // Check Vertical movement
-        if (keys['w'] && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
-        if (keys['s'] && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
-    }
-
-    // Blade Animation
-    if (bladeActive && bladeHeight < 25) bladeHeight += 5;
-    if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
-
-    if (posY > 2100 && !bossTriggered) {
-        bossTriggered = true;
-        triggerCutscene("HA! You think you can defeat me?");
-    }   
-
-    // Draw World
-    mapObjects.forEach(obj => {
-        ctx.fillStyle = obj.color;
-        ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
-    });
-
-    if (!bossEnemy.isDead) {
-        ctx.fillStyle = bossEnemy.color;
-        ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
-
-        let bBarWidth = 100;
-        let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
-        let bBarY = bossEnemy.y - 20;
-        ctx.fillStyle = "red";
-        ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
-        ctx.fillStyle = "lime";
-        ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
-}
-
-// --- BOSS LOGIC ---
-    if (bossHostile && currentGameState === "playing") {
-
-        let bDx = posX - bossEnemy.x;
-        let bDy = posY - bossEnemy.y;
-        let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
-        
-        let angle = Math.atan2(bDy, bDx);
-        bossEnemy.x += Math.cos(angle) * 3;
-        bossEnemy.y += Math.sin(angle) * 3;
-
-        if (bDist < bossEnemy.size && damageCooldown === 0) {
-            playerHP -= 20; // Boss deals 20 damage
-            damageCooldown = 40;
-            
-            if (playerHP <= 0) {
-                playerHP = 0;
-                isGameOver = true;
-            }
-        }
-    }
-
-
-    // --- ENEMY LOGIC ---
-    enemies.forEach(enemy => {
-        if (enemy.isDead) {
-            enemy.respawnTimer--;
-            if (enemy.respawnTimer <= 0) {
-                enemy.isDead = false;
-                enemy.x = enemy.homeX; 
-                enemy.y = enemy.homeY;
-            }
-
-            return;
-        }
-
-        let dx = posX - enemy.x;
-        let dy = posY - enemy.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        let angleToPlayer = Math.atan2(dy, dx);
-        let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
-        if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-        let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped));
-        let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped));
-
-        if (canSeePlayer || tooClose) {
-            enemy.scaredTimer = 600;
-        }
-
-        if ((enemy.scaredTimer || 0) > 0) {
-            enemy.scaredTimer--;
-            enemy.color = 'red';
-            let angleToPlayer = Math.atan2(dy, dx);
-            
-            let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
-            let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
-
-            // Only move if the NEW space is not blocked
-            if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
-            if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
-
-            enemy.angle = angleToPlayer; 
-        } else {
-            enemy.color = 'tan';
-            let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
-            let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
-            let hDx = destX - enemy.x;
-            let hDy = destY - enemy.y;
-            let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
-
-            if (distToDest > 5) {
-                let aMove = Math.atan2(hDy, hDx);
-                enemy.x += Math.cos(aMove) * 4;
-                enemy.y += Math.sin(aMove) * 4;
-                enemy.angle = aMove; 
-            } else {
-                enemy.movingToPatrol = !enemy.movingToPatrol;
-            }
-        }
-
-        let isColliding = 
-            enemy.x < posX + playerSize &&
-            enemy.x + enemy.size > posX &&
-            enemy.y < posY + playerSize &&
-            enemy.y + enemy.size > posY;
-
-
-        if (isColliding && !enemy.isDead && damageCooldown === 0) {
-            playerHP -= 10;
-            damageCooldown = 30; 
-            
-            if (playerHP <= 0) {
-                playerHP = 0;
-                isGameOver = true;
-            }
-        }
-
-
-        // Draw Vision Cone
-        ctx.save();
-        ctx.translate(enemy.x + 20, enemy.y + 20);
-        ctx.rotate(enemy.angle || 0);
-        ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
-        ctx.beginPath();
-        ctx.moveTo(0,0);
-        ctx.arc(0, 0, 400, -Math.PI/2, Math.PI/2);
-        ctx.fill();
-        ctx.restore();
-
-        // Draw Enemy
-        ctx.fillStyle = enemy.color;
-        ctx.fillRect(enemy.x, enemy.y, enemy.size, enemy.size);
-        ctx.fillRect(enemy.x + -12, enemy.y + 5, 10, 25);
-        ctx.fillRect(enemy.x + 42, enemy.y + 5, 10, 25);
-        ctx.fillRect(enemy.x, enemy.y + 45, 10, 25);
-        ctx.fillRect(enemy.x + 30, enemy.y + 45, 10, 25);
-        ctx.fillRect(enemy.x - 0, enemy.y - 40, 40, 35);
-
-        if (!enemy.isDead) {
-            let barWidth = 50;
-            let barHeight = 6;
-            let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
-            let barY = enemy.y - 55; 
-
-        
-            ctx.fillStyle = "red";
-            ctx.fillRect(barX, barY, barWidth, barHeight);
-
-
-            let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
-            ctx.fillStyle = "lime";
-            ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
-        }
-    });
-
-    civilians.forEach(civ => {
-        if (civ.isDead) return;
-        let dx = posX - civ.x;
-        let dy = posY - civ.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 300 && (bladeActive || swordEquipped) && !stealthActive) {
-            civ.isScared = true;
-            civ.scaredTimer = 300;
-        }
-
-        if (civ.scaredTimer > 0) {
-            civ.scaredTimer--;
-            civ.color = 'pink';
-            let angleAway = Math.atan2(dy, dx) + Math.PI;
-
-            let nextX = civ.x + Math.cos(angleAway) * 5;
-        let nextY = civ.y + Math.sin(angleAway) * 5;
-
-        if (!isSpaceBlocked(nextX, civ.y)) civ.x = nextX;
-        if (!isSpaceBlocked(civ.x, nextY)) civ.y = nextY;
-
-            if (civ.scaredTimer === 0) civ.isScared = false;
-        } else {
-            if (!civ.returnHomeCooldown) civ.returnHomeCooldown = 0; 
-            if (civ.returnHomeCooldown > 0) civ.returnHomeCooldown--;
-
-            let destX = civ.homeX;
-            let destY = civ.homeY;
-            let distToHome = Math.sqrt((destX - civ.x)**2 + (destY - civ.y)**2);
-
-            if (distToHome > 100 || civ.returnHomeCooldown > 0) {
-                
-                if (distToHome > 100 && civ.returnHomeCooldown <= 0) {
-                    civ.returnHomeCooldown = 60; 
-                }
-
-                let angleHome = Math.atan2(destY - civ.y, destX - civ.x);
-                civ.x += Math.cos(angleHome) * 2;
-                civ.y += Math.sin(angleHome) * 2;
-                civ.color = 'cyan';
-
-            } else {
-                civ.wanderTimer--;
-                if (civ.wanderTimer <= 0) {
-                    civ.angle = Math.random() * Math.PI * 2;
-                    civ.wanderTimer = 60 + Math.random() * 120;
-                }
-                let nextX = civ.x + Math.cos(civ.angle) * 1;
-                let nextY = civ.y + Math.sin(civ.angle) * 1;
-
-                if (!isSpaceBlocked(nextX, nextY)) {
-                    civ.x = nextX;
-                    civ.y = nextY;
-                }
-            }
-        } 
-
-        let barWidth = 40;
-        let barHeight = 6;
-        let barX = civ.x + (civ.size / 2) - (barWidth / 2); 
-        let barY = civ.y -15 
-
-        ctx.fillStyle = "red";
-        ctx.fillRect(barX, barY, barWidth, barHeight)
-
-        let healthPercent = civ.hp / civ.maxHp;
-        ctx.fillStyle = "lime";
-        ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
-
-        ctx.fillStyle = civ.color;
-        ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
-    }
-    );
-
-    collectibles.forEach(col => {
-        ctx.fillStyle = 'gold';
-        ctx.fillRect(col.x, col.y, col.size, col.size);
-    }
-    );
-
-
-    // --- DRAW PLAYER ---
-    drawVader(posX, posY);
-
-    ctx.setTransform(1, 0, 0, 1, 0, 0); 
-
-    // --- 2. DRAW PLAYER HEALTH BAR ---
-    ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
-    ctx.fillRect(20, 20, 200, 25);
-
-    ctx.fillStyle = playerHP > 30 ? "lime" : "red"; 
-    let healthWidth = (playerHP / 100) * 200;
-    ctx.fillRect(20, 20, healthWidth, 25);
-
-    ctx.strokeStyle = "white";
-    ctx.strokeRect(20, 20, 200, 25);
-
-    // --- 3. Add Hidden Status ---
-    ctx.font = "bold 18px sans-serif";
-    ctx.textAlign = "left";
-    if (stealthActive) {
-        ctx.fillStyle = "cyan";
-        ctx.fillText("STATUS: HIDDEN", 20, 70);
-    } else {
-        ctx.fillStyle = "white";
-        ctx.fillText("STATUS: VISIBLE", 20, 70);
-    }
-
-    // --- 4. Add Weapon Status ---
-    ctx.fillStyle = "white";
-    let weaponText = swordEquipped ? "SWORD DRAWN" : "NO WEAPON";
-    let weaponText2 = bladeActive ? "HIDDEN BLADE ACTIVE" : "NO WEAPON";
-    ctx.fillText(weaponText, 20, 100)
-    ctx.fillText(weaponText2, 20, 130)
-
-    if(bladeCooldown > 0){
-    ctx.font = "18px sans-serif";
-    ctx.fillText("BLADE NOT READY", 20, 160)
-    } else {
-        ctx.font = "18px sans-serif";
-    ctx.fillText("BLADE READY", 20, 160)
-    }
-
-    // --- 5. death Screen ---
-    if (isGameOver) {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = "red";
-        ctx.font = "bold 60px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("ELIMINATED", canvas.width / 2, canvas.height / 2);
-        
-        ctx.fillStyle = "white";
-        ctx.font = "20px sans-serif";
-        ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
-    }
-
-    if (isSwinging) {
-        swingTimer--;
-        if (swingTimer <= 0) isSwinging = false;
-    }
-
-    if (bladeCooldown > 0) {
-    bladeCooldown--;
-    }
-
-    if (swordCooldown > 0) {
-        swordCooldown--;
-    }
-
-    if (damageCooldown > 0) damageCooldown--;
-
-    if (currentGameState === "cutscene") {
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
-        ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height); // Dim everything
+        ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+        ctx.fillStyle = "#2d8a2d"; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height); 
         
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, canvas.height - 200, canvas.width, 200); // Big text box
-        
-        ctx.fillStyle = "white";
-        ctx.font = "bold 32px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 100);
+        ctx.translate(-cameraX, -cameraY);
+
+        if (currentGameState === "cutscene") {
+            // Cinematic black bars
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, 100);
+            ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
+
+            // Dialogue text
+            ctx.fillStyle = "white";
+            ctx.font = "24px serif";
+            ctx.textAlign = "center";
+            ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
+        }
+
+        // Movement
+        if (!isGameOver && !isGamePaused) {
+            let baseSpeed = stealthActive ? 4 : 10;
+            let currentSpeed = baseSpeed * speedMultiplier;
+
+            // Check Horizontal movement
+            if (keys['d'] && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
+            if (keys['a'] && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
+
+            // Check Vertical movement
+            if (keys['w'] && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
+            if (keys['s'] && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
+        }
+
+        // Blade Animation
+        if (bladeActive && bladeHeight < 25) bladeHeight += 5;
+        if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
+
+        if (posY > 2100 && !bossTriggered) {
+            bossTriggered = true;
+            triggerCutscene("HA! You think you can defeat me?");
+        }   
+
+        // Draw World
+        mapObjects.forEach(obj => {
+            ctx.fillStyle = obj.color;
+            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+        });
+
+        if (!bossEnemy.isDead) {
+            ctx.fillStyle = bossEnemy.color;
+            ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
+
+            let bBarWidth = 100;
+            let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
+            let bBarY = bossEnemy.y - 20;
+            ctx.fillStyle = "red";
+            ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
+            ctx.fillStyle = "lime";
+            ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
     }
 
+    // --- BOSS LOGIC ---
+        if (bossHostile && currentGameState === "playing") {
+
+            let bDx = posX - bossEnemy.x;
+            let bDy = posY - bossEnemy.y;
+            let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
+            
+            let angle = Math.atan2(bDy, bDx);
+            bossEnemy.x += Math.cos(angle) * 3;
+            bossEnemy.y += Math.sin(angle) * 3;
+
+            if (bDist < bossEnemy.size && damageCooldown === 0) {
+                playerHP -= 20; // Boss deals 20 damage
+                damageCooldown = 40;
+                
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    isGameOver = true;
+                }
+            }
+        }
+
+
+        // --- ENEMY LOGIC ---
+        enemies.forEach(enemy => {
+            if (enemy.isDead) {
+                enemy.respawnTimer--;
+                if (enemy.respawnTimer <= 0) {
+                    enemy.isDead = false;
+                    enemy.x = enemy.homeX; 
+                    enemy.y = enemy.homeY;
+                }
+
+                return;
+            }
+
+            let dx = posX - enemy.x;
+            let dy = posY - enemy.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let angleToPlayer = Math.atan2(dy, dx);
+            let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
+            if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped));
+            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped));
+
+            if (canSeePlayer || tooClose) {
+                enemy.scaredTimer = 600;
+            }
+
+            if ((enemy.scaredTimer || 0) > 0) {
+                enemy.scaredTimer--;
+                enemy.color = 'red';
+                let angleToPlayer = Math.atan2(dy, dx);
+                
+                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+
+                // Only move if the NEW space is not blocked
+                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+
+                enemy.angle = angleToPlayer; 
+            } else {
+                enemy.color = 'tan';
+                let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
+                let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
+                let hDx = destX - enemy.x;
+                let hDy = destY - enemy.y;
+                let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
+
+                if (distToDest > 5) {
+                    let aMove = Math.atan2(hDy, hDx);
+                    enemy.x += Math.cos(aMove) * 4;
+                    enemy.y += Math.sin(aMove) * 4;
+                    enemy.angle = aMove; 
+                } else {
+                    enemy.movingToPatrol = !enemy.movingToPatrol;
+                }
+            }
+
+            let isColliding = 
+                enemy.x < posX + playerSize &&
+                enemy.x + enemy.size > posX &&
+                enemy.y < posY + playerSize &&
+                enemy.y + enemy.size > posY;
+
+
+            if (isColliding && !enemy.isDead && damageCooldown === 0) {
+                playerHP -= 10;
+                damageCooldown = 30; 
+                
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    isGameOver = true;
+                }
+            }
+
+
+            // Draw Vision Cone
+            ctx.save();
+            ctx.translate(enemy.x + 20, enemy.y + 20);
+            ctx.rotate(enemy.angle || 0);
+            ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.arc(0, 0, 400, -Math.PI/2, Math.PI/2);
+            ctx.fill();
+            ctx.restore();
+
+            // Draw Enemy
+            ctx.fillStyle = enemy.color;
+            ctx.fillRect(enemy.x, enemy.y, enemy.size, enemy.size);
+            ctx.fillRect(enemy.x + -12, enemy.y + 5, 10, 25);
+            ctx.fillRect(enemy.x + 42, enemy.y + 5, 10, 25);
+            ctx.fillRect(enemy.x, enemy.y + 45, 10, 25);
+            ctx.fillRect(enemy.x + 30, enemy.y + 45, 10, 25);
+            ctx.fillRect(enemy.x - 0, enemy.y - 40, 40, 35);
+
+            if (!enemy.isDead) {
+                let barWidth = 50;
+                let barHeight = 6;
+                let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
+                let barY = enemy.y - 55; 
+
+            
+                ctx.fillStyle = "red";
+                ctx.fillRect(barX, barY, barWidth, barHeight);
+
+
+                let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
+                ctx.fillStyle = "lime";
+                ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
+            }
+        });
+
+        civilians.forEach(civ => {
+            if (civ.isDead) return;
+            let dx = posX - civ.x;
+            let dy = posY - civ.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 300 && (bladeActive || swordEquipped) && !stealthActive) {
+                civ.isScared = true;
+                civ.scaredTimer = 300;
+            }
+
+            if (civ.scaredTimer > 0) {
+                civ.scaredTimer--;
+                civ.color = 'pink';
+                let angleAway = Math.atan2(dy, dx) + Math.PI;
+
+                let nextX = civ.x + Math.cos(angleAway) * 5;
+            let nextY = civ.y + Math.sin(angleAway) * 5;
+
+            if (!isSpaceBlocked(nextX, civ.y)) civ.x = nextX;
+            if (!isSpaceBlocked(civ.x, nextY)) civ.y = nextY;
+
+                if (civ.scaredTimer === 0) civ.isScared = false;
+            } else {
+                if (!civ.returnHomeCooldown) civ.returnHomeCooldown = 0; 
+                if (civ.returnHomeCooldown > 0) civ.returnHomeCooldown--;
+
+                let destX = civ.homeX;
+                let destY = civ.homeY;
+                let distToHome = Math.sqrt((destX - civ.x)**2 + (destY - civ.y)**2);
+
+                if (distToHome > 100 || civ.returnHomeCooldown > 0) {
+                    
+                    if (distToHome > 100 && civ.returnHomeCooldown <= 0) {
+                        civ.returnHomeCooldown = 60; 
+                    }
+
+                    let angleHome = Math.atan2(destY - civ.y, destX - civ.x);
+                    civ.x += Math.cos(angleHome) * 2;
+                    civ.y += Math.sin(angleHome) * 2;
+                    civ.color = 'cyan';
+
+                } else {
+                    civ.wanderTimer--;
+                    if (civ.wanderTimer <= 0) {
+                        civ.angle = Math.random() * Math.PI * 2;
+                        civ.wanderTimer = 60 + Math.random() * 120;
+                    }
+                    let nextX = civ.x + Math.cos(civ.angle) * 1;
+                    let nextY = civ.y + Math.sin(civ.angle) * 1;
+
+                    if (!isSpaceBlocked(nextX, nextY)) {
+                        civ.x = nextX;
+                        civ.y = nextY;
+                    }
+                }
+            } 
+
+            let barWidth = 40;
+            let barHeight = 6;
+            let barX = civ.x + (civ.size / 2) - (barWidth / 2); 
+            let barY = civ.y -15 
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(barX, barY, barWidth, barHeight)
+
+            let healthPercent = civ.hp / civ.maxHp;
+            ctx.fillStyle = "lime";
+            ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
+
+            ctx.fillStyle = civ.color;
+            ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+        }
+        );
+
+        collectibles.forEach(col => {
+            ctx.fillStyle = 'gold';
+            ctx.fillRect(col.x, col.y, col.size, col.size);
+        }
+        );
+
+
+        // --- DRAW PLAYER ---
+        drawVader(posX, posY);
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0); 
+
+        // --- 2. DRAW PLAYER HEALTH BAR ---
+        ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
+        ctx.fillRect(20, 20, 200, 25);
+
+        ctx.fillStyle = playerHP > 30 ? "lime" : "red"; 
+        let healthWidth = (playerHP / 100) * 200;
+        ctx.fillRect(20, 20, healthWidth, 25);
+
+        ctx.strokeStyle = "white";
+        ctx.strokeRect(20, 20, 200, 25);
+
+        // --- 3. Add Hidden Status ---
+        ctx.font = "bold 18px sans-serif";
+        ctx.textAlign = "left";
+        if (stealthActive) {
+            ctx.fillStyle = "cyan";
+            ctx.fillText("STATUS: HIDDEN", 20, 70);
+        } else {
+            ctx.fillStyle = "white";
+            ctx.fillText("STATUS: VISIBLE", 20, 70);
+        }
+
+        // --- 4. Add Weapon Status ---
+        ctx.fillStyle = "white";
+        let weaponText = swordEquipped ? "SWORD DRAWN" : "NO WEAPON";
+        let weaponText2 = bladeActive ? "HIDDEN BLADE ACTIVE" : "NO WEAPON";
+        ctx.fillText(weaponText, 20, 100)
+        ctx.fillText(weaponText2, 20, 130)
+
+        if(bladeCooldown > 0){
+        ctx.font = "18px sans-serif";
+        ctx.fillText("BLADE NOT READY", 20, 160)
+        } else {
+            ctx.font = "18px sans-serif";
+        ctx.fillText("BLADE READY", 20, 160)
+        }
+
+        // --- 5. death Screen ---
+        if (isGameOver) {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "red";
+            ctx.font = "bold 60px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText("ELIMINATED", canvas.width / 2, canvas.height / 2);
+            
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
+        }
+
+        if (isSwinging) {
+            swingTimer--;
+            if (swingTimer <= 0) isSwinging = false;
+        }
+
+        if (bladeCooldown > 0) {
+        bladeCooldown--;
+        }
+
+        if (swordCooldown > 0) {
+            swordCooldown--;
+        }
+
+        if (damageCooldown > 0) damageCooldown--;
+
+        if (currentGameState === "cutscene") {
+            ctx.setTransform(1, 0, 0, 1, 0, 0); 
+            ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Dim everything
+            
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, canvas.height - 200, canvas.width, 200); // Big text box
+            
+            ctx.fillStyle = "white";
+            ctx.font = "bold 32px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 100);
+        }
+    }
     requestAnimationFrame(animate)
 }
 
