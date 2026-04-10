@@ -185,7 +185,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     
     if (!hit && !bossEnemy.isDead) {
         if (a.x >= bossEnemy.x && a.x <= bossEnemy.x + bossEnemy.size && a.y >= bossEnemy.y && a.y <= bossEnemy.y + bossEnemy.size) {
-            bossEnemy.hp -= ARROW_DAMAGE;
+            bossEnemy.hp -= a.damage;
             if (bossEnemy.hp <= 0) bossEnemy.isDead = true;
             hit = true;
         }
