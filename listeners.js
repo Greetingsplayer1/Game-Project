@@ -188,3 +188,8 @@ window.addEventListener('keyup', (e) => {
     if (key === ' ') bladeActive = false;
     if (key === 'shift') speedMultiplier = 1;
 });
+
+music.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);

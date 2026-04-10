@@ -6,6 +6,7 @@ const SWORD_COOLDOWN_TIME = 50;
 const playerMaxHP = 100;
 const playerSize = 30;
 const coinCollisionSize = 100;
+const music = new Audio('music.wav');
 
 const mapObjects = [
     {x: -1500, y: -1400, w: 3000, h: 200, color: '#006994', isSolid: true},
