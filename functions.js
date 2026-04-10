@@ -240,11 +240,11 @@ function animate() {
             let baseSpeed = stealthActive ? 4 : 10;
             let currentSpeed = baseSpeed * speedMultiplier;
 
-            if (keys['d'] && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
-            if (keys['a'] && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
+            if ((keys['d'] || keys['arrowright']) && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
+            if ((keys['a'] || keys['arrowleft']) && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
 
-            if (keys['w'] && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
-            if (keys['s'] && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
+            if ((keys['w'] || keys['arrowup']) && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
+            if ((keys['s'] || keys['arrowdown']) && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
         }
         
         
