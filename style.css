@@ -3,14 +3,20 @@ canvas {
     background: #2d8a2d;
 }
 
+#canvasHolder {
+    position: relative;
+    width: 1002px;
+    height: 802px;
+}
+
 #imgHolder {
     position: absolute;
     display: none;
     border: 1px solid black;
-    right: 30px;
-    top: 150px;
-    height: 400px;
-    width: 400px;
+    right: 0;
+    top: 0;
+    height: 200px;
+    width: 200px;
     text-align: center;
     align-content: center;
 }

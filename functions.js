@@ -210,7 +210,7 @@ function triggerCutscene(text) {
 
 function placeImage(src) {
     document.getElementById("imgHolder").style.display = "block";
-    document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\"><p>&#x2191;  When you get a coin, it goes here. &#x2191;</p>"
+    document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
 }
 
 function animate() {
