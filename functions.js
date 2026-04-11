@@ -21,6 +21,17 @@ function spawnItem(newX, newY, img) {
 
 
 
+function chooseChar(choice) {
+    char = choice;
+
+    canvas.style.display = "block";
+    selectScreen.style.display = "none";
+    animate();
+}
+
+
+
+
 function drawVader(x, y) {
     ctx.save();
                    
@@ -214,7 +225,7 @@ function placeImage(src) {
 }
 
 function animate() {
-    if (!isGamePaused) {
+    if (!isGamePaused && char != "N/A") {
         let cameraX = posX - (canvas.width / 2) + 15; 
         let cameraY = posY - (canvas.height / 2) + 15;
 

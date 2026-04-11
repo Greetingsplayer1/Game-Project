@@ -12,6 +12,11 @@
         
         <div id="canvasHolder">
             <canvas id="myCanvas" width="1000" height="800"></canvas>
+            <div id="selectScreen">
+                <p>Select class to play as:</p>
+                <button onclick="chooseChar('rogue')">Rogue</button>
+                <button onclick="chooseChar('knight')">Knight</button>
+            </div>
             <div id="imgHolder">
                 <img id="coinImg">
             </div>
@@ -23,7 +28,7 @@
 
         <script src="constants.js">//All of the constants</script>
         <script src="variables.js">//All of the variables</script>
-        <script src="functions.js">//All of the functions (Mostly animate)</script>
+        <script src="functions.js">//All of the functions (Mostly animate).</script>
         <script src="listeners.js">//All of the event listeners</script>
         <script src="setup.js">//Runs at startup. Makes the colectibles and then runs animate.</script>
     </body>
