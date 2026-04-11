@@ -38,11 +38,23 @@ function drawVader(x, y) {
     ctx.globalAlpha = stealthActive ? 0.5 : 1.0;
 
     if (char === "rogue") {
-  ctx.globalAlpha=1.0;
-  ctx.restore();
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "knight") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "bard") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "ranger") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "fighter") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
     } else {
-  ctx.globalAlpha=1.0;
-  ctx.restore();
+        ctx.globalAlpha=1.0;
+        ctx.restore();
     }
 
          
