@@ -38,6 +38,7 @@ function drawVader(x, y) {
     ctx.globalAlpha = stealthActive ? 0.5 : 1.0;
 
     if (char === "rogue") {
+  //--- cloak --- 
   ctx.fillStyle='#100c08';
   ctx.beginPath();
   ctx.moveTo(x+13,y+38);
@@ -74,6 +75,20 @@ function drawVader(x, y) {
   ctx.fillStyle='#1a1009';
   ctx.beginPath();ctx.moveTo(x+31,y+40);ctx.lineTo(x+37,y+27);ctx.lineTo(x+32,y+20);ctx.lineTo(x+28,y+30);ctx.lineTo(x+28,y+42);ctx.closePath();ctx.fill();
   ctx.beginPath();ctx.moveTo(x+31,y+40);ctx.lineTo(x+37,y+27);ctx.lineTo(x+32,y+20);ctx.stroke();
+  //--- legs ---
+  ctx.fillStyle='#1e1008';
+  ctx.fillRect(x+14,y+84,11,22); 
+  ctx.fillRect(x+27,y+84,11,22); 
+  ctx.strokeStyle='#0e0804';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(x+20,y+86);ctx.lineTo(x+20,y+104);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+33,y+86);ctx.lineTo(x+33,y+104);ctx.stroke();
+  ctx.fillStyle='#160c06';
+  ctx.fillRect(x+13,y+106,13,14); 
+  ctx.fillRect(x+26,y+106,13,14); 
+  ctx.strokeStyle='#0a0503';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(x+13,y+110);ctx.lineTo(x+26,y+110);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+26,y+110);ctx.lineTo(x+39,y+110);ctx.stroke();
+  
 
     } else {
         ctx.fillStyle = '#111';
