@@ -38,59 +38,50 @@ function drawVader(x, y) {
     ctx.globalAlpha = stealthActive ? 0.5 : 1.0;
 
     if (char === "rogue") {
-    // 1. BACK CLOAK (The "Flowing" part)
-    ctx.fillStyle = '#1e272e'; // Deep midnight blue/black
-    ctx.fillRect(x - 8, y + 10, 50, 60); // Slightly wider than body
+    ctx.fillStyle = '#1e272e'; 
+    ctx.fillRect(x - 8, y + 10, 50, 60); 
     
-    // 2. LEGS
-    ctx.fillStyle = '#2f3640'; // Dark trousers
+    ctx.fillStyle = '#2f3640'; 
     ctx.fillRect(x + 2, y + 45, 12, 35); 
     ctx.fillRect(x + 21, y + 45, 12, 35);
 
-    // 3. MAIN BODY (Leather Tunic)
-    ctx.fillStyle = '#4b2d1f'; // Warm leather
+    ctx.fillStyle = '#4b2d1f'; 
     ctx.fillRect(x, y, 35, 55);
 
-    // 4. CHEST PIECE & DETAIL
-    ctx.fillStyle = '#3d2419'; // Shadow for leather
-    ctx.fillRect(x, y + 10, 35, 20); // Chest plate area
+    ctx.fillStyle = '#3d2419'; 
+    ctx.fillRect(x, y + 10, 35, 20); 
     
-    // Studded detail (Simple 2x2 squares for "silver studs")
     ctx.fillStyle = '#bdc3c7'; 
     ctx.fillRect(x + 5, y + 14, 3, 3);
     ctx.fillRect(x + 27, y + 14, 3, 3);
     ctx.fillRect(x + 5, y + 22, 3, 3);
     ctx.fillRect(x + 27, y + 22, 3, 3);
 
-    // 5. ARMS & BRACERS
+
     ctx.fillStyle = '#4b2d1f';
-    ctx.fillRect(x - 12, y + 8, 10, 35); // Left Arm
-    ctx.fillRect(x + 37, y + 8, 10, 35); // Right Arm
+    ctx.fillRect(x - 12, y + 8, 10, 35); 
+    ctx.fillRect(x + 37, y + 8, 10, 35); 
     // Bracers (Metal guards on wrists)
     ctx.fillStyle = '#7f8c8d';
     ctx.fillRect(x - 12, y + 30, 10, 10);
     ctx.fillRect(x + 37, y + 30, 10, 10);
 
-    // 6. FRONT CLOAK / SCARF (The "Neck" detail)
     ctx.fillStyle = '#1e272e';
-    ctx.fillRect(x - 2, y, 39, 12); // Wrap around the neck/shoulders
+    ctx.fillRect(x - 2, y, 39, 12);
 
-    // 7. HEAD & HOOD
-    // Skin
+
     ctx.fillStyle = '#f3d1b0';
     ctx.beginPath();
     ctx.arc(x + 17, y - 10, 14, 0, Math.PI * 2);
     ctx.fill();
 
-    // The Hood (A bit larger for that "mysterious" look)
     ctx.fillStyle = '#1e272e';
     ctx.beginPath();
-    ctx.arc(x + 17, y - 12, 18, Math.PI, 0); // Top curve
+    ctx.arc(x + 17, y - 12, 18, Math.PI, 0);
     ctx.fill();
-    ctx.fillRect(x - 1, y - 12, 6, 22); // Left flap
-    ctx.fillRect(x + 30, y - 12, 6, 22); // Right flap
+    ctx.fillRect(x - 1, y - 12, 6, 22); 
+    ctx.fillRect(x + 30, y - 12, 6, 22);
     
-    // Shadow inside the hood
     ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
     ctx.beginPath();
     ctx.arc(x + 17, y - 12, 14, Math.PI, 0);
@@ -98,6 +89,53 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "knight") {
+
+    ctx.fillStyle = '#95a5a6';
+    ctx.fillRect(x - 5, y, 45, 60);
+
+    ctx.fillStyle = '#7f8c8d'; 
+    ctx.fillRect(x - 10, y - 5, 15, 15); 
+    ctx.fillRect(x + 30, y - 5, 15, 15); 
+
+    ctx.fillStyle = '#bdc3c7'; 
+    ctx.fillRect(x + 5, y + 10, 25, 30); 
+    ctx.fillStyle = '#7f8c8d';
+    ctx.fillRect(x + 10, y + 15, 15, 2);
+    ctx.fillRect(x + 10, y + 25, 15, 2);
+
+
+    ctx.fillStyle = '#95a5a6';
+    ctx.fillRect(x - 15, y + 10, 10, 35); 
+    ctx.fillRect(x + 40, y + 10, 10, 35); 
+    // Heavy Gauntlets
+    ctx.fillStyle = '#7f8c8d';
+    ctx.fillRect(x - 15, y + 35, 12, 12);
+    ctx.fillRect(x + 38, y + 35, 12, 12);
+
+    ctx.fillStyle = '#7f8c8d';
+    ctx.fillRect(x, y + 45, 15, 35); 
+    ctx.fillRect(x + 20, y + 45, 15, 35);
+    // Square boots
+    ctx.fillStyle = '#2c3e50'; 
+    ctx.fillRect(x - 2, y + 75, 17, 10);
+    ctx.fillRect(x + 20, y + 75, 17, 10);
+
+
+    ctx.fillStyle = '#95a5a6';
+    ctx.fillRect(x + 2, y - 35, 30, 35); 
+    
+    ctx.fillStyle = '#2c3e50';
+    ctx.fillRect(x + 5, y - 25, 24, 4); 
+    
+    ctx.fillStyle = '#2c3e50';
+    ctx.fillRect(x + 18, y - 15, 2, 2);
+    ctx.fillRect(x + 22, y - 15, 2, 2);
+    ctx.fillRect(x + 18, y - 10, 2, 2);
+    ctx.fillRect(x + 22, y - 10, 2, 2);
+
+    ctx.fillStyle = '#e74c3c'; 
+    ctx.fillRect(x + 15, y - 40, 5, 8);
+    
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "bard") {
