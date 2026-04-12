@@ -1,7 +1,5 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-
-const sprintSpeed = 2;
 const SWORD_COOLDOWN_TIME = 50;
 const playerMaxHP = 100;
 const playerSize = 30;
