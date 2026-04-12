@@ -38,6 +38,63 @@ function drawVader(x, y) {
     ctx.globalAlpha = stealthActive ? 0.5 : 1.0;
 
     if (char === "rogue") {
+    // 1. BACK CLOAK (The "Flowing" part)
+    ctx.fillStyle = '#1e272e'; // Deep midnight blue/black
+    ctx.fillRect(x - 8, y + 10, 50, 60); // Slightly wider than body
+    
+    // 2. LEGS
+    ctx.fillStyle = '#2f3640'; // Dark trousers
+    ctx.fillRect(x + 2, y + 45, 12, 35); 
+    ctx.fillRect(x + 21, y + 45, 12, 35);
+
+    // 3. MAIN BODY (Leather Tunic)
+    ctx.fillStyle = '#4b2d1f'; // Warm leather
+    ctx.fillRect(x, y, 35, 55);
+
+    // 4. CHEST PIECE & DETAIL
+    ctx.fillStyle = '#3d2419'; // Shadow for leather
+    ctx.fillRect(x, y + 10, 35, 20); // Chest plate area
+    
+    // Studded detail (Simple 2x2 squares for "silver studs")
+    ctx.fillStyle = '#bdc3c7'; 
+    ctx.fillRect(x + 5, y + 14, 3, 3);
+    ctx.fillRect(x + 27, y + 14, 3, 3);
+    ctx.fillRect(x + 5, y + 22, 3, 3);
+    ctx.fillRect(x + 27, y + 22, 3, 3);
+
+    // 5. ARMS & BRACERS
+    ctx.fillStyle = '#4b2d1f';
+    ctx.fillRect(x - 12, y + 8, 10, 35); // Left Arm
+    ctx.fillRect(x + 37, y + 8, 10, 35); // Right Arm
+    // Bracers (Metal guards on wrists)
+    ctx.fillStyle = '#7f8c8d';
+    ctx.fillRect(x - 12, y + 30, 10, 10);
+    ctx.fillRect(x + 37, y + 30, 10, 10);
+
+    // 6. FRONT CLOAK / SCARF (The "Neck" detail)
+    ctx.fillStyle = '#1e272e';
+    ctx.fillRect(x - 2, y, 39, 12); // Wrap around the neck/shoulders
+
+    // 7. HEAD & HOOD
+    // Skin
+    ctx.fillStyle = '#f3d1b0';
+    ctx.beginPath();
+    ctx.arc(x + 17, y - 10, 14, 0, Math.PI * 2);
+    ctx.fill();
+
+    // The Hood (A bit larger for that "mysterious" look)
+    ctx.fillStyle = '#1e272e';
+    ctx.beginPath();
+    ctx.arc(x + 17, y - 12, 18, Math.PI, 0); // Top curve
+    ctx.fill();
+    ctx.fillRect(x - 1, y - 12, 6, 22); // Left flap
+    ctx.fillRect(x + 30, y - 12, 6, 22); // Right flap
+    
+    // Shadow inside the hood
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+    ctx.beginPath();
+    ctx.arc(x + 17, y - 12, 14, Math.PI, 0);
+    ctx.fill();
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "knight") {
