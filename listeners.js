@@ -27,7 +27,15 @@ window.addEventListener('keydown', (e) => {
     }
 
     if (key === 'e') stealthActive = !stealthActive;
-    if (key === 'shift') speedMultiplier = sprintSpeed;
+if (key === 'shift') {
+    // When shift is HELD, everyone gets a boost relative to who they are
+    if (char === "knight") {
+        speedMultiplier = 1.4; // Knight's sprint speed
+    } else {
+        speedMultiplier = 2.5; // Rogue's sprint speed
+    }
+}
+
     if (key === ' ' && bladeCooldown === 0) {
         bladeActive = true;
         bladeCooldown = 300; 
@@ -186,7 +194,14 @@ window.addEventListener('keyup', (e) => {
     const key = e.key.toLowerCase();
     keys[key] = false;
     if (key === ' ') bladeActive = false;
-    if (key === 'shift') speedMultiplier = 1;
+if (key === 'shift') {
+    // When shift is RELEASED, return to their specific slow/fast base speeds
+    if (char === "knight") {
+        speedMultiplier = 0.7; // Knight's slow base speed
+    } else {
+        speedMultiplier = 1.0; // Rogue's normal base speed
+    }
+}
 });
 
 music.addEventListener('ended', function() {

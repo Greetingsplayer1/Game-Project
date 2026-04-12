@@ -89,8 +89,6 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "knight") {
-    sprintSpeed = 12;
-    speedMultiplier = 1;
 
     ctx.fillStyle = '#95a5a6';
     ctx.fillRect(x - 5, y, 45, 60);
@@ -476,6 +474,8 @@ function animate() {
             ctx.fillRect(enemy.x + 30, enemy.y + 45, 10, 25);
             ctx.fillRect(enemy.x - 0, enemy.y - 40, 40, 35);
             //armor on top of enemies body
+            
+ 
 
             if (!enemy.isDead) {
                 let barWidth = 50;
