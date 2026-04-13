@@ -22,5 +22,25 @@ const mapObjects = [
     {x: -800, y: -1100, w: 250, h: 800, color: '#666',isSolid: true},      
     {x: 550, y: -1100, w: 250, h: 800, color: '#666',isSolid: true},       
     {x: -250, y: -950, w: 500, h: 650, color: '#555',isSolid: false},  
-    {x: -150, y: -600, w: 300, h: 300, color: '#3e2723', isGate: true,isSolid: true}
+    {x: -150, y: -600, w: 300, h: 300, color: '#3e2723',isSolid: true},
+
+    {x: 800, y: + 2100, w: 610, h: 430, color: '#393939ff',isSolid: true}, // hut for farm
+    {x: 800, y: + 2100, w: 610, h: 50, color: '#7a6040ff',isSolid: true}, // hut for farm
+    {x: 850, y: + 2370, w: 100, h: 160, color: '#7a6040ff',isSolid: true}, // hut for farm
+        {x: 860, y: + 2450, w: 20, h: 20, color: '#53432fff',isSolid: true}, // hut for farm
+    //window for farm goes on hut
+    {x: 1220, y: + 2300, w: 120, h: 120, color: '#c3b51aff',isSolid: true}, 
+    //seocond hut same look right bellow
+    {x: 420, y: + 2550, w: 1000, h: 430, color: '#393939ff',isSolid: true}, // hut for farm
+    {x: 420, y: + 2550, w: 1000, h: 50, color: '#7a6040ff',isSolid: true}, // hut for farm
+    {x: 850, y: + 2820, w: 100, h: 160, color: '#7a6040ff',isSolid: true}, // hut for farm
+    {x: 860, y: + 2900, w: 20, h: 20, color: '#53432fff',isSolid: true}, // hut for farm
+    //window for farm goes on hut
+    {x: 1220, y: + 2750, w: 120, h: 120, color: '#c3b51aff',isSolid: true}, 
+    //farm fence
+    {x: 400, y: + 1500, w: 1000, h: 10, color: '#3e2723',isSolid: true},
+    {x: 400, y: + 2100, w: 1000, h: 10, color: '#3e2723',isSolid: true},
+    {x: 400, y: + 1500, w: 10, h: 200, color: '#3e2723',isSolid: true},
+    {x: 400, y: + 1850, w: 10, h: 250, color: '#3e2723',isSolid: true},
+    {x: 1400, y: + 1500, w: 10, h: 610, color: '#3e2723',isSolid: true},
 ];

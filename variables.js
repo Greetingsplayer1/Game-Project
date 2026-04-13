@@ -4,7 +4,6 @@ let keys = {};
 let stealthActive = false;
 let bladeActive = false;
 let bladeHeight = 0;
-let baseSpeedMult = 1;
 let speedMultiplier = 1;
 let sprintSpeed = 2;
 let isGameOver = false;
