@@ -30,6 +30,8 @@ window.addEventListener('keydown', (e) => {
 if (key === 'shift') {
     if (char === "knight") {
         speedMultiplier = 1.3; // Knight's sprint speed
+    } else if (char === "bard") {
+        speedMultiplier = 1.9;
     } else {
         speedMultiplier = 2.5; // Rogue's sprint speed
     }
@@ -193,13 +195,7 @@ window.addEventListener('keyup', (e) => {
     const key = e.key.toLowerCase();
     keys[key] = false;
     if (key === ' ') bladeActive = false;
-if (key === 'shift') {
-    if (char === "knight") {
-        speedMultiplier = 0.6; 
-    } else {
-        speedMultiplier = 1.5;
-    }
-}
+    if (key === 'shift') speedMultiplier = baseSpeedMult;
 });
 
 music.addEventListener('ended', function() {

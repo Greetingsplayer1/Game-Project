@@ -38,14 +38,12 @@ function chooseChar(choice) {
         arrowCounter = 50;
     }
 
-    if (choice === "rogue") {
-        baseSpeed = 12;
-    } else if (choice === "knight") {
-        baseSpeed = 8;
-    } else if (choice === "barbarian") {
-        baseSpeed = 9;
-    } else if (choice === "monk" || choice === "ranger") {
-        baseSpeed = 11;
+    if (choice === "knight") {
+        baseSpeedMult = 0.6;
+    } else if (choice === "bard") {
+        baseSpeedMult = 0.95;
+    } else {
+        baseSpeedMult = 1.5;
     }
 
     canvas.style.display = "block";
@@ -110,16 +108,20 @@ function drawVader(x, y) {
         ctx.beginPath();
         ctx.arc(x + 17, y - 12, 14, Math.PI, 0);
         ctx.fill();
-            ctx.globalAlpha=1.0;
-            ctx.restore();
-        } else if (char === "knight") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
 
-        ctx.fillStyle = '#95a5a6';
-        ctx.fillRect(x - 5, y, 45, 60);
+    } else if (char === "knight") {
+        ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x, y + 45, 15, 35); 
+        ctx.fillRect(x + 20, y + 45, 15, 35);
 
         ctx.fillStyle = '#7f8c8d'; 
         ctx.fillRect(x - 10, y - 5, 15, 15); 
         ctx.fillRect(x + 30, y - 5, 15, 15); 
+        
+        ctx.fillStyle = '#95a5a6';
+        ctx.fillRect(x - 5, y, 45, 50);
 
         ctx.fillStyle = '#bdc3c7'; 
         ctx.fillRect(x + 5, y + 10, 25, 30); 
@@ -136,9 +138,6 @@ function drawVader(x, y) {
         ctx.fillRect(x - 15, y + 35, 12, 12);
         ctx.fillRect(x + 38, y + 35, 12, 12);
 
-        ctx.fillStyle = '#7f8c8d';
-        ctx.fillRect(x, y + 45, 15, 35); 
-        ctx.fillRect(x + 20, y + 45, 15, 35);
         // Square boots
         ctx.fillStyle = '#2c3e50'; 
         ctx.fillRect(x - 2, y + 75, 17, 10);
@@ -162,6 +161,7 @@ function drawVader(x, y) {
     
         ctx.globalAlpha=1.0;
         ctx.restore();
+
     } else if (char === "bard") {
         ctx.fillStyle = '#34495e';
         ctx.fillRect(x, y + 45, 15, 35);
@@ -195,7 +195,92 @@ function drawVader(x, y) {
 
         ctx.globalAlpha = 1.0;
         ctx.restore();
+
     } else if (char === "ranger") {
+        
+        if (!bowEquipped) {
+            ctx.fillStyle = '#7a5535';
+            ctx.fillRect(x-20, y-8, 4, 58);
+            ctx.fillRect(x-18, y-8, 5, 4);
+            ctx.fillRect(x-18, y+46, 5, 4);
+            ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(x-15, y-5); ctx.lineTo(x-15, y+50); ctx.stroke();
+        }
+        
+        // Quiver
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(x+33, y-14, 8, 20);
+        ctx.fillStyle = '#c0c0c0';
+        ctx.fillRect(x+35, y-22, 2, 9);
+        ctx.fillRect(x+38, y-20, 2, 7);
+        ctx.fillStyle = '#aa2211';
+        ctx.fillRect(x+35, y-22, 2, 3);
+        ctx.fillRect(x+38, y-20, 2, 3);
+        
+        // Arms
+        ctx.fillStyle = '#2d5a27';
+        ctx.fillRect(x-14, y+10, 10, 34);
+        ctx.fillRect(x+40, y+10, 10, 34);
+        
+        // Bracers
+        ctx.fillStyle = '#3e2723';
+        ctx.fillRect(x-14, y+30, 11, 14);
+        ctx.fillRect(x+39, y+30, 11, 14);
+        
+        // Body
+        ctx.fillStyle = '#2d5a27';
+        ctx.fillRect(x-4, y, 44, 58);
+        
+        // Chest leather
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(x+5, y+8, 26, 28);
+        ctx.fillStyle = '#6b4a3a';
+        ctx.fillRect(x+6, y+9, 24, 7);
+        ctx.strokeStyle = '#3a2416'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x+18,y+10); ctx.lineTo(x+18,y+34); ctx.stroke();
+        // Shoulder straps
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(x+2, y+6, 7, 5);
+        ctx.fillRect(x+27, y+6, 7, 5);
+        
+        // Belt
+        ctx.fillStyle = '#2e1a0e';
+        ctx.fillRect(x-4, y+54, 44, 5);
+        ctx.fillStyle = '#9a7a22';
+        ctx.fillRect(x+15, y+55, 7, 3);
+        
+        // Legs
+        ctx.fillStyle = '#1b3022';
+        ctx.fillRect(x+1,  y+58, 14, 22);
+        ctx.fillRect(x+21, y+58, 14, 22);
+
+        // gap
+        ctx.fillStyle = '#162018';
+        ctx.fillRect(x+13, y+58, 10, 8);
+        
+        // Boots
+        ctx.fillStyle = '#3e2723';
+        ctx.fillRect(x-1, y+78, 16, 9);
+        ctx.fillRect(x+21, y+78, 16, 9);
+        
+        // Face
+        ctx.fillStyle = '#ffdbac';
+        ctx.fillRect(x+9, y-24, 17, 24);
+        
+        // Eyes
+        ctx.fillStyle = '#2a1a0a';
+        ctx.fillRect(x+11, y-17, 4, 3);
+        ctx.fillRect(x+20, y-17, 4, 3);
+        
+        // Hood
+        ctx.fillStyle = '#2d5a27';
+        ctx.fillRect(x+3,  y-34, 29, 12);
+        ctx.fillRect(x+3,  y-24, 7, 24);
+        ctx.fillRect(x+25, y-24, 7, 24);
+        ctx.fillStyle = '#1e3e1c';
+        ctx.fillRect(x+4,  y-33, 27, 4);
+
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "fighter") {
@@ -374,7 +459,8 @@ function animate() {
         }
         
         if (!isGameOver && !isGamePaused) {
-            let currentSpeed = baseSpeed * speedMultiplier * (stealthActive ? 0.4 : 1);
+            let baseSpeed = stealthActive ? 4 : 10;
+            let currentSpeed = baseSpeed * speedMultiplier
 
             if ((keys['d'] || keys['arrowright']) && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
             if ((keys['a'] || keys['arrowleft']) && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
