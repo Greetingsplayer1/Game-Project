@@ -39,11 +39,11 @@ function chooseChar(choice) {
     }
 
     if (choice === "knight") {
-        baseSpeedMult = 0.6;
+        speedMultiplier = 0.6;
     } else if (choice === "bard") {
-        baseSpeedMult = 0.95;
+        speedMultiplier = 0.95;
     } else {
-        baseSpeedMult = 1.5;
+        speedMultiplier = 1.5;
     }
 
     canvas.style.display = "block";
