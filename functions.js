@@ -23,6 +23,14 @@ function spawnItem(newX, newY, img) {
 function chooseChar(choice) {
     char = choice;
 
+    if (choice === "rogue" || choice === "bard" || choice === "monk") {
+        playerMaxHP = 80;
+        playerHP = 80;
+    } else if (choice === "barbarian") {
+        playerMaxHP = 120;
+        playerHP = 120;
+    }
+
     canvas.style.display = "block";
     selectScreen.style.display = "none";
     animate();
@@ -488,7 +496,11 @@ function animate() {
             ctx.save();
             ctx.translate(enemy.x + 20, enemy.y + 20);
             ctx.rotate(enemy.angle || 0);
-            ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
+            if ((enemy.scaredTimer || 0) > 0) {
+                ctx.fillStyle = "rgba(255,0,0,0.25)";
+            } else {
+                ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
+            }
             ctx.beginPath();
             ctx.moveTo(0,0);
             ctx.arc(0, 0, 400, -Math.PI/2, Math.PI/2);
@@ -656,8 +668,8 @@ ctx.fillStyle = '#000000ff';
         ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
         ctx.fillRect(20, 20, 200, 25);
 
-        ctx.fillStyle = playerHP > 30 ? "lime" : "red"; 
-        let healthWidth = (playerHP / 100) * 200;
+        ctx.fillStyle = playerHP > (playerMaxHP/3) ? "lime" : "red"; 
+        let healthWidth = (playerHP / playerMaxHP) * 200;
         ctx.fillRect(20, 20, healthWidth, 25);
 
         ctx.strokeStyle = "white";

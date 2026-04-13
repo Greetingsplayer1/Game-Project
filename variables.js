@@ -14,6 +14,7 @@ let isAttacking = false;
 let bladeCooldown = 0; 
 let swordCooldown = 0;
 let playerHP = 100;
+let playerMaxHP = 100;
 let damageCooldown = 0;
 let collectibles = [];
 let currentGameState = "playing";

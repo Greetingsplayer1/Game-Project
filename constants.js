@@ -1,7 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const SWORD_COOLDOWN_TIME = 50;
-const playerMaxHP = 100;
 const playerSize = 30;
 const coinCollisionSize = 100;
 const music = new Audio('music.wav');
