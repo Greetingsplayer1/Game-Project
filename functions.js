@@ -138,6 +138,36 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "bard") {
+    ctx.fillStyle = '#8e44ad';
+    ctx.fillRect(x - 5, y, 45, 60); 
+
+    ctx.fillStyle = '#8e44ad';
+    ctx.fillRect(x - 15, y + 10, 10, 35);
+    ctx.fillRect(x + 40, y + 10, 10, 35);
+
+    ctx.fillStyle = '#f1c40f';
+    ctx.fillRect(x - 15, y + 35, 12, 12);
+    ctx.fillRect(x + 38, y + 35, 12, 12);
+
+    ctx.fillStyle = '#34495e';
+    ctx.fillRect(x, y + 45, 15, 35);
+    ctx.fillRect(x + 20, y + 45, 15, 35);
+    
+    ctx.fillStyle = '#5d4037';
+    ctx.fillRect(x - 2, y + 75, 17, 10);
+    ctx.fillRect(x + 20, y + 75, 17, 10);
+
+    ctx.fillStyle = '#ffdbac'; 
+    ctx.fillRect(x + 2, y - 30, 30, 30);
+    
+    ctx.fillStyle = '#2c3e50'; 
+    ctx.fillRect(x - 5, y - 30, 45, 10); 
+    ctx.fillRect(x + 5, y - 45, 25, 15);
+
+    ctx.fillStyle = '#e74c3c';
+    ctx.fillRect(x + 25, y - 55, 4, 15);
+    ctx.fillRect(x + 22, y - 50, 4, 10);
+
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "ranger") {
