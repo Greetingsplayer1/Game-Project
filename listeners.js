@@ -28,9 +28,8 @@ window.addEventListener('keydown', (e) => {
 
     if (key === 'e') stealthActive = !stealthActive;
 if (key === 'shift') {
-    // When shift is HELD, everyone gets a boost relative to who they are
     if (char === "knight") {
-        speedMultiplier = 1.4; // Knight's sprint speed
+        speedMultiplier = 1.3; // Knight's sprint speed
     } else {
         speedMultiplier = 2.5; // Rogue's sprint speed
     }
@@ -195,11 +194,10 @@ window.addEventListener('keyup', (e) => {
     keys[key] = false;
     if (key === ' ') bladeActive = false;
 if (key === 'shift') {
-    // When shift is RELEASED, return to their specific slow/fast base speeds
     if (char === "knight") {
-        speedMultiplier = 0.7; // Knight's slow base speed
+        speedMultiplier = 0.6; 
     } else {
-        speedMultiplier = 1.0; // Rogue's normal base speed
+        speedMultiplier = 1.5;
     }
 }
 });
