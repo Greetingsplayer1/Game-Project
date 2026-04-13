@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 const SWORD_COOLDOWN_TIME = 50;
 const playerSize = 30;
 const coinCollisionSize = 100;
-const music = new Audio('music.wav');
+const music = new Audio('media/music.wav');
 const selectScreen = document.getElementById("selectScreen")
 
 const mapObjects = [
