@@ -29,6 +29,9 @@ function chooseChar(choice) {
     } else if (choice === "barbarian") {
         playerMaxHP = 120;
         playerHP = 120;
+    } else if (choice === "knight") {
+        playerMaxHP = 130;
+        playerHP = 130;
     }
 
     if (choice === "ranger") {
@@ -39,6 +42,10 @@ function chooseChar(choice) {
         baseSpeed = 12;
     } else if (choice === "knight") {
         baseSpeed = 8;
+    } else if (choice === "barbarian") {
+        baseSpeed = 9;
+    } else if (choice === "monk" || choice === "ranger") {
+        baseSpeed = 11;
     }
 
     canvas.style.display = "block";
