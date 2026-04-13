@@ -195,7 +195,14 @@ window.addEventListener('keyup', (e) => {
     const key = e.key.toLowerCase();
     keys[key] = false;
     if (key === ' ') bladeActive = false;
-    if (key === 'shift') speedMultiplier = baseSpeedMult;
+    if (key === 'shift')    
+        if (char === "knight") {
+        speedMultiplier = .7; // Knight's sprint speed
+    } else if (char === "bard") {
+        speedMultiplier = 1;
+    } else if (char === "rogue") {
+        speedMultiplier = 1.7; // Rogue's sprint speed\
+    };
 });
 
 music.addEventListener('ended', function() {
