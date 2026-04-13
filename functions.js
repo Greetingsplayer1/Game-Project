@@ -31,6 +31,16 @@ function chooseChar(choice) {
         playerHP = 120;
     }
 
+    if (choice === "ranger") {
+        arrowCounter = 50;
+    }
+
+    if (choice === "rogue") {
+        baseSpeed = 12;
+    } else if (choice === "knight") {
+        baseSpeed = 8;
+    }
+
     canvas.style.display = "block";
     selectScreen.style.display = "none";
     animate();
@@ -45,138 +55,138 @@ function drawVader(x, y) {
     ctx.globalAlpha = stealthActive ? 0.5 : 1.0;
 
     if (char === "rogue") {
-    ctx.fillStyle = '#1e272e'; 
-    ctx.fillRect(x - 8, y + 10, 50, 60); 
-    
-    ctx.fillStyle = '#2f3640'; 
-    ctx.fillRect(x + 2, y + 45, 12, 35); 
-    ctx.fillRect(x + 21, y + 45, 12, 35);
+        ctx.fillStyle = '#1e272e'; 
+        ctx.fillRect(x - 8, y + 10, 50, 60); 
+        
+        ctx.fillStyle = '#2f3640'; 
+        ctx.fillRect(x + 2, y + 45, 12, 35); 
+        ctx.fillRect(x + 21, y + 45, 12, 35);
 
-    ctx.fillStyle = '#4b2d1f'; 
-    ctx.fillRect(x, y, 35, 55);
+        ctx.fillStyle = '#4b2d1f'; 
+        ctx.fillRect(x, y, 35, 55);
 
-    ctx.fillStyle = '#3d2419'; 
-    ctx.fillRect(x, y + 10, 35, 20); 
-    
-    ctx.fillStyle = '#bdc3c7'; 
-    ctx.fillRect(x + 5, y + 14, 3, 3);
-    ctx.fillRect(x + 27, y + 14, 3, 3);
-    ctx.fillRect(x + 5, y + 22, 3, 3);
-    ctx.fillRect(x + 27, y + 22, 3, 3);
-
-
-    ctx.fillStyle = '#4b2d1f';
-    ctx.fillRect(x - 12, y + 8, 10, 35); 
-    ctx.fillRect(x + 37, y + 8, 10, 35); 
-    // Bracers (Metal guards on wrists)
-    ctx.fillStyle = '#7f8c8d';
-    ctx.fillRect(x - 12, y + 30, 10, 10);
-    ctx.fillRect(x + 37, y + 30, 10, 10);
-
-    ctx.fillStyle = '#1e272e';
-    ctx.fillRect(x - 2, y, 39, 12);
+        ctx.fillStyle = '#3d2419'; 
+        ctx.fillRect(x, y + 10, 35, 20); 
+        
+        ctx.fillStyle = '#bdc3c7'; 
+        ctx.fillRect(x + 5, y + 14, 3, 3);
+        ctx.fillRect(x + 27, y + 14, 3, 3);
+        ctx.fillRect(x + 5, y + 22, 3, 3);
+        ctx.fillRect(x + 27, y + 22, 3, 3);
 
 
-    ctx.fillStyle = '#f3d1b0';
-    ctx.beginPath();
-    ctx.arc(x + 17, y - 10, 14, 0, Math.PI * 2);
-    ctx.fill();
+        ctx.fillStyle = '#4b2d1f';
+        ctx.fillRect(x - 12, y + 8, 10, 35); 
+        ctx.fillRect(x + 37, y + 8, 10, 35); 
+        // Bracers (Metal guards on wrists)
+        ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x - 12, y + 30, 10, 10);
+        ctx.fillRect(x + 37, y + 30, 10, 10);
 
-    ctx.fillStyle = '#1e272e';
-    ctx.beginPath();
-    ctx.arc(x + 17, y - 12, 18, Math.PI, 0);
-    ctx.fill();
-    ctx.fillRect(x - 1, y - 12, 6, 22); 
-    ctx.fillRect(x + 30, y - 12, 6, 22);
-    
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-    ctx.beginPath();
-    ctx.arc(x + 17, y - 12, 14, Math.PI, 0);
-    ctx.fill();
-        ctx.globalAlpha=1.0;
-        ctx.restore();
-    } else if (char === "knight") {
-
-    ctx.fillStyle = '#95a5a6';
-    ctx.fillRect(x - 5, y, 45, 60);
-
-    ctx.fillStyle = '#7f8c8d'; 
-    ctx.fillRect(x - 10, y - 5, 15, 15); 
-    ctx.fillRect(x + 30, y - 5, 15, 15); 
-
-    ctx.fillStyle = '#bdc3c7'; 
-    ctx.fillRect(x + 5, y + 10, 25, 30); 
-    ctx.fillStyle = '#7f8c8d';
-    ctx.fillRect(x + 10, y + 15, 15, 2);
-    ctx.fillRect(x + 10, y + 25, 15, 2);
+        ctx.fillStyle = '#1e272e';
+        ctx.fillRect(x - 2, y, 39, 12);
 
 
-    ctx.fillStyle = '#95a5a6';
-    ctx.fillRect(x - 15, y + 10, 10, 35); 
-    ctx.fillRect(x + 40, y + 10, 10, 35); 
-    // Heavy Gauntlets
-    ctx.fillStyle = '#7f8c8d';
-    ctx.fillRect(x - 15, y + 35, 12, 12);
-    ctx.fillRect(x + 38, y + 35, 12, 12);
+        ctx.fillStyle = '#f3d1b0';
+        ctx.beginPath();
+        ctx.arc(x + 17, y - 10, 14, 0, Math.PI * 2);
+        ctx.fill();
 
-    ctx.fillStyle = '#7f8c8d';
-    ctx.fillRect(x, y + 45, 15, 35); 
-    ctx.fillRect(x + 20, y + 45, 15, 35);
-    // Square boots
-    ctx.fillStyle = '#2c3e50'; 
-    ctx.fillRect(x - 2, y + 75, 17, 10);
-    ctx.fillRect(x + 20, y + 75, 17, 10);
+        ctx.fillStyle = '#1e272e';
+        ctx.beginPath();
+        ctx.arc(x + 17, y - 12, 18, Math.PI, 0);
+        ctx.fill();
+        ctx.fillRect(x - 1, y - 12, 6, 22); 
+        ctx.fillRect(x + 30, y - 12, 6, 22);
+        
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.beginPath();
+        ctx.arc(x + 17, y - 12, 14, Math.PI, 0);
+        ctx.fill();
+            ctx.globalAlpha=1.0;
+            ctx.restore();
+        } else if (char === "knight") {
+
+        ctx.fillStyle = '#95a5a6';
+        ctx.fillRect(x - 5, y, 45, 60);
+
+        ctx.fillStyle = '#7f8c8d'; 
+        ctx.fillRect(x - 10, y - 5, 15, 15); 
+        ctx.fillRect(x + 30, y - 5, 15, 15); 
+
+        ctx.fillStyle = '#bdc3c7'; 
+        ctx.fillRect(x + 5, y + 10, 25, 30); 
+        ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x + 10, y + 15, 15, 2);
+        ctx.fillRect(x + 10, y + 25, 15, 2);
 
 
-    ctx.fillStyle = '#95a5a6';
-    ctx.fillRect(x + 2, y - 35, 30, 35); 
-    
-    ctx.fillStyle = '#2c3e50';
-    ctx.fillRect(x + 5, y - 25, 24, 4); 
-    
-    ctx.fillStyle = '#2c3e50';
-    ctx.fillRect(x + 18, y - 15, 2, 2);
-    ctx.fillRect(x + 22, y - 15, 2, 2);
-    ctx.fillRect(x + 18, y - 10, 2, 2);
-    ctx.fillRect(x + 22, y - 10, 2, 2);
+        ctx.fillStyle = '#95a5a6';
+        ctx.fillRect(x - 15, y + 10, 10, 35); 
+        ctx.fillRect(x + 40, y + 10, 10, 35); 
+        // Heavy Gauntlets
+        ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x - 15, y + 35, 12, 12);
+        ctx.fillRect(x + 38, y + 35, 12, 12);
 
-    ctx.fillStyle = '#e74c3c'; 
-    ctx.fillRect(x + 15, y - 40, 5, 8);
+        ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x, y + 45, 15, 35); 
+        ctx.fillRect(x + 20, y + 45, 15, 35);
+        // Square boots
+        ctx.fillStyle = '#2c3e50'; 
+        ctx.fillRect(x - 2, y + 75, 17, 10);
+        ctx.fillRect(x + 20, y + 75, 17, 10);
+
+
+        ctx.fillStyle = '#95a5a6';
+        ctx.fillRect(x + 2, y - 35, 30, 35); 
+        
+        ctx.fillStyle = '#2c3e50';
+        ctx.fillRect(x + 5, y - 25, 24, 4); 
+        
+        ctx.fillStyle = '#2c3e50';
+        ctx.fillRect(x + 18, y - 15, 2, 2);
+        ctx.fillRect(x + 22, y - 15, 2, 2);
+        ctx.fillRect(x + 18, y - 10, 2, 2);
+        ctx.fillRect(x + 22, y - 10, 2, 2);
+
+        ctx.fillStyle = '#e74c3c'; 
+        ctx.fillRect(x + 15, y - 40, 5, 8);
     
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "bard") {
-    ctx.fillStyle = '#8e44ad';
-    ctx.fillRect(x - 5, y, 45, 60); 
+        ctx.fillStyle = '#34495e';
+        ctx.fillRect(x, y + 45, 15, 35);
+        ctx.fillRect(x + 20, y + 45, 15, 35);
+        
+        ctx.fillStyle = '#5d4037';
+        ctx.fillRect(x - 2, y + 75, 17, 10);
+        ctx.fillRect(x + 20, y + 75, 17, 10);
 
-    ctx.fillStyle = '#8e44ad';
-    ctx.fillRect(x - 15, y + 10, 10, 35);
-    ctx.fillRect(x + 40, y + 10, 10, 35);
+        ctx.fillStyle = '#8e44ad';
+        ctx.fillRect(x - 5, y, 45, 60); 
 
-    ctx.fillStyle = '#f1c40f';
-    ctx.fillRect(x - 15, y + 35, 12, 12);
-    ctx.fillRect(x + 38, y + 35, 12, 12);
+        ctx.fillStyle = '#8e44ad';
+        ctx.fillRect(x - 15, y + 10, 10, 35);
+        ctx.fillRect(x + 40, y + 10, 10, 35);
 
-    ctx.fillStyle = '#34495e';
-    ctx.fillRect(x, y + 45, 15, 35);
-    ctx.fillRect(x + 20, y + 45, 15, 35);
-    
-    ctx.fillStyle = '#5d4037';
-    ctx.fillRect(x - 2, y + 75, 17, 10);
-    ctx.fillRect(x + 20, y + 75, 17, 10);
+        ctx.fillStyle = '#f1c40f';
+        ctx.fillRect(x - 15, y + 35, 12, 12);
+        ctx.fillRect(x + 38, y + 35, 12, 12);
 
-    ctx.fillStyle = '#ffdbac'; 
-    ctx.fillRect(x + 2, y - 30, 30, 30);
-    
-    ctx.fillStyle = '#2c3e50'; 
-    ctx.fillRect(x - 5, y - 30, 45, 10); 
-    ctx.fillRect(x + 5, y - 45, 25, 15);
+        ctx.fillStyle = '#ffdbac'; 
+        ctx.fillRect(x + 2, y - 30, 30, 30);
+        
+        ctx.fillStyle = '#2c3e50'; 
+        ctx.fillRect(x - 5, y - 30, 45, 10); 
+        ctx.fillRect(x + 5, y - 45, 25, 15);
 
-    ctx.fillStyle = '#e74c3c';
-    ctx.fillRect(x + 25, y - 55, 4, 15);
-    ctx.fillRect(x + 22, y - 50, 4, 10);
+        ctx.fillStyle = '#e74c3c';
+        ctx.fillRect(x + 25, y - 55, 4, 15);
+        ctx.fillRect(x + 22, y - 50, 4, 10);
 
-        ctx.globalAlpha=1.0;
+        ctx.globalAlpha = 1.0;
         ctx.restore();
     } else if (char === "ranger") {
         ctx.globalAlpha=1.0;
@@ -357,8 +367,7 @@ function animate() {
         }
         
         if (!isGameOver && !isGamePaused) {
-            let baseSpeed = stealthActive ? 4 : 10;
-            let currentSpeed = baseSpeed * speedMultiplier;
+            let currentSpeed = baseSpeed * speedMultiplier * (stealthActive ? 0.4 : 1);
 
             if ((keys['d'] || keys['arrowright']) && !isSpaceBlocked(posX + currentSpeed, posY)) posX += currentSpeed;
             if ((keys['a'] || keys['arrowleft']) && !isSpaceBlocked(posX - currentSpeed, posY)) posX -= currentSpeed;
