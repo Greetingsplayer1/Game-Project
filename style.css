@@ -52,3 +52,26 @@ canvas {
     font-weight: bold;
     top: 175px;
 }
+
+#chrisBtn {
+    display: none;
+}
+
+#passcode {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    width: 175px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#submitBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 0;
+    border: 1px solid black;
+    cursor: pointer;
+}

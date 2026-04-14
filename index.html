@@ -12,16 +12,23 @@
         
         <div id="canvasHolder">
             <canvas id="myCanvas" width="1000" height="800"></canvas>
-            <div id="selectScreen">
-                <p>Select class to play as:</p>
-                <button onclick="chooseChar('rogue')">Rogue</button>
-                <button onclick="chooseChar('knight')">Knight</button>
-                <button onclick="chooseChar('bard')">Bard</button>
-                <button onclick="chooseChar('ranger')">Ranger</button>
-                <button onclick="chooseChar('barbarian')">Barbarian</button>
-                <button onclick="chooseChar('monk')">Monk</button>
-                <button onclick="chooseChar('fighter')" style="font-size: 12px">Human Fighter (Boring)</button>
-            </div>
+                <div id="selectScreen">
+                    <p>Select class to play as:</p>
+                    <button onclick="chooseChar('rogue')">Rogue</button>
+                    <button onclick="chooseChar('knight')">Knight</button>
+                    <button onclick="chooseChar('bard')">Bard</button>
+                    <button onclick="chooseChar('ranger')">Ranger</button>
+                    <button onclick="chooseChar('barbarian')">Barbarian</button>
+                    <button onclick="chooseChar('monk')">Monk</button>
+                    <button onclick="chooseChar('fighter')" style="font-size: 12px">Human Fighter (Boring)</button>
+                    <button onclick="chooseChar('chris')" id="chrisBtn">Chris</button>
+
+
+                    <form id="testPass" onsubmit="testPass();" method="get">
+                        <input type="text" id="passcode" placeholder="Enter secret code">
+                        <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
+                    </form>
+                </div>
             <div id="imgHolder">
                 <img id="coinImg">
             </div>
