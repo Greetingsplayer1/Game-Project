@@ -26,7 +26,6 @@ function testPass() {
     if (passcode === "ChrisIsCool") {
         console.log("Correct passcode");
         chrisBtn.style.display = "block";
-        return false;
     }
 }
 
