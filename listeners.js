@@ -3,7 +3,11 @@ window.addEventListener('keydown', (e) => {
 
         const key = e.key.toLowerCase();
         keys[key] = true;
-        if (e.key === 'q') bowEquipped = !bowEquipped;
+        if (e.key === 'q') {
+            bowEquipped = !bowEquipped;
+            swordEquipped = false;
+        }
+
         if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
             arrowCounter--;
             isShooting = true;
@@ -130,6 +134,8 @@ window.addEventListener('keydown', (e) => {
         }
 
         if (key === 'f') {
+
+            bowEquipped = false;
         
             if (stealthActive) stealthActive = false;
                 if (keys['shift']) {
