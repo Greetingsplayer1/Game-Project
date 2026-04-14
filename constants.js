@@ -31,11 +31,11 @@ const mapObjects = [
     //window for farm goes on hut
     {x: 1220, y: + 2300, w: 120, h: 120, color: '#c3b51aff',isSolid: true}, 
     //seocond hut same look right bellow
-    {x: 420, y: + 2550, w: 1000, h: 430, color: '#393939ff',isSolid: true}, // hut for farm
-    {x: 420, y: + 2550, w: 1000, h: 50, color: '#7a6040ff',isSolid: true}, // hut for farm
-    {x: 850, y: + 2820, w: 100, h: 160, color: '#7a6040ff',isSolid: true}, // hut for farm
-    {x: 860, y: + 2900, w: 20, h: 20, color: '#53432fff',isSolid: true}, // hut for farm
-    //window for farm goes on hut
+    {x: 420, y: + 2650, w: 1000, h: 430, color: '#393939ff',isSolid: true}, // tavern inn
+    {x: 420, y: + 2650, w: 1000, h: 50, color: '#7a6040ff',isSolid: true}, // tavern inn
+    {x: 450, y: + 2920, w: 100, h: 160, color: '#7a6040ff',isSolid: true}, // tavern inn
+    {x: 460, y: + 3000, w: 20, h: 20, color: '#53432fff',isSolid: true}, // tavern inn
+    //window for tavern inn goes tavern
     {x: 1220, y: + 2750, w: 120, h: 120, color: '#c3b51aff',isSolid: true}, 
     //farm fence
     {x: 400, y: + 1500, w: 1000, h: 10, color: '#3e2723',isSolid: true},
