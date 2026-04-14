@@ -221,3 +221,8 @@ charMusic.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
 }, false);
+
+
+document.getElementById("testPass").addEventListener('submit', e => {
+    e.preventDefault();
+});
