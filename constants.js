@@ -4,6 +4,7 @@ const SWORD_COOLDOWN_TIME = 50;
 const playerSize = 30;
 const coinCollisionSize = 100;
 const music = new Audio('media/music.wav');
+const charMusic = new Audio('media/charSelect.wav');
 const selectScreen = document.getElementById("selectScreen")
 
 const mapObjects = [

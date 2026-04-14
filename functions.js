@@ -21,6 +21,9 @@ function spawnItem(newX, newY, img) {
 
 
 function chooseChar(choice) {
+    charMusic.pause();
+    music.play();
+
     char = choice;
 
     if (choice === "rogue" || choice === "bard" || choice === "monk") {
