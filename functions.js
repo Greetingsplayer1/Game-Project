@@ -20,10 +20,11 @@ function spawnItem(newX, newY, img) {
 
 
 function testPass() {
-    console.log(document.getElementById("passcode").value);
-    
-    if (document.getElementById("passcode").value === "ChrisIsCool") {
-        document.getElementById("chrisBtn").style.display = "block";
+    const passcode = document.getElementById("passcode").value;
+
+    if (passcode === "ChrisIsCool") {
+        console.log("Correct passcode");
+        chrisBtn.style.display = "block";
     }
 }
 

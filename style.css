@@ -70,7 +70,7 @@ canvas {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: white;
+    background-color: #c9c9c9;
     border-radius: 0;
     border: 1px solid black;
     cursor: pointer;
