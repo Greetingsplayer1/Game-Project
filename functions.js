@@ -291,7 +291,28 @@ function drawVader(x, y) {
     } else if (char === "fighter") {
         ctx.globalAlpha=1.0;
         ctx.restore();
-    } else if (char === "chris") {
+    } else if (char === 'monk') {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === 'barbarian') {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    }else if (char === "chris") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "sorcerer") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "warlock") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "wizard") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "paladin") {
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "artificer") {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else {
