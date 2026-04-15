@@ -28,7 +28,7 @@ window.addEventListener('keydown', (e) => {
                 vx: vx,
                 vy: vy,
                 lifetime: ARROW_LIFETIME,
-                damage: 72
+                damage: 75
             });
         }
 
