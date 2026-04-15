@@ -213,12 +213,15 @@ function drawVader(x, y) {
         // Quiver
         ctx.fillStyle = '#5d4037';
         ctx.fillRect(x+33, y-14, 8, 20);
-        ctx.fillStyle = '#c0c0c0';
-        ctx.fillRect(x+35, y-22, 2, 9);
-        ctx.fillRect(x+38, y-20, 2, 7);
-        ctx.fillStyle = '#aa2211';
-        ctx.fillRect(x+35, y-22, 2, 3);
-        ctx.fillRect(x+38, y-20, 2, 3);
+
+        if (arrowCounter != 0) {
+            ctx.fillStyle = '#c0c0c0';
+            ctx.fillRect(x+35, y-22, 2, 9);
+            ctx.fillRect(x+38, y-20, 2, 7);
+            ctx.fillStyle = '#aa2211';
+            ctx.fillRect(x+35, y-22, 2, 3);
+            ctx.fillRect(x+38, y-20, 2, 3);
+        }
         
         // Arms
         ctx.fillStyle = '#2d5a27';
