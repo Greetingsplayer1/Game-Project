@@ -348,6 +348,13 @@ if (bowEquipped) {
         ctx.fillStyle = "blue";
         ctx.fillRect(0,-15,-20,30);
 
+        ctx.shadowColor = '#3333ff';
+        ctx.shadowBlur = 30;
+        ctx.fillStyle = '#3333ff99';
+        ctx.fillRect(-6, 4, -8,-8);
+
+        ctx.restore();
+
         ctx.beginPath();
         ctx.strokeStyle = 'brown';
         ctx.lineWidth = 3;
@@ -390,7 +397,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     a.x += a.vx;
     a.y += a.vy;
 
-    
+    if (char === "chris") {
     ctx.save();
     ctx.translate(a.x, a.y);
     const aAngle = Math.atan2(a.vy, a.vx);
@@ -410,7 +417,13 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     ctx.moveTo(-4,15);
     ctx.lineTo(-17,15);
     ctx.restore();
-
+    } else {    ctx.save();
+    ctx.translate(a.x, a.y);
+    const aAngle = Math.atan2(a.vy, a.vx);
+    ctx.rotate(aAngle);
+    ctx.fillStyle = 'silver';
+    ctx.fillRect(-7.5, -1.5, 15, 3);
+    ctx.restore();}
     if (typeof a.lifetime !== 'number') a.lifetime = ARROW_LIFETIME;
     a.lifetime--;
 
