@@ -217,10 +217,10 @@ function drawVader(x, y) {
         if (arrowCounter != 0) {
             ctx.fillStyle = '#c0c0c0';
             ctx.fillRect(x+35, y-22, 2, 9);
-            ctx.fillRect(x+38, y-20, 2, 7);
+            if (arrowCounter != 1) ctx.fillRect(x+38, y-20, 2, 7);
             ctx.fillStyle = '#aa2211';
             ctx.fillRect(x+35, y-22, 2, 3);
-            ctx.fillRect(x+38, y-20, 2, 3);
+            if (arrowCounter != 1) ctx.fillRect(x+38, y-20, 2, 3);
         }
         
         // Arms
