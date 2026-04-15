@@ -157,7 +157,7 @@ window.addEventListener('keydown', (e) => {
 
                         enemies.forEach(enemy => {
                             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
-                            if (d < 330 && !enemy.isDead) { 
+                            if (d < 130 && !enemy.isDead) { 
                                 enemy.hp -= 25; 
                                 if (enemy.hp <= 0) {
                                     enemy.isDead = true;
@@ -169,7 +169,7 @@ window.addEventListener('keydown', (e) => {
 
                         civilians.forEach(civ => {
                             let d = Math.sqrt((posX - civ.x)**2 + (posY - civ.y)**2);
-                            if (d < 330 && !civ.isDead) { 
+                            if (d < 130 && !civ.isDead) { 
                                 civ.hp -= 25;
                                 if (civ.hp <= 0) {
                                     civ.isDead = true;
