@@ -338,26 +338,44 @@ if (bowEquipped) {
     ctx.translate(posX + 15, posY + 40);
     if (typeof aimAngle === 'number') ctx.rotate(aimAngle);
 
-    
-    ctx.beginPath();
-    ctx.strokeStyle = 'brown';
-    ctx.lineWidth = 4;
-    ctx.arc(0, 0, 20, -Math.PI / 2, Math.PI / 2);
-    ctx.stroke();
+    if (char === "chris") {
+        ctx.beginPath();
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 4;
+        ctx.arc(0, 0, 8, -Math.PI / 2, Math.PI / 2);
+        ctx.stroke();
 
-    
-    ctx.beginPath();
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = 1;
-    ctx.moveTo(0, -20);
-    if (isShooting && shotTimer > 0) {
-        const pullDist = 18;
-        ctx.lineTo(-pullDist, 0);
-        ctx.lineTo(0, 20);
-        shotTimer--; 
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0,-15,-20,30);
+
+        ctx.beginPath();
+        ctx.strokeStyle = 'brown';
+        ctx.lineWidth = 3;
+        ctx.moveTo(-4,15);
+        ctx.lineTo(-17,15);
     } else {
-        ctx.lineTo(0, 20);
+        ctx.beginPath();
+        ctx.strokeStyle = 'brown';
+        ctx.lineWidth = 4;
+        ctx.arc(0, 0, 20, -Math.PI / 2, Math.PI / 2);
+        ctx.stroke();
+
+        
+        ctx.beginPath();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
+        ctx.moveTo(0, -20);
+        if (isShooting && shotTimer > 0) {
+            const pullDist = 18;
+            ctx.lineTo(-pullDist, 0);
+            ctx.lineTo(0, 20);
+            shotTimer--; 
+        } else {
+            ctx.lineTo(0, 20);
+        }
+
     }
+
     ctx.stroke();
     ctx.restore();
 }
@@ -377,8 +395,20 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     ctx.translate(a.x, a.y);
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
-    ctx.fillStyle = 'silver';
-    ctx.fillRect(-7.5, -1.5, 15, 3);
+    ctx.beginPath();
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 4;
+    ctx.arc(0, 0, 8, -Math.PI / 2, Math.PI / 2);
+    ctx.stroke();
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0,-15,-20,30);
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'brown';
+    ctx.lineWidth = 3;
+    ctx.moveTo(-4,15);
+    ctx.lineTo(-17,15);
     ctx.restore();
 
     if (typeof a.lifetime !== 'number') a.lifetime = ARROW_LIFETIME;
