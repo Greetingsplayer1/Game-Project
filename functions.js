@@ -313,16 +313,23 @@ function drawVader(x, y) {
         if (isSwinging) ctx.rotate(Math.PI / 2); 
         else ctx.rotate(-Math.PI / 4); 
 
-        ctx.shadowColor = 'red';
-        ctx.shadowBlur = 20;
-        ctx.fillStyle = 'red';
-        ctx.fillRect(0, -5, 60, 10); 
-        ctx.fillStyle = "silver";
-        ctx.fillRect(5, -15, 5, 30);
-        ctx.fillStyle = "black";
-        ctx.fillRect(-10, -3, 15, 6);
+        if (char === "monk") {
+            ctx.fillStyle = '#c1b174';
+            ctx.fillRect(0, -5, 100, 7); 
+            ctx.fillStyle = "#AA0000";
+            for (x = 5; x <= 100; x += 15) ctx.fillRect(x, -5, 5, 7);
+        } else {
+            ctx.shadowColor = 'red';
+            ctx.shadowBlur = 20;
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, -5, 60, 10); 
+            ctx.fillStyle = "silver";
+            ctx.fillRect(5, -15, 5, 30);
+            ctx.fillStyle = "black";
+            ctx.fillRect(-10, -3, 15, 6);
+        }
 
-      ctx.restore();
+        ctx.restore();
     }
 
     
@@ -760,6 +767,9 @@ ctx.fillStyle = '#000000ff';
             if (isColliding && !coin.isTaken) {
                 coin.isTaken = true;
                 placeImage(coin.img);
+
+                playerHP += 20;
+                if (playerHP > playerMaxHP) playerHP = playerMaxHP;
             }
 
             if (!coin.isTaken) {
