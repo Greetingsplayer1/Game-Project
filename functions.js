@@ -348,6 +348,13 @@ if (bowEquipped) {
         ctx.fillStyle = "blue";
         ctx.fillRect(0,-15,-20,30);
 
+        ctx.shadowColor = '#3333ff';
+        ctx.shadowBlur = 30;
+        ctx.fillStyle = '#3333ff99';
+        ctx.fillRect(-6, 4, -8,-8);
+
+        ctx.restore();
+
         ctx.beginPath();
         ctx.strokeStyle = 'brown';
         ctx.lineWidth = 3;
