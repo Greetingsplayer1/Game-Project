@@ -451,7 +451,7 @@ function placeImage(src) {
 }
 
 function animate() {
-    if (!isGamePaused && char != "N/A") {
+    if (!isGamePaused && char != "N/A" && !isGameOver) {
         let cameraX = posX - (canvas.width / 2) + 15; 
         let cameraY = posY - (canvas.height / 2) + 15;
 
@@ -846,6 +846,46 @@ ctx.fillStyle = '#000000ff';
             ctx.fillStyle = "white";
             ctx.font = "20px sans-serif";
             ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
+
+            if (Math.random() < 0.05) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("YOU ARE A FOOL how could you die i need a coffea", canvas.width / 2, canvas.height / 2 + 100);
+}
+if (Math.random() < 0.05) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("I am done just done HOW COULD YOU DIE", canvas.width / 2, canvas.height / 2 + 100);
+}
+if (Math.random() < 0.05) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Please just stay dead i dont want to watch this any more", canvas.width / 2, canvas.height / 2 + 100);
+} if (Math.random() < 0.03) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Your opinions are not p < 0.05", canvas.width / 2, canvas.height / 2 + 100);
+} if (Math.random() < 0.05) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("I wish i was Chris right drinking coffee NOT WATCHING THIS IDIOT", canvas.width / 2, canvas.height / 2 + 100);
+} if (Math.random() < 0.03) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("01110111 01100001 01110011 01110100 01100101 00100000 01101001 01100110 00100000 01100010 01110010 01100001 01101001 01101110 00100000 01100011 01100101 01101100 01101100 01110011", canvas.width / 2, canvas.height / 2 + 100);
+}if (Math.random() < 0.03) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Git good", canvas.width / 2, canvas.height / 2 + 100);
+} if (Math.random() < 0.03) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("You were rejected due to divergent branches", canvas.width / 2, canvas.height / 2 + 100);
+} if (Math.random() < 0.03) {
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("your a chicken but", canvas.width / 2, canvas.height / 2 + 100);
+}
         }
 
         if (isSwinging) {
