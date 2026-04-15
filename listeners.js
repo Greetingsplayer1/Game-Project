@@ -231,4 +231,12 @@ charMusic.addEventListener('ended', function() {
 
 document.getElementById("testPass").addEventListener('submit', e => {
     e.preventDefault();
+
+    const passcode = document.getElementById("passcode").value;
+
+    if (passcode === "ChrisIsCool") {
+        chrisBtn.style.display = "block";
+    }
+    
+    document.getElementById("testPass").reset();
 });
