@@ -374,13 +374,45 @@ if (bowEquipped) {
         ctx.fillStyle = '#3333ff99';
         ctx.fillRect(-6, 4, -8,-8);
 
-        ctx.restore();
-
         ctx.beginPath();
         ctx.strokeStyle = 'brown';
         ctx.lineWidth = 3;
         ctx.moveTo(-4,15);
         ctx.lineTo(-17,15);
+
+    } else if (char === "sorcerer" || char === "warlock" || char === "wizard" || char === "paladin" || char === "artificer") {
+        ctx.beginPath();
+         ctx.fillStyle = "#ff4400";
+          ctx.arc(- 22, 0, 3, 0, Math.PI * 2); 
+          ctx.fill();
+
+        ctx.globalAlpha = 0.45; 
+        ctx.fillStyle = "#ff5500";
+        ctx.beginPath(); 
+        ctx.arc( - 15, 0, 5, 0, Math.PI * 2); 
+        ctx.fill();
+
+        ctx.globalAlpha = 0.65;
+         ctx.fillStyle = "#ff7700";
+        ctx.beginPath(); 
+        ctx.arc(-8, 0, 7, 0, Math.PI * 2); 
+        ctx.fill();
+
+         ctx.globalAlpha = 1;
+          ctx.fillStyle = "#cc2200";
+         ctx.beginPath();
+          ctx.arc(0, 0, 10, 0, Math.PI * 2);
+           ctx.fill();
+
+        ctx.fillStyle = "#ff6600";
+        ctx.beginPath();
+         ctx.arc(0, 0, 7, 0, Math.PI * 2); 
+         ctx.fill();
+
+        ctx.fillStyle = "#ffcc00";
+        ctx.beginPath(); 
+        ctx.arc(0, 0, 4, 0, Math.PI * 2); 
+        ctx.fill();
     } else {
         ctx.beginPath();
         ctx.strokeStyle = 'brown';
@@ -401,9 +433,7 @@ if (bowEquipped) {
         } else {
             ctx.lineTo(0, 20);
         }
-
     }
-
     ctx.stroke();
     ctx.restore();
 }
@@ -438,6 +468,44 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     ctx.moveTo(-4,15);
     ctx.lineTo(-17,15);
     ctx.restore();
+    }  else if (char === "sorcerer" || char === "warlock" || char === "wizard" || char === "paladin" || char === "artificer") {
+    ctx.save();
+    ctx.translate(a.x, a.y);
+    const aAngle = Math.atan2(a.vy, a.vx);
+    ctx.rotate(aAngle);
+        ctx.beginPath();
+         ctx.fillStyle = "#ff4400";
+          ctx.arc(- 22, 0, 3, 0, Math.PI * 2); 
+          ctx.fill();
+
+        ctx.globalAlpha = 0.45; 
+        ctx.fillStyle = "#ff5500";
+        ctx.beginPath(); 
+        ctx.arc( - 15, 0, 5, 0, Math.PI * 2); 
+        ctx.fill();
+
+        ctx.globalAlpha = 0.65;
+         ctx.fillStyle = "#ff7700";
+        ctx.beginPath(); 
+        ctx.arc(-8, 0, 7, 0, Math.PI * 2); 
+        ctx.fill();
+
+         ctx.globalAlpha = 1;
+          ctx.fillStyle = "#cc2200";
+         ctx.beginPath();
+          ctx.arc(0, 0, 10, 0, Math.PI * 2);
+           ctx.fill();
+
+        ctx.fillStyle = "#ff6600";
+        ctx.beginPath();
+         ctx.arc(0, 0, 7, 0, Math.PI * 2); 
+         ctx.fill();
+
+        ctx.fillStyle = "#ffcc00";
+        ctx.beginPath(); 
+        ctx.arc(0, 0, 4, 0, Math.PI * 2); 
+        ctx.fill();
+        ctx.restore();
     } else {    ctx.save();
     ctx.translate(a.x, a.y);
     const aAngle = Math.atan2(a.vy, a.vx);
