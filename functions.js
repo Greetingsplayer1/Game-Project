@@ -481,7 +481,7 @@ function placeImage(src) {
 }
 
 function animate() {
-    if (!isGamePaused && char != "N/A") {
+    if (!isGamePaused && char != "N/A" && !isGameOver) {
         let cameraX = posX - (canvas.width / 2) + 15; 
         let cameraY = posY - (canvas.height / 2) + 15;
 
@@ -876,6 +876,11 @@ ctx.fillStyle = '#000000ff';
             ctx.fillStyle = "white";
             ctx.font = "20px sans-serif";
             ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
+
+ctx.fillStyle = "white"; // Ensure 'white' is a string
+ctx.font = "20px sans-serif";
+ctx.textAlign = "center"; // Optional: helps center the text
+ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
 
         if (isSwinging) {

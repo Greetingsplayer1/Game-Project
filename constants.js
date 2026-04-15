@@ -46,3 +46,16 @@ const mapObjects = [
     {x: 400, y: + 1850, w: 10, h: 250, color: '#3e2723',isSolid: true},
     {x: 1400, y: + 1500, w: 10, h: 610, color: '#3e2723',isSolid: true},
 ];
+
+const messages = [
+    "YOU ARE A FOOL how could you die i need a coffee",
+    "I am done just done HOW COULD YOU DIE",
+    "Please just stay dead i dont want to watch this any more",
+    "Your opinions are not p < 0.05",
+    "I wish i was Chris right drinking coffee NOT WATCHING THIS IDIOT",
+    "01110111 01100001 01110011 01110100 01100101 00100000 01101001 01100110 00100000 01100010 01110010 01100001 01101001 01101110 00100000 01100101 01101100 01101100 01110011",
+    "Git good",
+    "You were rejected due to divergent branches"
+];
+const randomIndex = Math.floor(Math.random() * messages.length);
+const selectedMessage = messages[randomIndex];
