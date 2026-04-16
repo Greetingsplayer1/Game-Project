@@ -664,8 +664,6 @@ function animate() {
         }
 
 
-        
-        
         enemies.forEach(enemy => {
             if (enemy.isDead) {
                 enemy.respawnTimer--;
@@ -674,8 +672,8 @@ function animate() {
                     enemy.x = enemy.homeX; 
                     enemy.y = enemy.homeY;
                 } else if (enemy.respawnTimer === 399) {
-                xp += 10;
-                console.log("Enemy defeated! XP: " + xp);
+                    xp += 10;
+                    console.log("Enemy defeated! XP: " + xp);
                 }
                 return;
             }
@@ -900,6 +898,8 @@ ctx.fillStyle = '#000000ff';
 
                 playerHP += 20;
                 if (playerHP > playerMaxHP) playerHP = playerMaxHP;
+
+                xp += 10;
             }
 
             if (!coin.isTaken) {
