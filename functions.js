@@ -965,7 +965,7 @@ ctx.fillStyle = '#000000ff';
 
         ctx.font = "30px sans-serif";
         ctx.fillStyle = "white";
-        ctx.fillText("XP: " + xp, 900, 45);
+        ctx.fillText("XP: " + xp, 900, 230);
     
         
         if (isGameOver) {
