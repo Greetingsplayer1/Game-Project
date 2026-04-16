@@ -673,9 +673,10 @@ function animate() {
                     enemy.isDead = false;
                     enemy.x = enemy.homeX; 
                     enemy.y = enemy.homeY;
+                } else if (enemy.respawnTimer === 399) {
+                xp += 10;
+                console.log("Enemy defeated! XP: " + xp);
                 }
-                //xp += 10;
-                //console.log("Enemy defeated! XP: " + xp);
                 return;
             }
 
@@ -961,6 +962,10 @@ ctx.fillStyle = '#000000ff';
         ctx.fillStyle = "white";
         let weaponText3 = bowEquipped? "BOW EQUIPED" : "BOW NOT EQUIPPED";
         ctx.fillText(weaponText3, 20, 220)
+
+        ctx.font = "30px sans-serif";
+        ctx.fillStyle = "white";
+        ctx.fillText("XP: " + xp, 900, 45);
     
         
         if (isGameOver) {
@@ -976,9 +981,9 @@ ctx.fillStyle = '#000000ff';
             ctx.font = "20px sans-serif";
             ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
 
-ctx.fillStyle = "white"; // Ensure 'white' is a string
+ctx.fillStyle = "white";
 ctx.font = "20px sans-serif";
-ctx.textAlign = "center"; // Optional: helps center the text
+ctx.textAlign = "center";
 ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
 
