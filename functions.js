@@ -643,7 +643,12 @@ function animate() {
             ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
     }
 
-        
+        //XP goes here bar and stuff function and all
+        function getXP() {
+                if (enemy.isDead === true) {
+                    xp += 50;
+                }
+        }
         
         
         if (bossHostile && currentGameState === "playing") {
