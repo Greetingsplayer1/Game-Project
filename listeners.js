@@ -18,6 +18,10 @@ window.addEventListener('keydown', (e) => {
 
             if (char === "ranger") {
                 arrowDamage = 100;
+            } else if (char === "knight") {
+                arrowDamage = 47;
+            } else if (char === "rogue") {
+                arrowDamage = 90;
             }
 
 
