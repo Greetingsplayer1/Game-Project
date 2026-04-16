@@ -14,6 +14,12 @@ window.addEventListener('keydown', (e) => {
             shotTimer = 20;
         
             let vx, vy;
+            let arrowDamage = 75;
+
+            if (char === "ranger") {
+                arrowDamage = 100;
+            }
+
 
             if (typeof aimAngle === 'number') {
                 vx = Math.cos(aimAngle) * ARROW_SPEED;
@@ -23,13 +29,13 @@ window.addEventListener('keydown', (e) => {
                 vy = 0;
             }
             arrow.push({
-                x: posX + 15,
-                y: posY + 40,
-                vx: vx,
-                vy: vy,
-                lifetime: ARROW_LIFETIME,
-                damage: 75
-            });
+            x: posX + 15,
+            y: posY + 40,
+            vx: vx,
+            vy: vy,
+            lifetime: ARROW_LIFETIME,
+            damage: arrowDamage
+}); 
         }
 
         if (key === 'e') stealthActive = !stealthActive;
