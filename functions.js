@@ -13,7 +13,6 @@ function isSpaceBlocked(newX, newY) {
 }
 
 
-
 function spawnItem(newX, newY, img) {
     let item = {x: newX, y: newY, size: 10, isTaken: false, img: img};
     collectibles.push(item);
@@ -675,7 +674,8 @@ function animate() {
                     enemy.x = enemy.homeX; 
                     enemy.y = enemy.homeY;
                 }
-
+                xp += 10;
+                console.log("Enemy defeated! XP: " + xp);
                 return;
             }
 
