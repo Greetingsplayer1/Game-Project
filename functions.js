@@ -13,6 +13,7 @@ function isSpaceBlocked(newX, newY) {
 }
 
 
+
 function spawnItem(newX, newY, img) {
     let item = {x: newX, y: newY, size: 10, isTaken: false, img: img};
     collectibles.push(item);
@@ -642,14 +643,6 @@ function animate() {
             ctx.fillStyle = "lime";
             ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
     }
-
-        //XP goes here bar and stuff function and all
-        function getXP() {
-                if (enemy.isDead === true) {
-                    xp += 50;
-                }
-        }
-        
         
         if (bossHostile && currentGameState === "playing") {
 

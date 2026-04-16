@@ -31,6 +31,7 @@ let ARROW_SPEED = 14;
 let ARROW_LIFETIME = 240;
 let arrowCounter = 40;
 let char = "N/A";
+let xp = 0;
 let bossEnemy = {
     x: 300, 
     y: 2500,
