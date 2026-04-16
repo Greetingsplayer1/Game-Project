@@ -31,8 +31,8 @@ function chooseChar(choice) {
         playerMaxHP = 120;
         playerHP = 120;
     } else if (choice === "knight") {
-        playerMaxHP = 130;
-        playerHP = 130;
+        playerMaxHP = 180;
+        playerHP = 180;
     }
 
     if (choice === "ranger") {
