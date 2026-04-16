@@ -674,8 +674,8 @@ function animate() {
                     enemy.x = enemy.homeX; 
                     enemy.y = enemy.homeY;
                 }
-                xp += 10;
-                console.log("Enemy defeated! XP: " + xp);
+                //xp += 10;
+                //console.log("Enemy defeated! XP: " + xp);
                 return;
             }
 
