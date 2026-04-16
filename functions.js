@@ -19,7 +19,6 @@ function spawnItem(newX, newY, img) {
     collectibles.push(item);
 }
 
-
 function chooseChar(choice) {
     charMusic.pause();
     music.play();
