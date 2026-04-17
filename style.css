@@ -2,14 +2,11 @@ canvas {
     border: 1px solid black;
     background: #2d8a2d;
     display: none;
-    margin: auto;
-    width: 1100px;
-    height: 800px;
 }
 
 #canvasHolder {
     position: relative;
-    width: 100%;
+    width: 1002px;
     height: 802px;
     background-color: #000070;
 }
