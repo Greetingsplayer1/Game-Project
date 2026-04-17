@@ -396,6 +396,11 @@ function drawVader(x, y) {
     } else if (char === "artificer") {
         ctx.globalAlpha=1.0;
         ctx.restore();
+    } else if (char === "fighter") {
+
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
     } else {
         ctx.globalAlpha=1.0;
         ctx.restore();
@@ -827,8 +832,8 @@ function animate() {
             let angleToPlayer = Math.atan2(dy, dx);
             let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
             if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped));
-            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped));
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
 
             if (canSeePlayer || tooClose) {
                 enemy.scaredTimer = 600;
@@ -959,7 +964,7 @@ ctx.fillStyle = '#000000ff';
             let dy = posY - civ.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 300 && (bladeActive || swordEquipped) && !stealthActive) {
+            if (distance < 300 && (bladeActive || swordEquipped || bowEquipped) && !stealthActive) {
                 civ.isScared = true;
                 civ.scaredTimer = 300;
             }
