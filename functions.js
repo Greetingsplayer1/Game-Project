@@ -291,39 +291,33 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === 'monk') {
-         // 1. Staff (Classic Monk Weapon - held in left hand)
   ctx.fillStyle = '#5d4037'; 
-  ctx.fillRect(x - 2, y - 38, 3, 38); // Long wooden bo staff
+  ctx.fillRect(x - 2, y - 38, 3, 38);
 
-  // 2. Skin Tone (Bald head, left shoulder, arms, feet)
   ctx.fillStyle = '#f1c27d'; 
-  ctx.fillRect(x + 9, y - 36, 12, 10); // Bald Head
-  ctx.fillRect(x + 5, y - 26, 10, 4); // Left exposed shoulder
-  ctx.fillRect(x, y - 26, 5, 12); // Left arm (holding staff)
-  ctx.fillRect(x + 25, y - 18, 6, 4); // Right hand
-  ctx.fillRect(x + 5, y - 4, 7, 4); // Left bare foot
-  ctx.fillRect(x + 18, y - 4, 7, 4); // Right bare foot
+  ctx.fillRect(x + 9, y - 36, 12, 10);
+  ctx.fillRect(x + 5, y - 26, 10, 4);
+  ctx.fillRect(x, y - 26, 5, 12); 
+  ctx.fillRect(x + 25, y - 18, 6, 4); 
+  ctx.fillRect(x + 5, y - 4, 7, 4);
+  ctx.fillRect(x + 18, y - 4, 7, 4); 
 
-  // 3. Robes (Classic Orange, asymmetrical style)
   ctx.fillStyle = '#d35400';
-  ctx.fillRect(x + 15, y - 26, 10, 4); // Right shoulder covered
-  ctx.fillRect(x + 5, y - 22, 20, 8); // Main upper torso
-  ctx.fillRect(x + 25, y - 26, 6, 8); // Right sleeve
-  ctx.fillRect(x + 5, y - 10, 20, 6); // Lower robe/pants
+  ctx.fillRect(x + 15, y - 26, 10, 4);
+  ctx.fillRect(x + 5, y - 22, 20, 8);
+  ctx.fillRect(x + 25, y - 26, 6, 8);
+  ctx.fillRect(x + 5, y - 10, 20, 6);
 
-  // 4. Sash/Belt (Dark Grey/Black)
   ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(x + 4, y - 14, 22, 4); // Thick martial arts belt
+  ctx.fillRect(x + 4, y - 14, 22, 4);
 
-  // 5. Prayer Beads (Wood Brown draped over chest)
   ctx.fillStyle = '#5d4037';
-  ctx.fillRect(x + 7, y - 20, 16, 2); // Necklace loop
-  ctx.fillRect(x + 14, y - 18, 2, 3); // Dangling center beads
+  ctx.fillRect(x + 7, y - 20, 16, 2);
+  ctx.fillRect(x + 14, y - 18, 2, 3);
 
-  // 6. Eyes (Intense focus)
   ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(x + 11, y - 32, 2, 2); // Left Eye
-  ctx.fillRect(x + 17, y - 32, 2, 2); // Right Eye
+  ctx.fillRect(x + 11, y - 32, 2, 2); 
+  ctx.fillRect(x + 17, y - 32, 2, 2); 
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === 'barbarian') {
