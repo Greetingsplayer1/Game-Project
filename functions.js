@@ -31,8 +31,8 @@ function chooseChar(choice) {
         playerMaxHP = 120;
         playerHP = 120;
     } else if (choice === "knight") {
-        playerMaxHP = 130;
-        playerHP = 130;
+        playerMaxHP = 180;
+        playerHP = 180;
     }
 
     if (choice === "ranger") {
@@ -338,7 +338,25 @@ function drawVader(x, y) {
             ctx.fillRect(0, -5, 100, 7); 
             ctx.fillStyle = "#AA0000";
             for (x = 5; x <= 100; x += 15) ctx.fillRect(x, -5, 5, 7);
-        } else {
+        }else if (char === "sorcerer" ||  char === "warlock" || char === "wizard" || char === "paladin" || char === "artificer") {
+ctx.fillStyle = "#6b3e1e";
+  ctx.fillRect(-3, -50, 6, 100);
+
+  // left claw
+  ctx.strokeStyle = "#8b5e2e";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(-3, -45);
+  ctx.bezierCurveTo(-18, -55, -20, -70, -8, -75);
+  ctx.stroke();
+
+  // right claw
+  ctx.beginPath();
+  ctx.moveTo(3, -45);
+  ctx.bezierCurveTo(18, -55, 20, -70, 8, -75);
+  ctx.stroke();
+        }
+        else {
             ctx.shadowColor = 'red';
             ctx.shadowBlur = 20;
             ctx.fillStyle = 'red';
