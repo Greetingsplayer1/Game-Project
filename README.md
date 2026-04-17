@@ -26,7 +26,7 @@ The story of this game takes place in Chrisheim,
 which is basically the ancient world of DND, 
 where the player can explore, 
 fight, 
-and even unlock hidden chactors to play as.
+and even unlock hidden characters to play as.
 
 # Documentation
 
