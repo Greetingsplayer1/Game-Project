@@ -767,49 +767,10 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        if (posY > 2100 && !bossTriggered) {
-            bossTriggered = true;
-            triggerCutscene("HA! You think you can defeat me?");
-        }   
-
         mapObjects.forEach(obj => {
             ctx.fillStyle = obj.color;
             ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
         });
-
-        if (!bossEnemy.isDead) {
-            ctx.fillStyle = bossEnemy.color;
-            ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
-
-            let bBarWidth = 100;
-            let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
-            let bBarY = bossEnemy.y - 20;
-            ctx.fillStyle = "red";
-            ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
-            ctx.fillStyle = "lime";
-            ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
-    }
-        
-        if (bossHostile && currentGameState === "playing") {
-
-            let bDx = posX - bossEnemy.x;
-            let bDy = posY - bossEnemy.y;
-            let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
-            
-            let angle = Math.atan2(bDy, bDx);
-            bossEnemy.x += Math.cos(angle) * 3;
-            bossEnemy.y += Math.sin(angle) * 3;
-
-            if (bDist < bossEnemy.size && damageCooldown === 0) {
-                playerHP -= 20;
-                damageCooldown = 40;
-                
-                if (playerHP <= 0) {
-                    playerHP = 0;
-                    isGameOver = true;
-                }
-            }
-        }
 
 
         enemies.forEach(enemy => {
@@ -1051,6 +1012,53 @@ ctx.fillStyle = '#000000ff';
                 ctx.fillStyle = 'gold';
                 ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
             }
+        });
+
+        bossEnemy.forEach(boss => {
+        if (posY > 2100 && !bossTriggered) {
+            bossTriggered = true;
+            triggerCutscene("HA! You think you can defeat me?");
+        }   
+
+        mapObjects.forEach(obj => {
+            ctx.fillStyle = obj.color;
+            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+        });
+
+        if (!bossEnemy.isDead) {
+            ctx.fillStyle = bossEnemy.color;
+            ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
+
+            let bBarWidth = 100;
+            let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
+            let bBarY = bossEnemy.y - 20;
+            ctx.fillStyle = "red";
+            ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
+            ctx.fillStyle = "lime";
+            ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
+    }
+        
+        if (bossHostile && currentGameState === "playing") {
+
+            let bDx = posX - bossEnemy.x;
+            let bDy = posY - bossEnemy.y;
+            let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
+            
+            let angle = Math.atan2(bDy, bDx);
+            bossEnemy.x += Math.cos(angle) * 3;
+            bossEnemy.y += Math.sin(angle) * 3;
+
+            if (bDist < bossEnemy.size && damageCooldown === 0) {
+                playerHP -= 20;
+                damageCooldown = 40;
+                
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    isGameOver = true;
+                }
+            }
+        }
+
         });
 
 
