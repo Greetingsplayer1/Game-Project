@@ -64,6 +64,7 @@ function chooseChar(choice) {
 
 
 
+
 function drawVader(x, y) {
     ctx.save();
                    
