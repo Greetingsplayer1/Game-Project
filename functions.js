@@ -671,14 +671,6 @@ for (let i = arrow.length - 1; i >= 0; i--) {
         }
     }
 
-    
-    if (!hit && !bossEnemy.isDead) {
-        if (a.x >= bossEnemy.x && a.x <= bossEnemy.x + bossEnemy.size && a.y >= bossEnemy.y && a.y <= bossEnemy.y + bossEnemy.size) {
-            bossEnemy.hp -= a.damage;
-            if (bossEnemy.hp <= 0) bossEnemy.isDead = true;
-            hit = true;
-        }
-    }
 
     
     if (hit || a.lifetime <= 0 || Math.abs(a.x - posX) > 4000 || Math.abs(a.y - posY) > 4000) {
@@ -767,49 +759,11 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        if (posY > 2100 && !bossTriggered) {
-            bossTriggered = true;
-            triggerCutscene("HA! You think you can defeat me?");
-        }   
-
         mapObjects.forEach(obj => {
             ctx.fillStyle = obj.color;
             ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
         });
 
-        if (!bossEnemy.isDead) {
-            ctx.fillStyle = bossEnemy.color;
-            ctx.fillRect(bossEnemy.x, bossEnemy.y, bossEnemy.size, bossEnemy.size);
-
-            let bBarWidth = 100;
-            let bBarX = bossEnemy.x + (bossEnemy.size / 2) - (bBarWidth / 2);
-            let bBarY = bossEnemy.y - 20;
-            ctx.fillStyle = "red";
-            ctx.fillRect(bBarX, bBarY, bBarWidth, 10);
-            ctx.fillStyle = "lime";
-            ctx.fillRect(bBarX, bBarY, (bossEnemy.hp / bossEnemy.maxHp) * bBarWidth, 10);
-    }
-        
-        if (bossHostile && currentGameState === "playing") {
-
-            let bDx = posX - bossEnemy.x;
-            let bDy = posY - bossEnemy.y;
-            let bDist = Math.sqrt(bDx * bDx + bDy * bDy);
-            
-            let angle = Math.atan2(bDy, bDx);
-            bossEnemy.x += Math.cos(angle) * 3;
-            bossEnemy.y += Math.sin(angle) * 3;
-
-            if (bDist < bossEnemy.size && damageCooldown === 0) {
-                playerHP -= 20;
-                damageCooldown = 40;
-                
-                if (playerHP <= 0) {
-                    playerHP = 0;
-                    isGameOver = true;
-                }
-            }
-        }
 
 
         enemies.forEach(enemy => {

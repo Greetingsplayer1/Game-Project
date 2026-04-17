@@ -115,14 +115,6 @@ window.addEventListener('keydown', (e) => {
                 enemy.color = 'white';
             });
 
-            boss.forEach(boss => {
-                boss.isDead = false;
-                bossEnemy.hp = bossEnemy.maxHp;
-                bossEnemy.x = 0;
-                bossEnemy.y = 2200;
-                bossTriggered = false;
-                bossHostile = false;
-            })
         }
 
         if (key === 'p') {
@@ -199,11 +191,6 @@ window.addEventListener('keydown', (e) => {
                                 }
                             }
                         });
-                        let dToBoss = Math.sqrt((posX - bossEnemy.x)**2 + (posY - bossEnemy.y)**2);
-                        if (dToBoss < 150 && !bossEnemy.isDead) {
-                            bossEnemy.hp -= 50; 
-                            if (bossEnemy.hp <= 0) bossEnemy.isDead = true;
-                        }
                     }
                 }
             }
