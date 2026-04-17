@@ -38,7 +38,7 @@ let pictTime = 0;
 let bossEnemies = [
     { 
         x: -50, y: 300, 
-           hp: 100, maxHp: 100,
+           hp: 750, maxHp: 750,
         homeX: -50, homeY: 350, 
         patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
