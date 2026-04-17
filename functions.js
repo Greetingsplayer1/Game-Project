@@ -294,6 +294,52 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === 'barbarian') {
+                ctx.fillStyle = '#7f8c8d';
+        ctx.fillRect(x, y + 45, 15, 35); 
+        ctx.fillRect(x + 20, y + 45, 15, 35);
+
+        ctx.fillStyle = '#cbbf85ff'; 
+        ctx.fillRect(x - 10, y - 5, 15, 15); 
+        ctx.fillRect(x + 30, y - 5, 15, 15); 
+        
+        ctx.fillStyle = '#cbbf85ff';
+        ctx.fillRect(x - 5, y, 45, 50);
+
+        ctx.fillStyle = '#cbbf85ff'; 
+        ctx.fillRect(x + 5, y + 10, 25, 30); 
+        ctx.fillStyle = '#cbbf85ff';
+        ctx.fillRect(x + 10, y + 15, 15, 2);
+        ctx.fillRect(x + 10, y + 25, 15, 2);
+
+
+        ctx.fillStyle = '#cbbf85ff';
+        ctx.fillRect(x - 15, y + 10, 10, 35); 
+        ctx.fillRect(x + 40, y + 10, 10, 35); 
+        // Heavy Gauntlets
+        ctx.fillStyle = '#cbbf85ff';
+        ctx.fillRect(x - 15, y + 35, 12, 12);
+        ctx.fillRect(x + 38, y + 35, 12, 12);
+
+        // Square boots
+        ctx.fillStyle = '#8e6a3bff'; 
+        ctx.fillRect(x - 2, y + 75, 17, 10);
+        ctx.fillRect(x + 20, y + 75, 17, 10);
+
+
+        ctx.fillStyle = '#343333ff';
+        ctx.fillRect(x + 2, y - 35, 30, 35); 
+        
+        ctx.fillStyle = '#cbbf85ff';
+        ctx.fillRect(x + 5, y - 25, 24, 4); 
+        
+        ctx.fillStyle = '#ff0000ff';
+        ctx.fillRect(x + 18, y - 15, 2, 2);
+        ctx.fillRect(x + 22, y - 15, 2, 2);
+        ctx.fillRect(x + 18, y - 10, 2, 2);
+        ctx.fillRect(x + 22, y - 10, 2, 2);
+
+        ctx.fillStyle = '#ff0000ff'; 
+        ctx.fillRect(x + 15, y - 40, 5, 8);
         ctx.globalAlpha=1.0;
         ctx.restore();
     }else if (char === "chris") {
