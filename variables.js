@@ -45,7 +45,7 @@ let bossEnemies = [
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
         movingToPatrol: true
-    },
+    }
 ];
 
 let enemies = [

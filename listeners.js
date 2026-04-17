@@ -64,7 +64,20 @@ window.addEventListener('keydown', (e) => {
 
         if (key === ' ' && bladeCooldown === 0) {
             bladeActive = true;
-            bladeCooldown = 300; 
+            bladeCooldown = 300;
+
+            bossEnemies.forEach(enemy => {
+                let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
+                if (d < 150 && !enemy.isDead) { 
+                    enemy.hp -= 100;
+                    if (enemy.hp <= 0) {
+                        enemy.isDead = true; 
+                        enemy.respawnTimer = 400; 
+                        enemy.hp = enemy.maxHp;
+                        addXp(20);
+                    }
+                }
+            });
 
             enemies.forEach(enemy => {
                 let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
@@ -165,6 +178,19 @@ window.addEventListener('keydown', (e) => {
                         isSwinging = true;
                         swingTimer = 30; 
                         swordCooldown = SWORD_COOLDOWN_TIME; 
+
+                        bossEnemies.forEach(enemy => {
+                            let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
+                            if (d < 150 && !enemy.isDead) { 
+                                enemy.hp -= 100;
+                                if (enemy.hp <= 0) {
+                                    enemy.isDead = true; 
+                                    enemy.respawnTimer = 400; 
+                                    enemy.hp = enemy.maxHp;
+                                    addXp(20);
+                                }
+                            }
+                        });
 
                         enemies.forEach(enemy => {
                             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
