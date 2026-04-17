@@ -222,7 +222,7 @@ window.addEventListener('keyup', (e) => {
     if (key === ' ') bladeActive = false;
     if (key === 'shift')    
         if (char === "knight") {
-        speedMultiplier = .7; // Knight's sprint speed
+        speedMultiplier = .6; // Knight's sprint speed
     } else if (char === "bard") {
         speedMultiplier = 1;
     } else if (char === "rogue") {

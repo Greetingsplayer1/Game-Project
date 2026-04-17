@@ -33,18 +33,27 @@ function chooseChar(choice) {
     } else if (choice === "knight") {
         playerMaxHP = 180;
         playerHP = 180;
+    } else if (choice === "chris") {
+        playerMaxHP = 9999;
+        playerHP = 9999;
     }
 
     if (choice === "ranger") {
         arrowCounter = 50;
+    } else if (choice === "chris") {
+        arrowCounter = 9999;
     }
 
     if (choice === "knight") {
         speedMultiplier = 0.6;
     } else if (choice === "bard") {
-        speedMultiplier = 0.95;
-    } else {
-        speedMultiplier = 1.5;
+        speedMultiplier = 1;
+    } else if (choice === "chris") {
+        speedMultiplier = 3.0;
+        } else if (choice === "rogue") {
+        speedMultiplier = 1.7;
+        } else {
+        speedMultiplier = 1;
     }
 
     canvas.style.display = "block";
@@ -539,25 +548,42 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     a.y += a.vy;
 
     if (char === "chris") {
-    ctx.save();
+            ctx.save();
     ctx.translate(a.x, a.y);
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
     ctx.beginPath();
-    ctx.strokeStyle = "blue";
-    ctx.lineWidth = 4;
-    ctx.arc(0, 0, 8, -Math.PI / 2, Math.PI / 2);
-    ctx.stroke();
+         ctx.fillStyle = "#a67b3eff";
+          ctx.arc(- 22, 0, 3, 0, Math.PI * 2); 
+          ctx.fill();
 
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0,-15,-20,30);
+        ctx.globalAlpha = 0.45; 
+        ctx.fillStyle = "#a67b3eff";
+        ctx.beginPath(); 
+        ctx.arc( - 15, 0, 5, 0, Math.PI * 2); 
+        ctx.fill();
 
-    ctx.beginPath();
-    ctx.strokeStyle = 'brown';
-    ctx.lineWidth = 3;
-    ctx.moveTo(-4,15);
-    ctx.lineTo(-17,15);
-    ctx.restore();
+        ctx.globalAlpha = 0.65;
+         ctx.fillStyle = "#a67b3eff";
+        ctx.beginPath(); 
+        ctx.arc(-8, 0, 7, 0, Math.PI * 2); 
+        ctx.fill();
+
+         ctx.globalAlpha = 1;
+          ctx.fillStyle = "#a67b3eff";
+         ctx.beginPath();
+          ctx.arc(0, 0, 10, 0, Math.PI * 2);
+           ctx.fill();
+
+        ctx.fillStyle = "#a67b3eff";
+        ctx.beginPath();
+         ctx.arc(0, 0, 7, 0, Math.PI * 2); 
+         ctx.fill();
+
+        ctx.fillStyle = "#a67b3eff";
+        ctx.beginPath(); 
+        ctx.arc(0, 0, 4, 0, Math.PI * 2); 
+        ctx.fill();
     }  else if (char === "sorcerer" || char === "warlock" || char === "wizard" || char === "paladin" || char === "artificer") {
     ctx.save();
     ctx.translate(a.x, a.y);
