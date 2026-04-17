@@ -34,6 +34,7 @@ let char = "N/A";
 let xp = 0;
 let level = 1;
 let pictShow = false;
+let pictTime = 0;
 let bossEnemy = {
     x: 300, 
     y: 2500,

@@ -597,10 +597,13 @@ function triggerCutscene(text) {
 }
 
 function placeImage(src) {
-    document.getElementById("imgHolder").style.display = "block";
-    document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
+    if (pictTime === 0) {
+        document.getElementById("imgHolder").style.display = "block";
+        document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
 
-    pictShow = true;
+        pictShow = true;
+        pictTime = 1200;
+    }
 }
 
 function addXp(amount) {
@@ -1065,6 +1068,11 @@ ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
             ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 100);
         }
 
+        if (pictTime != 0) pictTime--;
+        else {
+            document.getElementById("imgHolder").style.display = "none";
+            pictShow = false;
+        }
         
     }
     requestAnimationFrame(animate)
