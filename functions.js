@@ -558,7 +558,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
     ctx.beginPath();
-         ctx.fillStyle = "#5d3600ff";
+         ctx.fillStyle = "#46312aff";
           ctx.arc(- 22, 0, 3, 0, Math.PI * 2); 
           ctx.fill();
 
