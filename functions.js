@@ -867,43 +867,7 @@ function animate() {
 
 
 ctx.fillStyle = '#000000ff';
-    ctx.fillRect(enemy.x - 5, enemy.y, 45, 60);
-
-    ctx.fillStyle = '#840f0fff'; 
-    ctx.fillRect(enemy.x - 10, enemy.y - 5, 15, 15); 
-    ctx.fillRect(enemy.x + 30, enemy.y - 5, 15, 15); 
-    ctx.fillStyle = '#4f0000ff'; 
-    ctx.fillRect(enemy.x + 5, enemy.y + 10, 25, 30); 
-    ctx.fillStyle = '#220f0f82';
-    ctx.fillRect(enemy.x + 10, enemy.y + 15, 15, 2);
-    ctx.fillRect(enemy.x + 10, enemy.y + 25, 15, 2);
-
-
-    ctx.fillStyle = '#000000ff';
-    ctx.fillRect(enemy.x - 15, enemy.y + 10, 10, 35); 
-    ctx.fillRect(enemy.x + 40, enemy.y + 10, 10, 35); 
-    // Heavy Gauntlets
-    ctx.fillStyle = '#15191aff';
-    ctx.fillRect(enemy.x - 15, enemy.y + 35, 12, 12);
-    ctx.fillRect(enemy.x + 38, enemy.y + 35, 12, 12);
-    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    ctx.fillRect(enemy.x, enemy.y + 45, 15, 35); 
-    ctx.fillRect(enemy.x + 20, enemy.y + 45, 15, 35);
-    // Square boots
-    ctx.fillStyle = '#543e1cff'; 
-    ctx.fillRect(enemy.x - 2, enemy.y + 75, 17, 10);
-    ctx.fillRect(enemy.x + 20, enemy.y + 75, 17, 10);
-
-
-    ctx.fillStyle = '#000000ff';
-    ctx.fillRect(enemy.x + 2, enemy.y - 35, 30, 35); 
-    
-    ctx.fillStyle = '#6c1c1cff';
-    ctx.fillRect(enemy.x + 5, enemy.y - 25, 24, 4); 
-    
-
-    ctx.fillStyle = '#ff0000ff'; 
-    ctx.fillRect(enemy.x + 15, enemy.y - 40, 5, 8);
+    ctx.fillRect(enemy.x - 20, enemy.y - 30, 80, 120);
  
 
             if (!enemy.isDead) {
