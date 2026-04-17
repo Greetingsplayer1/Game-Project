@@ -74,7 +74,7 @@ window.addEventListener('keydown', (e) => {
                         enemy.isDead = true; 
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
-                        addXp(20);
+                        addXp(430);
                     }
                 }
             });
@@ -187,7 +187,7 @@ window.addEventListener('keydown', (e) => {
                                     enemy.isDead = true; 
                                     enemy.respawnTimer = 400; 
                                     enemy.hp = enemy.maxHp;
-                                    addXp(20);
+                                    addXp(430);
                                 }
                             }
                         });

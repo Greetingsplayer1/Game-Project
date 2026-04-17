@@ -645,7 +645,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.isDead = true;
                 enemy.respawnTimer = 400;
                 enemy.hp = enemy.maxHp;
-                addXp(20)
+                addXp(430);
             }
             hit = true;
             break;
