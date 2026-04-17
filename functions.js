@@ -866,8 +866,16 @@ function animate() {
             ctx.restore();
 
 
-ctx.fillStyle = '#000000ff';
-    ctx.fillRect(enemy.x - 20, enemy.y - 30, 80, 120);
+    ctx.fillStyle = '#ffd485ff';
+    ctx.fillRect(enemy.x - 20, enemy.y - 20, 80, 120);
+    ctx.fillRect(enemy.x+5, enemy.y - 45, 20, 20);
+    ctx.fillRect(enemy.x+10, enemy.y - 45, 10, 40);
+    // gray color fill style
+    ctx.fillStyle = '#7f8c8dff';
+    ctx.fillRect(enemy.x - 50, enemy.y - 20, 30, 120);
+    ctx.fillRect(enemy.x + 50, enemy.y - 20, 30, 120);
+    ctx.fillRect(enemy.x - 20, enemy.y + 100, 30, 120);
+    ctx.fillRect(enemy.x + 20, enemy.y + 100, 30, 120);
  
 
             if (!enemy.isDead) {
