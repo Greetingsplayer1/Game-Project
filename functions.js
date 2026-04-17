@@ -874,8 +874,8 @@ function animate() {
     ctx.fillStyle = '#7f8c8dff';
     ctx.fillRect(enemy.x - 50, enemy.y - 20, 30, 120);
     ctx.fillRect(enemy.x + 50, enemy.y - 20, 30, 120);
-    ctx.fillRect(enemy.x - 20, enemy.y + 100, 30, 120);
-    ctx.fillRect(enemy.x + 20, enemy.y + 100, 30, 120);
+    ctx.fillRect(enemy.x - 20, enemy.y + 100, 30, 100);
+    ctx.fillRect(enemy.x + 20, enemy.y + 100, 30, 100);
  
 
             if (!enemy.isDead) {
