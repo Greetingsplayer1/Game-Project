@@ -643,13 +643,11 @@ function triggerCutscene(text) {
 }
 
 function placeImage(src) {
-    if (pictTime === 0) {
-        document.getElementById("imgHolder").style.display = "block";
-        document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
+    document.getElementById("imgHolder").style.display = "block";
+    document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
 
-        pictShow = true;
-        pictTime = 1200;
-    }
+    pictShow = true;
+    pictTime = 400;
 }
 
 function addXp(amount) {
@@ -1079,10 +1077,10 @@ ctx.fillStyle = '#000000ff';
             ctx.font = "20px sans-serif";
             ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
 
-ctx.fillStyle = "white";
-ctx.font = "20px sans-serif";
-ctx.textAlign = "center";
-ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
+            ctx.fillStyle = "white";
+            ctx.font = "20px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
 
         if (isSwinging) {
