@@ -10,7 +10,7 @@ Also, the game will be very big and will allow you to move around,
 fight enemies and even allow you to level up. 
 The game will have many functions from working health bars to XP and leving up, 
 and with enemy and civilian health, 
-anything with a health bar can be murdered using your weapons.
+anything with a health bar can be "unalived" using your weapons.
 
 # Music
 
