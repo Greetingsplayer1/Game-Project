@@ -764,7 +764,148 @@ function animate() {
             ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
         });
 
+        bossEnemies.forEach(enemy => {
+            if (enemy.isDead) {
+                enemy.respawnTimer--;
+                if (enemy.respawnTimer <= 0) {
+                    enemy.isDead = false;
+                    enemy.x = enemy.homeX; 
+                    enemy.y = enemy.homeY;
+                }
+                return;
+            }
 
+            let dx = posX - enemy.x;
+            let dy = posY - enemy.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let angleToPlayer = Math.atan2(dy, dx);
+            let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
+            if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+
+            if (canSeePlayer || tooClose) {
+                enemy.scaredTimer = 600;
+            }
+
+            if ((enemy.scaredTimer || 0) > 0) {
+                enemy.scaredTimer--;
+                enemy.color = '#7f8c8d';
+                let angleToPlayer = Math.atan2(dy, dx);
+                
+                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+
+                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+
+                enemy.angle = angleToPlayer; 
+            } else {
+                enemy.color = '#7f8c8d';
+                let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
+                let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
+                let hDx = destX - enemy.x;
+                let hDy = destY - enemy.y;
+                let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
+
+                if (distToDest > 5) {
+                    let aMove = Math.atan2(hDy, hDx);
+                    enemy.x += Math.cos(aMove) * 4;
+                    enemy.y += Math.sin(aMove) * 4;
+                    enemy.angle = aMove; 
+                } else {
+                    enemy.movingToPatrol = !enemy.movingToPatrol;
+                }
+            }
+
+            let isColliding = 
+                enemy.x < posX + playerSize &&
+                enemy.x + enemy.size > posX &&
+                enemy.y < posY + playerSize &&
+                enemy.y + enemy.size > posY;
+
+
+            if (isColliding && !enemy.isDead && damageCooldown === 0) {
+                playerHP -= 10;
+                damageCooldown = 30; 
+                
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    isGameOver = true;
+                }
+            }
+            
+            ctx.save();
+            ctx.translate(enemy.x + 20, enemy.y + 20);
+            ctx.rotate(enemy.angle || 0);
+            if ((enemy.scaredTimer || 0) > 0) {
+                ctx.fillStyle = "rgba(255,0,0,0.25)";
+            } else {
+                ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
+            }
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.arc(0, 0, 400, -Math.PI/2, Math.PI/2);
+            ctx.fill();
+            ctx.restore();
+
+
+ctx.fillStyle = '#000000ff';
+    ctx.fillRect(enemy.x - 5, enemy.y, 45, 60);
+
+    ctx.fillStyle = '#840f0fff'; 
+    ctx.fillRect(enemy.x - 10, enemy.y - 5, 15, 15); 
+    ctx.fillRect(enemy.x + 30, enemy.y - 5, 15, 15); 
+    ctx.fillStyle = '#4f0000ff'; 
+    ctx.fillRect(enemy.x + 5, enemy.y + 10, 25, 30); 
+    ctx.fillStyle = '#220f0f82';
+    ctx.fillRect(enemy.x + 10, enemy.y + 15, 15, 2);
+    ctx.fillRect(enemy.x + 10, enemy.y + 25, 15, 2);
+
+
+    ctx.fillStyle = '#000000ff';
+    ctx.fillRect(enemy.x - 15, enemy.y + 10, 10, 35); 
+    ctx.fillRect(enemy.x + 40, enemy.y + 10, 10, 35); 
+    // Heavy Gauntlets
+    ctx.fillStyle = '#15191aff';
+    ctx.fillRect(enemy.x - 15, enemy.y + 35, 12, 12);
+    ctx.fillRect(enemy.x + 38, enemy.y + 35, 12, 12);
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+    ctx.fillRect(enemy.x, enemy.y + 45, 15, 35); 
+    ctx.fillRect(enemy.x + 20, enemy.y + 45, 15, 35);
+    // Square boots
+    ctx.fillStyle = '#543e1cff'; 
+    ctx.fillRect(enemy.x - 2, enemy.y + 75, 17, 10);
+    ctx.fillRect(enemy.x + 20, enemy.y + 75, 17, 10);
+
+
+    ctx.fillStyle = '#000000ff';
+    ctx.fillRect(enemy.x + 2, enemy.y - 35, 30, 35); 
+    
+    ctx.fillStyle = '#6c1c1cff';
+    ctx.fillRect(enemy.x + 5, enemy.y - 25, 24, 4); 
+    
+
+    ctx.fillStyle = '#ff0000ff'; 
+    ctx.fillRect(enemy.x + 15, enemy.y - 40, 5, 8);
+ 
+
+            if (!enemy.isDead) {
+                let barWidth = 50;
+                let barHeight = 6;
+                let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
+                let barY = enemy.y - 55; 
+
+            
+                ctx.fillStyle = "red";
+                ctx.fillRect(barX, barY, barWidth, barHeight);
+
+
+                let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
+                ctx.fillStyle = "lime";
+                ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
+            }
+        });
 
         enemies.forEach(enemy => {
             if (enemy.isDead) {

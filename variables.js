@@ -35,16 +35,18 @@ let xp = 0;
 let level = 1;
 let pictShow = false;
 let pictTime = 0;
-let bossEnemy = {
-    x: 300, 
-    y: 2500,
-    size: 60, 
-    color: 'purple',
-    hp: 500, 
-    maxHp: 500,
-    isDead: false,
-    angle: 0
-};
+let bossEnemies = [
+    { 
+        x: 300, y: 300, 
+           hp: 100, maxHp: 100,
+        homeX: 300, homeY: 300, 
+        patrolX: 300, patrolY: 1020,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true
+    },
+];
 
 let enemies = [
     { 
