@@ -558,34 +558,29 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
     ctx.beginPath();
-         ctx.fillStyle = "#a67b3eff";
+         ctx.fillStyle = "brown";
           ctx.arc(- 22, 0, 3, 0, Math.PI * 2); 
           ctx.fill();
 
         ctx.globalAlpha = 0.45; 
-        ctx.fillStyle = "#a67b3eff";
         ctx.beginPath(); 
         ctx.arc( - 15, 0, 5, 0, Math.PI * 2); 
         ctx.fill();
 
         ctx.globalAlpha = 0.65;
-         ctx.fillStyle = "#a67b3eff";
         ctx.beginPath(); 
         ctx.arc(-8, 0, 7, 0, Math.PI * 2); 
         ctx.fill();
 
          ctx.globalAlpha = 1;
-          ctx.fillStyle = "#a67b3eff";
          ctx.beginPath();
           ctx.arc(0, 0, 10, 0, Math.PI * 2);
            ctx.fill();
 
-        ctx.fillStyle = "#a67b3eff";
         ctx.beginPath();
          ctx.arc(0, 0, 7, 0, Math.PI * 2); 
          ctx.fill();
 
-        ctx.fillStyle = "#a67b3eff";
         ctx.beginPath(); 
         ctx.arc(0, 0, 4, 0, Math.PI * 2); 
         ctx.fill();
