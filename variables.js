@@ -37,10 +37,10 @@ let pictShow = false;
 let pictTime = 0;
 let bossEnemies = [
     { 
-        x: 300, y: 300, 
+        x: -50, y: 300, 
            hp: 100, maxHp: 100,
-        homeX: 300, homeY: 300, 
-        patrolX: 300, patrolY: 1020,
+        homeX: -50, homeY: 350, 
+        patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,

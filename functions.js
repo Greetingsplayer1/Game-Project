@@ -842,8 +842,8 @@ function animate() {
 
 
             if (isColliding && !enemy.isDead && damageCooldown === 0) {
-                playerHP -= 10;
-                damageCooldown = 30; 
+                playerHP -= 30;
+                damageCooldown = 25; 
                 
                 if (playerHP <= 0) {
                     playerHP = 0;
