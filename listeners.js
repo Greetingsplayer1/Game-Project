@@ -22,6 +22,8 @@ window.addEventListener('keydown', (e) => {
                 arrowDamage = 47;
             } else if (char === "rogue") {
                 arrowDamage = 90;
+            } else if (char === "chris") {
+                arrowDamage = 150;
             }
 
 
