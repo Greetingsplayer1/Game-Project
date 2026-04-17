@@ -272,7 +272,7 @@ document.getElementById("testPass").addEventListener('submit', e => {
 
     const passcode = document.getElementById("passcode").value;
 
-    if (passcode === "ChrisIsCool") {
+    if (passcode === "ChrisIsAmazing") {
         chrisBtn.style.display = "block";
     }
     
