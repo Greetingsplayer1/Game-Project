@@ -526,6 +526,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.isDead = true;
                 enemy.respawnTimer = 400;
                 enemy.hp = enemy.maxHp;
+                addXp(20)
             }
             hit = true;
             break;
@@ -543,6 +544,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                     civ.isDead = true;
                     civ.respawnTimer = 400;
                     civ.hp = civ.maxHp;
+                    addXp(20);
                 }
                 hit = true;
                 break;
@@ -579,6 +581,30 @@ function triggerCutscene(text) {
 function placeImage(src) {
     document.getElementById("imgHolder").style.display = "block";
     document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
+}
+
+function addXp(amount) {
+    xp += amount;
+
+    if (xp >= 284000) level = 20;
+    else if (xp >= 244000) level = 19;
+    else if (xp >= 212000) level = 18;
+    else if (xp >= 180000) level = 17;
+    else if (xp >= 156000) level = 16;
+    else if (xp >= 132000) level = 15
+    else if (xp >= 112000) level = 14;
+    else if (xp >= 96000) level = 13;
+    else if (xp >= 80000) level = 12;
+    else if (xp >= 68000) level = 11;
+    else if (xp >= 51200) level = 10;
+    else if (xp >= 38400) level = 9;
+    else if (xp >= 27200) level = 8;
+    else if (xp >= 18400) level = 7;
+    else if (xp >= 11200) level = 6;
+    else if (xp >= 5200) level = 5;
+    else if (xp >= 2160) level = 4;
+    else if (xp >= 720) level = 3;
+    else if (xp >= 240) level = 2;
 }
 
 function animate() {
@@ -671,9 +697,6 @@ function animate() {
                     enemy.isDead = false;
                     enemy.x = enemy.homeX; 
                     enemy.y = enemy.homeY;
-                } else if (enemy.respawnTimer === 399) {
-                    xp += 10;
-                    console.log("Enemy defeated! XP: " + xp);
                 }
                 return;
             }
@@ -827,7 +850,7 @@ ctx.fillStyle = '#000000ff';
                 let angleAway = Math.atan2(dy, dx) + Math.PI;
 
                 let nextX = civ.x + Math.cos(angleAway) * 5;
-            let nextY = civ.y + Math.sin(angleAway) * 5;
+                let nextY = civ.y + Math.sin(angleAway) * 5;
 
             if (!isSpaceBlocked(nextX, civ.y)) civ.x = nextX;
             if (!isSpaceBlocked(civ.x, nextY)) civ.y = nextY;
@@ -899,7 +922,7 @@ ctx.fillStyle = '#000000ff';
                 playerHP += 20;
                 if (playerHP > playerMaxHP) playerHP = playerMaxHP;
 
-                xp += 10;
+                addXp(10);
             }
 
             if (!coin.isTaken) {

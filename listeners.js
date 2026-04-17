@@ -65,6 +65,7 @@ window.addEventListener('keydown', (e) => {
                         enemy.isDead = true; 
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
+                        addXp(20);
                     }
                 }
             });
@@ -77,14 +78,13 @@ window.addEventListener('keydown', (e) => {
                         civ.isDead = true; 
                         civ.respawnTimer = 400; 
                         civ.hp = civ.maxHp;
+                        addXp(20);
                     }
                 }
             });
         }
 
         if (key === 'r' && isGameOver) {
-            console.log("Reset game");
-
             civilians.forEach(civ => {
                 civ.x = civ.homeX;
                 civ.y = civ.homeY;
@@ -168,11 +168,12 @@ window.addEventListener('keydown', (e) => {
                         enemies.forEach(enemy => {
                             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                             if (d < 130 && !enemy.isDead) { 
-                                enemy.hp -= 25; 
+                                enemy.hp -= 25;
                                 if (enemy.hp <= 0) {
                                     enemy.isDead = true;
                                     enemy.respawnTimer = 400;
                                     enemy.hp = 100; 
+                                    addXp(20);
                                 }
                             }
                         });
@@ -184,7 +185,8 @@ window.addEventListener('keydown', (e) => {
                                 if (civ.hp <= 0) {
                                     civ.isDead = true;
                                     civ.respawnTimer = 400;
-                                    civ.hp = 50; 
+                                    civ.hp = 50;
+                                    addXp(15);
                                 }
                             }
                         });
