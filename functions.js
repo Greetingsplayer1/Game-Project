@@ -599,6 +599,8 @@ function triggerCutscene(text) {
 function placeImage(src) {
     document.getElementById("imgHolder").style.display = "block";
     document.getElementById("imgHolder").innerHTML = "<img id=\"coinImg\" src=\"media/" + src + ".png\" alt=\"Picture of the picked up coin.\">"
+
+    pictShow = true;
 }
 
 function addXp(amount) {
@@ -1006,8 +1008,14 @@ ctx.fillStyle = '#000000ff';
 
         ctx.font = "30px sans-serif";
         ctx.fillStyle = "white";
-        ctx.fillText("XP: " + xp, 900, 230);
-    
+
+        if (pictShow === true) {
+            ctx.fillText("XP: " + xp, 870, 230);
+            ctx.fillText("Level: " + level, 870, 260);
+        } else {
+            ctx.fillText("XP: " + xp, 870, 30);
+            ctx.fillText("Level: " + level, 870, 60);
+        }
         
         if (isGameOver) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
