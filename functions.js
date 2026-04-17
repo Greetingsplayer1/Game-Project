@@ -589,6 +589,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
         ctx.beginPath(); 
         ctx.arc(0, 0, 4, 0, Math.PI * 2); 
         ctx.fill();
+                ctx.restore();
     }  else if (char === "sorcerer" || char === "warlock" || char === "wizard" || char === "paladin" || char === "artificer") {
     ctx.save();
     ctx.translate(a.x, a.y);
