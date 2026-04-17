@@ -14,16 +14,18 @@ window.addEventListener('keydown', (e) => {
             shotTimer = 20;
         
             let vx, vy;
-            let arrowDamage = 75;
+            let arrowDamage = 25;
 
             if (char === "ranger") {
-                arrowDamage = 100;
+                arrowDamage = 50;
             } else if (char === "knight") {
-                arrowDamage = 47;
+                arrowDamage = 20;
             } else if (char === "rogue") {
-                arrowDamage = 90;
+                arrowDamage = 50;
             } else if (char === "chris") {
                 arrowDamage = 150;
+            } else if (char === "wizard" || char === "sorcerer" || char === "warlock" || char === "paladin" || char === "artificer") {
+                arrowDamage = 70;
             }
 
 
