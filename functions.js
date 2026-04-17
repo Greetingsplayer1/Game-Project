@@ -1052,37 +1052,6 @@ ctx.fillStyle = '#000000ff';
                 ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
             }
         });
-
-        bossEnemy.forEach(boss => {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-        });
-
-
         
         drawVader(posX, posY);
 
