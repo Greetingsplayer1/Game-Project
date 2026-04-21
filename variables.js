@@ -44,7 +44,8 @@ let bossEnemies = [
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
-        movingToPatrol: true
+        movingToPatrol: true,
+        type: "castle"
     }
 ];
 
@@ -57,7 +58,8 @@ let enemies = [
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
-        movingToPatrol: true
+        movingToPatrol: true,
+        type: "castle"
     },
     { 
         x: -400, y: 300, 
@@ -67,7 +69,8 @@ let enemies = [
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
-        movingToPatrol: true
+        movingToPatrol: true,
+        type: "castle"
     }
 ];
 
