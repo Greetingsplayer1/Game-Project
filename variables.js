@@ -45,7 +45,9 @@ let bossEnemies = [
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
         movingToPatrol: true,
-        type: "castle"
+        art: function(x,y) {
+            castleBoss(x,y);
+        }
     }
 ];
 
@@ -59,7 +61,9 @@ let enemies = [
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
         movingToPatrol: true,
-        type: "castle"
+        art: function(x,y) {
+            castle(x,y);
+        }
     },
     { 
         x: -400, y: 300, 
@@ -70,7 +74,9 @@ let enemies = [
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
         movingToPatrol: true,
-        type: "castle"
+        art: function(x,y) {
+            castle(x,y);
+        }
     }
 ];
 

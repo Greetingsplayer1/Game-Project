@@ -865,9 +865,7 @@ function animate() {
             ctx.fill();
             ctx.restore();
 
-            if (type = "castle") {
-                castleBoss(enemy.x,enemy.y);
-            }
+            enemy.art(enemy.x,enemy.y);
  
 
             if (!enemy.isDead) {
@@ -972,9 +970,7 @@ function animate() {
             ctx.fill();
             ctx.restore();
 
-            if (enemy.type === "castle") {
-                castle(enemy.x,enemy.y);
-            }
+            enemy.art(enemy.x,enemy.y);
  
 
             if (!enemy.isDead) {
