@@ -34,6 +34,14 @@ We did stuff.
 
 # Working on
 
+- making a ranodm death message apear
+- changing map up and making better
+- adding the 3 other bosses
+- Classes and the looks
+
 # Need to Work on
+
+- enemy placment and numbers
+- interactive elements and civilians
 
 # Finished
