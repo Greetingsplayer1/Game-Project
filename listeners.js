@@ -75,6 +75,19 @@ window.addEventListener('keydown', (e) => {
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
                         addXp(430);
+                    }
+                }
+            });
+
+            miniBossEnemies.forEach(enemy => {
+                let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
+                if (d < 150 && !enemy.isDead) { 
+                    enemy.hp -= 100;
+                    if (enemy.hp <= 0) {
+                        enemy.isDead = true; 
+                        enemy.respawnTimer = 400; 
+                        enemy.hp = enemy.maxHp;
+                        addXp(430);
                         youWin = true;
                     }
                 }
@@ -204,6 +217,19 @@ window.addEventListener('keydown', (e) => {
                                     enemy.hp = enemy.maxHp;
                                     addXp(430);   
                                     youWin = true;
+                                }
+                            }
+                        });
+
+                        miniBossEnemies.forEach(enemy => {
+                            let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
+                            if (d < 150 && !enemy.isDead) { 
+                                enemy.hp -= 100;
+                                if (enemy.hp <= 0) {
+                                    enemy.isDead = true; 
+                                    enemy.respawnTimer = 400; 
+                                    enemy.hp = enemy.maxHp;
+                                    addXp(430);
                                 }
                             }
                         });

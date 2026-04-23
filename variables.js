@@ -40,7 +40,7 @@ let xpNeeded = 240;
 let youWin = false;
 let extraFrame = true;
 let winStop = false;
-let miniBossEnemies = [
+let bossEnemies = [
     { 
         x: -50, y: 300, 
            hp: 2000, maxHp: 2000,
@@ -55,7 +55,7 @@ let miniBossEnemies = [
         }
     },
 ];
-let bossEnemies = [
+let miniBossEnemies = [
     { 
         x: -500, y: 3000, 
            hp: 2000, maxHp: 2000,
