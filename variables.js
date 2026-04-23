@@ -40,6 +40,7 @@ let xpNeeded = 240;
 let youWin = false;
 let extraFrame = true;
 let winStop = false;
+let thingings = 0;
 let miniBossEnemies = [
     { 
         x: -50, y: 300, 

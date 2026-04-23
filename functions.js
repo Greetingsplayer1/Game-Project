@@ -866,12 +866,6 @@ function animate() {
 
          miniBossEnemies.forEach(enemy => {
             if (enemy.isDead) {
-                enemy.respawnTimer--;
-                if (enemy.respawnTimer <= 0) {
-                    enemy.isDead = false;
-                    enemy.x = enemy.homeX; 
-                    enemy.y = enemy.homeY;
-                }
                 return;
             }
 
