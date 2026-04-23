@@ -821,12 +821,7 @@ function animate() {
 
         bossEnemies.forEach(enemy => {
             if (enemy.isDead) {
-                enemy.respawnTimer--;
-                if (enemy.respawnTimer <= 0) {
-                    enemy.isDead = false;
-                    enemy.x = enemy.homeX; 
-                    enemy.y = enemy.homeY;
-                }
+                youWin = true;
                 return;
             }
 
@@ -1239,7 +1234,7 @@ function animate() {
             ctx.textAlign = "center";
             ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
-        if (youWin = true) {
+        if (youWin === true) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
