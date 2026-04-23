@@ -106,7 +106,7 @@ window.addEventListener('keydown', (e) => {
             });
         }
 
-        if (key === 'r' && isGameOver) {
+        if (key === 'r' && isGameOver || youWin === true) {
             civilians.forEach(civ => {
                 civ.x = civ.homeX;
                 civ.y = civ.homeY;
