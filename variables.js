@@ -36,6 +36,7 @@ let level = 1;
 let pictShow = false;
 let pictTime = 0;
 let xpNeeded = 240;
+let youWin = false;
 let bossEnemies = [
     { 
         x: -50, y: 300, 
