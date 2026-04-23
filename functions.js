@@ -716,25 +716,64 @@ function placeImage(src) {
 function addXp(amount) {
     xp += amount;
 
-    if (xp >= 284000) level = 20;
-    else if (xp >= 244000) level = 19;
-    else if (xp >= 212000) level = 18;
-    else if (xp >= 180000) level = 17;
-    else if (xp >= 156000) level = 16;
-    else if (xp >= 132000) level = 15
-    else if (xp >= 112000) level = 14;
-    else if (xp >= 96000) level = 13;
-    else if (xp >= 80000) level = 12;
-    else if (xp >= 68000) level = 11;
-    else if (xp >= 51200) level = 10;
-    else if (xp >= 38400) level = 9;
-    else if (xp >= 27200) level = 8;
-    else if (xp >= 18400) level = 7;
-    else if (xp >= 11200) level = 6;
-    else if (xp >= 5200) level = 5;
-    else if (xp >= 2160) level = 4;
-    else if (xp >= 720) level = 3;
-    else if (xp >= 240) level = 2;
+    if (xp >= 284000) {
+        level = 20;
+        xpNeeded = xp;
+    } else if (xp >= 244000) {
+        level = 19;
+        xpNeeded = 284000;
+    } else if (xp >= 212000) {
+        level = 18;
+        xpNeeded = 244000;
+    } else if (xp >= 180000) {
+        level = 17;
+        xpNeeded = 212000;
+    } else if (xp >= 156000) {
+        level = 16;
+        xpNeeded = 180000;
+    } else if (xp >= 132000) {
+        level = 15;
+        xpNeeded = 156000;
+    } else if (xp >= 112000) {
+        level = 14;
+        xpNeeded = 132000;
+    } else if (xp >= 96000) {
+        level = 13;
+        xpNeeded = 112000;
+    } else if (xp >= 80000) {
+        level = 12;
+        xpNeeded = 96000
+    } else if (xp >= 68000) {
+        level = 11;
+        xpNeeded = 80000;
+    } else if (xp >= 51200) {
+        level = 10;
+        xpNeeded = 68000;
+    } else if (xp >= 38400) {
+        level = 9;
+        xpNeeded = 51200;
+    }else if (xp >= 27200) {
+        level = 8;
+        xpNeeded = 38400;
+    } else if (xp >= 18400) {
+        level = 7;
+        xpNeeded = 27200;
+    } else if (xp >= 11200) {
+        level = 6;
+        xpNeeded = 18300;
+    } else if (xp >= 5200) {
+        level = 5;
+        xpNeeded = 11200;
+    } else if (xp >= 2160) {
+        level = 4;
+        xpNeeded = 5200;
+    } else if (xp >= 720) {
+        level = 3;
+        xpNeeded = 2160;
+    } else if (xp >= 240) {
+        level = 2;
+        xpNeeded = 720;
+    }
 }
 
 function animate() {
@@ -1145,11 +1184,41 @@ function animate() {
         ctx.fillStyle = "white";
 
         if (pictShow === true) {
-            ctx.fillText("XP: " + xp, 870, 230);
-            ctx.fillText("Level: " + level, 870, 260);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
+            ctx.fillRect(780, 230, 200, 25);
+
+            ctx.fillStyle = "cyan"; 
+            let xpWidth = (xp / xpNeeded) * 200;
+            ctx.fillRect(780, 230, xpWidth, 25);
+
+            ctx.strokeStyle = "white";
+            ctx.strokeRect(780, 230, 200, 25);
+
+
+            ctx.fillStyle = "white";
+
+            ctx.font = "20px sans-serif";
+
+            ctx.fillText("XP: " + xp, 785, 250);
+            ctx.fillText("Level: " + level, 700, 250);
         } else {
-            ctx.fillText("XP: " + xp, 870, 30);
-            ctx.fillText("Level: " + level, 870, 60);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
+            ctx.fillRect(780, 20, 200, 25);
+
+            ctx.fillStyle = "cyan"; 
+            let xpWidth = (xp / xpNeeded) * 200;
+            ctx.fillRect(780, 20, xpWidth, 25);
+
+            ctx.strokeStyle = "white";
+            ctx.strokeRect(780, 20, 200, 25);
+
+
+            ctx.fillStyle = "white";
+
+            ctx.font = "20px sans-serif";
+
+            ctx.fillText("XP: " + xp, 785, 40);
+            ctx.fillText("Level: " + level, 700, 40);
         }
         
         if (isGameOver) {
