@@ -26,15 +26,19 @@ function chooseChar(choice) {
 
     if (choice === "rogue" || choice === "bard" || choice === "monk") {
         playerMaxHP = 80;
+        playerBaseHP = 80;
         playerHP = 80;
     } else if (choice === "barbarian") {
         playerMaxHP = 150;
+        playerBaseHP = 150;
         playerHP = 150;
     } else if (choice === "knight") {
         playerMaxHP = 250;
+        playerBaseHP = 250;
         playerHP = 250;
     } else if (choice === "chris") {
         playerMaxHP = 9999;
+        playerBaseHp = 9999;
         playerHP = 9999;
     }
 
@@ -720,60 +724,98 @@ function addXp(amount) {
     if (xp >= 284000) {
         level = 20;
         xpNeeded = xp;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 244000) {
         level = 19;
         xpNeeded = 284000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 212000) {
         level = 18;
         xpNeeded = 244000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 180000) {
         level = 17;
         xpNeeded = 212000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 156000) {
         level = 16;
         xpNeeded = 180000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 132000) {
         level = 15;
         xpNeeded = 156000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 112000) {
         level = 14;
         xpNeeded = 132000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 96000) {
         level = 13;
         xpNeeded = 112000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 80000) {
         level = 12;
-        xpNeeded = 96000
+        xpNeeded = 96000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 68000) {
         level = 11;
         xpNeeded = 80000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 51200) {
         level = 10;
         xpNeeded = 68000;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 38400) {
         level = 9;
         xpNeeded = 51200;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     }else if (xp >= 27200) {
         level = 8;
         xpNeeded = 38400;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 18400) {
         level = 7;
         xpNeeded = 27200;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 11200) {
         level = 6;
         xpNeeded = 18300;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 5200) {
         level = 5;
         xpNeeded = 11200;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 2160) {
         level = 4;
         xpNeeded = 5200;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 720) {
         level = 3;
         xpNeeded = 2160;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     } else if (xp >= 240) {
         level = 2;
         xpNeeded = 720;
+        playerMaxHP += playerBaseHP;
+        playerHP += playerBaseHP;
     }
 }
 
