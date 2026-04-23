@@ -864,6 +864,186 @@ function animate() {
             ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
         });
 
+         miniBossEnemies.forEach(enemy => {
+            if (enemy.isDead) {
+                enemy.respawnTimer--;
+                if (enemy.respawnTimer <= 0) {
+                    enemy.isDead = false;
+                    enemy.x = enemy.homeX; 
+                    enemy.y = enemy.homeY;
+                }
+                return;
+            }
+
+            let dx = posX - enemy.x;
+            let dy = posY - enemy.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let angleToPlayer = Math.atan2(dy, dx);
+            let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
+            if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+
+            if (canSeePlayer || tooClose) {
+                enemy.scaredTimer = 600;
+            }
+
+            if ((enemy.scaredTimer || 0) > 0) {
+                enemy.scaredTimer--;
+                enemy.color = '#7f8c8d';
+                let angleToPlayer = Math.atan2(dy, dx);
+                
+                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+
+                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+
+                enemy.angle = angleToPlayer; 
+            } else {
+                enemy.color = '#7f8c8d';
+                let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
+                let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
+                let hDx = destX - enemy.x;
+                let hDy = destY - enemy.y;
+                let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
+
+                if (distToDest > 5) {
+                    let aMove = Math.atan2(hDy, hDx);
+                    enemy.x += Math.cos(aMove) * 4;
+                    enemy.y += Math.sin(aMove) * 4;
+                    enemy.angle = aMove; 
+                } else {
+                    enemy.movingToPatrol = !enemy.movingToPatrol;
+                }
+            }
+
+            let isColliding = 
+                enemy.x < posX + playerSize &&
+                enemy.x + enemy.size > posX &&
+                enemy.y < posY + playerSize &&
+                enemy.y + enemy.size > posY;
+
+
+            if (isColliding && !enemy.isDead && damageCooldown === 0) {
+                playerHP -= 10;
+                damageCooldown = 30; 
+                
+                if (playerHP <= 0) {
+                    playerHP = 0;
+                    isGameOver = true;
+                }
+            }
+            
+            ctx.save();
+            ctx.translate(enemy.x + 20, enemy.y + 20);
+            ctx.rotate(enemy.angle || 0);
+            if ((enemy.scaredTimer || 0) > 0) {
+                ctx.fillStyle = "rgba(255,0,0,0.25)";
+            } else {
+                ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
+            }
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.arc(0, 0, 400, -Math.PI/2, Math.PI/2);
+            ctx.fill();
+            ctx.restore();
+
+            enemy.art(enemy.x,enemy.y);
+ 
+
+            if (!enemy.isDead) {
+                let barWidth = 50;
+                let barHeight = 6;
+                let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
+                let barY = enemy.y - 55; 
+
+            
+                ctx.fillStyle = "red";
+                ctx.fillRect(barX, barY, barWidth, barHeight);
+
+
+                let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
+                ctx.fillStyle = "lime";
+                ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
+            }
+        });
+
+        civilians.forEach(civ => {
+            if (civ.isDead) return;
+            let dx = posX - civ.x;
+            let dy = posY - civ.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 300 && (bladeActive || swordEquipped || bowEquipped) && !stealthActive) {
+                civ.isScared = true;
+                civ.scaredTimer = 300;
+            }
+
+            if (civ.scaredTimer > 0) {
+                civ.scaredTimer--;
+                civ.color = 'pink';
+                let angleAway = Math.atan2(dy, dx) + Math.PI;
+
+                let nextX = civ.x + Math.cos(angleAway) * 5;
+                let nextY = civ.y + Math.sin(angleAway) * 5;
+
+            if (!isSpaceBlocked(nextX, civ.y)) civ.x = nextX;
+            if (!isSpaceBlocked(civ.x, nextY)) civ.y = nextY;
+
+                if (civ.scaredTimer === 0) civ.isScared = false;
+            } else {
+                if (!civ.returnHomeCooldown) civ.returnHomeCooldown = 0; 
+                if (civ.returnHomeCooldown > 0) civ.returnHomeCooldown--;
+
+                let destX = civ.homeX;
+                let destY = civ.homeY;
+                let distToHome = Math.sqrt((destX - civ.x)**2 + (destY - civ.y)**2);
+
+                if (distToHome > 100 || civ.returnHomeCooldown > 0) {
+                    
+                    if (distToHome > 100 && civ.returnHomeCooldown <= 0) {
+                        civ.returnHomeCooldown = 60; 
+                    }
+
+                    let angleHome = Math.atan2(destY - civ.y, destX - civ.x);
+                    civ.x += Math.cos(angleHome) * 2;
+                    civ.y += Math.sin(angleHome) * 2;
+                    civ.color = 'cyan';
+
+                } else {
+                    civ.wanderTimer--;
+                    if (civ.wanderTimer <= 0) {
+                        civ.angle = Math.random() * Math.PI * 2;
+                        civ.wanderTimer = 60 + Math.random() * 120;
+                    }
+                    let nextX = civ.x + Math.cos(civ.angle) * 1;
+                    let nextY = civ.y + Math.sin(civ.angle) * 1;
+
+                    if (!isSpaceBlocked(nextX, nextY)) {
+                        civ.x = nextX;
+                        civ.y = nextY;
+                    }
+                }
+            } 
+
+            let barWidth = 40;
+            let barHeight = 6;
+            let barX = civ.x + (civ.size / 2) - (barWidth / 2); 
+            let barY = civ.y -15 
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(barX, barY, barWidth, barHeight)
+
+            let healthPercent = civ.hp / civ.maxHp;
+            ctx.fillStyle = "lime";
+            ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
+
+            ctx.fillStyle = civ.color;
+            ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+        }
+        );
+
         bossEnemies.forEach(enemy => {
             if (enemy.isDead) {
                 youWin = true;

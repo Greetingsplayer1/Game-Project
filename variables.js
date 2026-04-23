@@ -40,6 +40,21 @@ let xpNeeded = 240;
 let youWin = false;
 let extraFrame = true;
 let winStop = false;
+let miniBossEnemies = [
+    { 
+        x: -50, y: 300, 
+           hp: 2000, maxHp: 2000,
+        homeX: -50, homeY: 350, 
+        patrolX: -50, patrolY: 1090,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castleBoss(x,y);
+        }
+    },
+];
 let bossEnemies = [
     { 
         x: -500, y: 3000, 
@@ -54,45 +69,6 @@ let bossEnemies = [
             castleBoss(x,y);
         }
     },
-    { 
-        x: -10, y: 30, 
-           hp: 2000, maxHp: 2000,
-        homeX: -50, homeY: 350, 
-        patrolX: -10, patrolY: 1070,
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true,
-        art: function(x,y) {
-            castleBoss(x,y);
-        }
-    },
-    { 
-        x: -500, y: 800, 
-           hp: 2000, maxHp: 2000,
-        homeX: -50, homeY: 350, 
-        patrolX: -500, patrolY: 1070,
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true,
-        art: function(x,y) {
-            castleBoss(x,y);
-        }
-    },
-    { 
-        x: -50, y: 300, 
-           hp: 2000, maxHp: 2000,
-        homeX: -50, homeY: 350, 
-        patrolX: -50, patrolY: 1070,
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true,
-        art: function(x,y) {
-            castleBoss(x,y);
-        }
-    }
 ];
 
 let enemies = [
