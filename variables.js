@@ -42,7 +42,7 @@ let winStop = false;
 let bossEnemies = [
     { 
         x: -50, y: 300, 
-           hp: 750, maxHp: 750,
+           hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
         patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
@@ -55,7 +55,7 @@ let bossEnemies = [
     },
     { 
         x: -50, y: 300, 
-           hp: 750, maxHp: 750,
+           hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
         patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
@@ -68,7 +68,7 @@ let bossEnemies = [
     },
     { 
         x: -50, y: 300, 
-           hp: 750, maxHp: 750,
+           hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
         patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
@@ -81,7 +81,7 @@ let bossEnemies = [
     },
     { 
         x: -50, y: 300, 
-           hp: 750, maxHp: 750,
+           hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
         patrolX: -50, patrolY: 1070,
         size: 40, color: 'white', 
