@@ -642,20 +642,22 @@ for (let i = arrow.length - 1; i >= 0; i--) {
 
     
     let hit = false;
-    for (let j = 0; j < bossEnemies.length; j++) {
-        const enemy = bossEnemies[j];
-        if (enemy.isDead) continue;
-        if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
-            enemy.hp -= a.damage;
-            if (enemy.hp <= 0) {
-                enemy.isDead = true;
-                enemy.respawnTimer = 400;
-                enemy.hp = enemy.maxHp;
-                addXp(430);
-                youWin = true;
+    if (thingies >= miniBossEnemies.length) {
+        for (let j = 0; j < bossEnemies.length; j++) {
+            const enemy = bossEnemies[j];
+            if (enemy.isDead) continue;
+            if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
+                enemy.hp -= a.damage;
+                if (enemy.hp <= 0) {
+                    enemy.isDead = true;
+                    enemy.respawnTimer = 400;
+                    enemy.hp = enemy.maxHp;
+                    addXp(430);
+                    youWin = true;
+                }
+                hit = true;
+                break;
             }
-            hit = true;
-            break;
         }
     }
 
