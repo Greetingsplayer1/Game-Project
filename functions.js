@@ -778,7 +778,7 @@ function addXp(amount) {
 }
 
 function animate() {
-    if (!isGamePaused && char != "N/A" && !isGameOver && !youWin) {
+    if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
         let cameraX = posX - (canvas.width / 2) + 15; 
         let cameraY = posY - (canvas.height / 2) + 15;
 
@@ -1237,22 +1237,28 @@ function animate() {
         }
 
         if (youWin) {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = "red";
-            ctx.font = "bold 60px sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText("YOU WIN", canvas.width / 2, canvas.height / 2);
-            
-            ctx.fillStyle = "white";
-            ctx.font = "20px sans-serif";
-            ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
+            if (extraFrame) {
+                extraFrame = false;
+            } else {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = "blue";
+                ctx.font = "bold 60px sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("YOU WIN", canvas.width / 2, canvas.height / 2);
+                
+                ctx.fillStyle = "white";
+                ctx.font = "20px sans-serif";
+                ctx.fillText("Press 'R' to Restart", canvas.width / 2, canvas.height / 2 + 60);
 
-            ctx.fillStyle = "white";
-            ctx.font = "20px sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
+                ctx.fillStyle = "white";
+                ctx.font = "20px sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("Congradulations!", canvas.width / 2, canvas.height / 2 + 100);
+
+                winStop = true;
+            }
         }
 
         if (isSwinging) {
