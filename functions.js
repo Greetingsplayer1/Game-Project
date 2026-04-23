@@ -778,7 +778,7 @@ function addXp(amount) {
 }
 
 function animate() {
-    if (!isGamePaused && char != "N/A" && !isGameOver) {
+    if (!isGamePaused && char != "N/A" && !isGameOver && !youWin) {
         let cameraX = posX - (canvas.width / 2) + 15; 
         let cameraY = posY - (canvas.height / 2) + 15;
 

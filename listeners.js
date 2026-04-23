@@ -120,6 +120,8 @@ window.addEventListener('keydown', (e) => {
             playerHP = 100;
             isGameOver = false;
             youWin = false;
+            swordEquipped = false;
+            bowEquipped = false;
 
             enemies.forEach(enemy => {
                 enemy.x = enemy.homeX;
