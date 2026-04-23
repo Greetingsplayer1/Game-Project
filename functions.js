@@ -384,6 +384,7 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     }else if (char === "chris") {
+        ctx.drawImage(document.getElementById("chris"),x-25,y-25,60,180);
        
         ctx.globalAlpha=1.0;
         ctx.restore();
