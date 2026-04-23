@@ -900,7 +900,7 @@ function animate() {
             }
             ctx.beginPath();
             ctx.moveTo(0,0);
-            ctx.arc(0, 0, 700, -Math.PI/2, Math.PI/2);
+            ctx.arc(0, 0, 500, -Math.PI/2, Math.PI/2);
             ctx.fill();
             ctx.restore();
 
