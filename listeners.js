@@ -117,7 +117,7 @@ window.addEventListener('keydown', (e) => {
 
             posX = -10; 
             posY = 1300;
-            playerHP = 100;
+            playerHP = playerHP;
             isGameOver = false;
             youWin = false;
             swordEquipped = false;
