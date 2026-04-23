@@ -28,11 +28,11 @@ function chooseChar(choice) {
         playerMaxHP = 80;
         playerHP = 80;
     } else if (choice === "barbarian") {
-        playerMaxHP = 120;
-        playerHP = 120;
+        playerMaxHP = 150;
+        playerHP = 150;
     } else if (choice === "knight") {
-        playerMaxHP = 180;
-        playerHP = 180;
+        playerMaxHP = 250;
+        playerHP = 250;
     } else if (choice === "chris") {
         playerMaxHP = 9999;
         playerHP = 9999;
