@@ -51,3 +51,5 @@ function castleBoss(x,y) {
     ctx.fillRect(x - 20, y + 100, 30, 100);
     ctx.fillRect(x + 20, y + 100, 30, 100);
 }
+
+//Put art in here
