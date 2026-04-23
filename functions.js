@@ -1239,7 +1239,7 @@ function animate() {
             ctx.textAlign = "center";
             ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
-        if (youWin = true) {
+        if (youWin) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             

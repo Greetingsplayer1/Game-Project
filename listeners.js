@@ -122,7 +122,16 @@ window.addEventListener('keydown', (e) => {
             enemies.forEach(enemy => {
                 enemy.x = enemy.homeX;
                 enemy.y = enemy.homeY;
-                enemy.hp = 100;
+                enemy.hp = enemy.maxHp;
+                enemy.scaredTimer = 0;
+                enemy.isDead = false;
+                enemy.color = 'white';
+            });
+
+            bossEnemies.forEach(enemy => {
+                enemy.x = enemy.homeX;
+                enemy.y = enemy.homeY;
+                enemy.hp = enemy.maxHp;
                 enemy.scaredTimer = 0;
                 enemy.isDead = false;
                 enemy.color = 'white';
