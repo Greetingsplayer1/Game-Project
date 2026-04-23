@@ -41,10 +41,10 @@ let extraFrame = true;
 let winStop = false;
 let bossEnemies = [
     { 
-        x: -50, y: 300, 
+        x: -500, y: 3000, 
            hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
-        patrolX: -50, patrolY: 1070,
+        patrolX: -500, patrolY: 1090,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
@@ -54,10 +54,10 @@ let bossEnemies = [
         }
     },
     { 
-        x: -50, y: 300, 
+        x: -10, y: 30, 
            hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
-        patrolX: -50, patrolY: 1070,
+        patrolX: -10, patrolY: 1070,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
@@ -67,10 +67,10 @@ let bossEnemies = [
         }
     },
     { 
-        x: -50, y: 300, 
+        x: -500, y: 800, 
            hp: 2000, maxHp: 2000,
         homeX: -50, homeY: 350, 
-        patrolX: -50, patrolY: 1070,
+        patrolX: -500, patrolY: 1070,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
