@@ -384,6 +384,7 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     }else if (char === "chris") {
+       
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "sorcerer") {
