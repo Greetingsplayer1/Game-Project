@@ -646,6 +646,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.respawnTimer = 400;
                 enemy.hp = enemy.maxHp;
                 addXp(430);
+                youWin = true;
             }
             hit = true;
             break;
@@ -1234,7 +1235,7 @@ function animate() {
             ctx.textAlign = "center";
             ctx.fillText(selectedMessage, canvas.width / 2, canvas.height / 2 + 100);
         }
-        
+
         if (youWin) {
             ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);

@@ -75,6 +75,7 @@ window.addEventListener('keydown', (e) => {
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
                         addXp(430);
+                        youWin = true;
                     }
                 }
             });
@@ -106,7 +107,7 @@ window.addEventListener('keydown', (e) => {
             });
         }
 
-        if (key === 'r' && isGameOver || youWin === true) {
+        if (key === 'r' && (isGameOver || youWin)) {
             civilians.forEach(civ => {
                 civ.x = civ.homeX;
                 civ.y = civ.homeY;
@@ -118,6 +119,7 @@ window.addEventListener('keydown', (e) => {
             posY = 1300;
             playerHP = 100;
             isGameOver = false;
+            youWin = false;
 
             enemies.forEach(enemy => {
                 enemy.x = enemy.homeX;
@@ -196,7 +198,8 @@ window.addEventListener('keydown', (e) => {
                                     enemy.isDead = true; 
                                     enemy.respawnTimer = 400; 
                                     enemy.hp = enemy.maxHp;
-                                    addXp(430);
+                                    addXp(430);   
+                                    youWin = true;
                                 }
                             }
                         });
