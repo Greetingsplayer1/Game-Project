@@ -75,6 +75,7 @@ window.addEventListener('keydown', (e) => {
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
                         addXp(430);
+                        youWin = true;
                     }
                 }
             });
@@ -84,11 +85,9 @@ window.addEventListener('keydown', (e) => {
                 if (d < 150 && !enemy.isDead) { 
                     enemy.hp -= 100;
                     if (enemy.hp <= 0) {
-                        enemy.isDead = true; 
-                        enemy.respawnTimer = 400; 
-                        enemy.hp = enemy.maxHp;
+                        enemy.isDead = true;
                         addXp(430);
-                        youWin = true;
+                        thingies += 1;
                     }
                 }
             });
@@ -226,10 +225,9 @@ window.addEventListener('keydown', (e) => {
                             if (d < 150 && !enemy.isDead) { 
                                 enemy.hp -= 100;
                                 if (enemy.hp <= 0) {
-                                    enemy.isDead = true; 
-                                    enemy.respawnTimer = 400; 
-                                    enemy.hp = enemy.maxHp;
+                                    enemy.isDead = true;
                                     addXp(430);
+                                    thingies += 1;
                                 }
                             }
                         });

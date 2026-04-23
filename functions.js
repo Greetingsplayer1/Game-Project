@@ -666,9 +666,8 @@ for (let i = arrow.length - 1; i >= 0; i--) {
             enemy.hp -= a.damage;
             if (enemy.hp <= 0) {
                 enemy.isDead = true;
-                enemy.respawnTimer = 400;
-                enemy.hp = enemy.maxHp;
                 addXp(430);
+                thingies += 1;
             }
             hit = true;
             break;
@@ -1055,102 +1054,99 @@ function animate() {
         );
 
         bossEnemies.forEach(enemy => {
-            if (enemy.isDead) {
-                youWin = true;
-                return;
-            }
-
-            let dx = posX - enemy.x;
-            let dy = posY - enemy.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            let angleToPlayer = Math.atan2(dy, dx);
-            let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
-            if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-            let canSeePlayer = (distance < 500 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
-            let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
-
-            if (canSeePlayer || tooClose) {
-                enemy.scaredTimer = 600;
-            }
-
-            if ((enemy.scaredTimer || 0) > 0) {
-                enemy.scaredTimer--;
-                enemy.color = '#7f8c8d';
+            if (thingies >= miniBossEnemies.length) {
+                let dx = posX - enemy.x;
+                let dy = posY - enemy.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
                 let angleToPlayer = Math.atan2(dy, dx);
-                
-                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
-                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+                let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
+                if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
+                let canSeePlayer = (distance < 500 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+                let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
 
-                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
-                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                if (canSeePlayer || tooClose) {
+                    enemy.scaredTimer = 600;
+                }
 
-                enemy.angle = angleToPlayer; 
-            } else {
-                enemy.color = '#7f8c8d';
-                let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
-                let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
-                let hDx = destX - enemy.x;
-                let hDy = destY - enemy.y;
-                let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
+                if ((enemy.scaredTimer || 0) > 0) {
+                    enemy.scaredTimer--;
+                    enemy.color = '#7f8c8d';
+                    let angleToPlayer = Math.atan2(dy, dx);
+                    
+                    let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                    let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
-                if (distToDest > 5) {
-                    let aMove = Math.atan2(hDy, hDx);
-                    enemy.x += Math.cos(aMove) * 4;
-                    enemy.y += Math.sin(aMove) * 4;
-                    enemy.angle = aMove; 
+                    if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                    if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+
+                    enemy.angle = angleToPlayer; 
                 } else {
-                    enemy.movingToPatrol = !enemy.movingToPatrol;
+                    enemy.color = '#7f8c8d';
+                    let destX = enemy.movingToPatrol ? enemy.patrolX : enemy.homeX;
+                    let destY = enemy.movingToPatrol ? enemy.patrolY : enemy.homeY;
+                    let hDx = destX - enemy.x;
+                    let hDy = destY - enemy.y;
+                    let distToDest = Math.sqrt(hDx * hDx + hDy * hDy);
+
+                    if (distToDest > 5) {
+                        let aMove = Math.atan2(hDy, hDx);
+                        enemy.x += Math.cos(aMove) * 4;
+                        enemy.y += Math.sin(aMove) * 4;
+                        enemy.angle = aMove; 
+                    } else {
+                        enemy.movingToPatrol = !enemy.movingToPatrol;
+                    }
                 }
-            }
 
-            let isColliding = 
-                enemy.x < posX + playerSize &&
-                enemy.x + enemy.size > posX &&
-                enemy.y < posY + playerSize &&
-                enemy.y + enemy.size > posY;
+                let isColliding = 
+                    enemy.x < posX + playerSize &&
+                    enemy.x + enemy.size > posX &&
+                    enemy.y < posY + playerSize &&
+                    enemy.y + enemy.size > posY;
 
 
-            if (isColliding && !enemy.isDead && damageCooldown === 0) {
-                playerHP -= 30;
-                damageCooldown = 25; 
+                if (isColliding && !enemy.isDead && damageCooldown === 0) {
+                    playerHP -= 30;
+                    damageCooldown = 25; 
+                    
+                    if (playerHP <= 0) {
+                        playerHP = 0;
+                        isGameOver = true;
+                    }
+                }
                 
-                if (playerHP <= 0) {
-                    playerHP = 0;
-                    isGameOver = true;
+                ctx.save();
+                ctx.translate(enemy.x + 20, enemy.y + 20);
+                ctx.rotate(enemy.angle || 0);
+                if ((enemy.scaredTimer || 0) > 0) {
+                    ctx.fillStyle = "rgba(255,0,0,0.25)";
+                } else {
+                    ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
                 }
-            }
-            
-            ctx.save();
-            ctx.translate(enemy.x + 20, enemy.y + 20);
-            ctx.rotate(enemy.angle || 0);
-            if ((enemy.scaredTimer || 0) > 0) {
-                ctx.fillStyle = "rgba(255,0,0,0.25)";
-            } else {
-                ctx.fillStyle = "rgba(255, 255, 0, 0.15)";
-            }
-            ctx.beginPath();
-            ctx.moveTo(0,0);
-            ctx.arc(0, 0, 500, -Math.PI/2, Math.PI/2);
-            ctx.fill();
-            ctx.restore();
+                ctx.beginPath();
+                ctx.moveTo(0,0);
+                ctx.arc(0, 0, 500, -Math.PI/2, Math.PI/2);
+                ctx.fill();
+                ctx.restore();
 
-            enemy.art(enemy.x,enemy.y);
- 
+                enemy.art(enemy.x,enemy.y);
+    
 
-            if (!enemy.isDead) {
-                let barWidth = 50;
-                let barHeight = 6;
-                let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
-                let barY = enemy.y - 55; 
+                if (!enemy.isDead) {
+                    let barWidth = 50;
+                    let barHeight = 6;
+                    let barX = enemy.x + (enemy.size / 2) - (barWidth / 2);
+                    let barY = enemy.y - 55; 
 
-            
-                ctx.fillStyle = "red";
-                ctx.fillRect(barX, barY, barWidth, barHeight);
+                
+                    ctx.fillStyle = "red";
+                    ctx.fillRect(barX, barY, barWidth, barHeight);
 
 
-                let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
-                ctx.fillStyle = "lime";
-                ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
+                    let currentHealthWidth = (enemy.hp / enemy.maxHp) * barWidth;
+                    ctx.fillStyle = "lime";
+                    ctx.fillRect(barX, barY, currentHealthWidth, barHeight);
+                }
             }
         });
 
