@@ -1,12 +1,10 @@
 function isSpaceBlocked(newX, newY) {
     for (let obj of mapObjects) {
-        if (obj.isSolid) { 
-            if (newX < obj.x + obj.w &&
-                newX + playerSize > obj.x &&
-                newY < obj.y + obj.h &&
-                newY + playerSize > obj.y) {
-                return true;
-            }
+        if (newX < obj.x + obj.w &&
+            newX + playerSize > obj.x &&
+            newY < obj.y + obj.h &&
+            newY + playerSize > obj.y) {
+            return true;
         }
     }
     return false;
@@ -881,6 +879,13 @@ function animate() {
         
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
+
+        ctx.fillStyle = "red";
+
+        mapObjects.forEach(obj => {
+            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+        });
+
 
          miniBossEnemies.forEach(enemy => {
             if (enemy.isDead) {
