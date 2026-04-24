@@ -4,8 +4,8 @@ This is me and Sebastopolis841's project for web design it is a 2d game that has
 We will be updating and adding more for a while.
 We did not use or copy and paste this is our orgional work and I have where the first commit and such and such code was born from check this site made by me.
 [JS Animations Practice](https://greetingsplayer1.github.io/practice/JS-Animations/)
-This project will be bassed on DND and is a mini campaign taking place in Chrisheim, 
-a wonderfull land of beutiful Crisians. 
+This project will be bassed on DND and is a mini campaign taking place in Titans Reach, 
+a wonderfull land of giants. 
 Also, the game will be very big and will allow you to move around, 
 fight enemies and even allow you to level up. 
 The game will have many functions from working health bars to XP and leving up, 
