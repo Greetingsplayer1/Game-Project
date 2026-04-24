@@ -219,6 +219,7 @@ window.addEventListener('keydown', (e) => {
                                         enemy.hp = enemy.maxHp;
                                         addXp(430);   
                                         youWin = true;
+                                        enemy.scaredTimer = 0;
                                     }
                                 }
                             });
@@ -232,6 +233,7 @@ window.addEventListener('keydown', (e) => {
                                     enemy.isDead = true;
                                     addXp(430);
                                     thingies += 1;
+                                    enemy.scaredTimer = 0;
                                 }
                             }
                         });
@@ -245,6 +247,7 @@ window.addEventListener('keydown', (e) => {
                                     enemy.respawnTimer = 400;
                                     enemy.hp = 100; 
                                     addXp(20);
+                                    enemy.scaredTimer = 0;
                                 }
                             }
                         });
@@ -258,6 +261,7 @@ window.addEventListener('keydown', (e) => {
                                     civ.respawnTimer = 400;
                                     civ.hp = 50;
                                     addXp(15);
+                                    enemy.scaredTimer = 0;
                                 }
                             }
                         });

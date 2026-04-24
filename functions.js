@@ -654,6 +654,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                     enemy.hp = enemy.maxHp;
                     addXp(430);
                     youWin = true;
+                    enemy.scaredTimer = 0;
                 }
                 hit = true;
                 break;
@@ -670,6 +671,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.isDead = true;
                 addXp(430);
                 thingies += 1;
+                enemy.scaredTimer = 0;
             }
             hit = true;
             break;
@@ -686,6 +688,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.respawnTimer = 400;
                 enemy.hp = enemy.maxHp;
                 addXp(20)
+                enemy.scaredTimer = 0;
             }
             hit = true;
             break;
@@ -704,6 +707,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                     civ.respawnTimer = 400;
                     civ.hp = civ.maxHp;
                     addXp(20);
+                    civ.scaredTimer = 0;
                 }
                 hit = true;
                 break;
@@ -1423,13 +1427,13 @@ function animate() {
             ctx.font = "20px sans-serif";
 
             ctx.fillText("XP: " + xp, 785, 250);
-            ctx.fillText("Level: " + level, 700, 250);
+            ctx.fillText("Level: " + level, 695, 250);
         } else {
             ctx.fillStyle = "rgba(0, 0, 0, 0.6)"; 
             ctx.fillRect(780, 20, 200, 25);
 
             ctx.fillStyle = "cyan"; 
-            let xpWidth = (xp / xpNeeded) * 200;
+            let xpWidth = (level === 20) ?  200 : (xp / xpNeeded) * 200;
             ctx.fillRect(780, 20, xpWidth, 25);
 
             ctx.strokeStyle = "white";
@@ -1441,7 +1445,7 @@ function animate() {
             ctx.font = "20px sans-serif";
 
             ctx.fillText("XP: " + xp, 785, 40);
-            ctx.fillText("Level: " + level, 700, 40);
+            ctx.fillText("Level: " + level, 695, 40);
         }
         
         if (isGameOver) {
