@@ -39,6 +39,88 @@ function castle(x,y) {
     ctx.fillRect(x + 15, y - 40, 5, 8);
 }
 
+function ice(x,y) {
+    ctx.fillStyle = '#c6e8ffff';
+    ctx.fillRect(x - 5, y, 45, 60);
+
+    ctx.fillStyle = '#61b2feff'; 
+    ctx.fillRect(x - 10, y - 5, 15, 15); 
+    ctx.fillRect(x + 30, y - 5, 15, 15); 
+    ctx.fillStyle = '#73a4e8ff'; 
+    ctx.fillRect(x + 5, y + 10, 25, 30); 
+    ctx.fillStyle = '#79caf582';
+    ctx.fillRect(x + 10, y + 15, 15, 2);
+    ctx.fillRect(x + 10, y + 25, 15, 2);
+
+
+    ctx.fillStyle = '#c6e8ffff';
+    ctx.fillRect(x - 15, y + 10, 10, 35); 
+    ctx.fillRect(x + 40, y + 10, 10, 35); 
+    // Heavy Gauntlets
+    ctx.fillStyle = '#b1c3c7ff';
+    ctx.fillRect(x - 15, y + 35, 12, 12);
+    ctx.fillRect(x + 38, y + 35, 12, 12);
+    ctx.fillStyle = '#ffffffff';
+    ctx.fillRect(x, y + 45, 15, 35); 
+    ctx.fillRect(x + 20, y + 45, 15, 35);
+    // Square boots
+    ctx.fillStyle = '#543e1cff'; 
+    ctx.fillRect(x - 2, y + 75, 17, 10);
+    ctx.fillRect(x + 20, y + 75, 17, 10);
+
+
+    ctx.fillStyle = '#ffffffff';
+    ctx.fillRect(x + 2, y - 35, 30, 35); 
+
+    ctx.fillStyle = '#0044ffff';
+    ctx.fillRect(x + 5, y - 25, 24, 4); 
+
+
+    ctx.fillStyle = '#0044ffff'; 
+    ctx.fillRect(x + 15, y - 40, 5, 8);
+}
+
+function fire(x,y) {
+    ctx.fillStyle = '#2b1209ff';
+    ctx.fillRect(x - 5, y, 45, 60);
+
+    ctx.fillStyle = '#ef6800ff'; 
+    ctx.fillRect(x - 10, y - 5, 15, 15); 
+    ctx.fillRect(x + 30, y - 5, 15, 15); 
+    ctx.fillStyle = '#4f0000ff'; 
+    ctx.fillRect(x + 5, y + 10, 25, 30); 
+    ctx.fillStyle = '#3c241182';
+    ctx.fillRect(x + 10, y + 15, 15, 2);
+    ctx.fillRect(x + 10, y + 25, 15, 2);
+
+
+    ctx.fillStyle = '#321c0bff';
+    ctx.fillRect(x - 15, y + 10, 10, 35); 
+    ctx.fillRect(x + 40, y + 10, 10, 35); 
+    // Heavy Gauntlets
+    ctx.fillStyle = '#15191aff';
+    ctx.fillRect(x - 15, y + 35, 12, 12);
+    ctx.fillRect(x + 38, y + 35, 12, 12);
+    ctx.fillStyle = '#28130dff';
+    ctx.fillRect(x, y + 45, 15, 35); 
+    ctx.fillRect(x + 20, y + 45, 15, 35);
+    // Square boots
+    ctx.fillStyle = '#543e1cff'; 
+    ctx.fillRect(x - 2, y + 75, 17, 10);
+    ctx.fillRect(x + 20, y + 75, 17, 10);
+
+
+    ctx.fillStyle = '#391f14ff';
+    ctx.fillRect(x + 2, y - 35, 30, 35); 
+
+    ctx.fillStyle = '#ef6800ff';
+    ctx.fillRect(x + 5, y - 25, 24, 4); 
+
+
+    ctx.fillStyle = '#ff0000ff'; 
+    ctx.fillRect(x + 15, y - 40, 5, 8);
+}
+
 function castleBoss(x,y) {
     ctx.fillStyle = '#ffd485ff';
     ctx.fillRect(x - 20, y - 20, 80, 120);
