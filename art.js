@@ -126,12 +126,19 @@ function castleBoss(x,y) {
     ctx.fillRect(x - 20, y - 20, 80, 120);
     ctx.fillRect(x+5, y - 45, 20, 20);
     ctx.fillRect(x+10, y - 45, 10, 40);
+
     // gray color fill style
     ctx.fillStyle = '#7f8c8dff';
     ctx.fillRect(x - 50, y - 20, 30, 120);
     ctx.fillRect(x + 50, y - 20, 30, 120);
     ctx.fillRect(x - 20, y + 100, 30, 100);
     ctx.fillRect(x + 20, y + 100, 30, 100);
+
+    //Helmet
+    ctx.fillRect(x + 1, y - 47, 28, 7);
+    ctx.fillRect(x + 13, y - 45, 5, 10);
+    ctx.fillRect(x + 1, y - 45, 5, 10);
+    ctx.fillRect(x + 24, y - 45, 5, 10);
 }
 
 function fireBoss(x,y) {
@@ -140,6 +147,7 @@ function fireBoss(x,y) {
     ctx.fillRect(x+5, y - 45, 20, 20);
     ctx.fillRect(x+10, y - 45, 10, 40);
 
+    //Helmet
     ctx.fillStyle = '#610000ff';
     ctx.fillRect(x + 1, y - 47, 28, 7);
     ctx.fillRect(x + 13, y - 45, 5, 10);

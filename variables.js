@@ -67,7 +67,7 @@ let miniBossEnemies = [
         angle: 0,
         movingToPatrol: true,
         art: function(x,y) {
-            fireBoss(x,y);
+            castleBoss(x,y);
         }
     },
 ];
