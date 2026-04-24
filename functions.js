@@ -852,7 +852,7 @@ function animate() {
 
         ctx.fillStyle = "#2d8a2d"; 
         ctx.fillRect(0, 0, canvas.width, canvas.height); 
-        
+          ctx.scale(.5, .5);
         ctx.translate(-cameraX, -cameraY);
 
         ctx.drawImage(document.getElementById("map"), 0, 0, 28048, 20400);
