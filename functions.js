@@ -855,7 +855,7 @@ function animate() {
         
         ctx.translate(-cameraX, -cameraY);
 
-        ctx.drawImage(document.getElementById("map"), 0, 0, 14024, 10200);
+        ctx.drawImage(document.getElementById("map"), 0, 0, 28048, 20400);
 
         if (currentGameState === "cutscene") {
             ctx.fillStyle = "black";
