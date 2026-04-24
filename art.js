@@ -134,4 +134,95 @@ function castleBoss(x,y) {
     ctx.fillRect(x + 20, y + 100, 30, 100);
 }
 
+function fireBoss(x,y) {
+    ctx.fillStyle = '#dba032ff';
+    ctx.fillRect(x - 20, y - 20, 80, 120);
+    ctx.fillRect(x+5, y - 45, 20, 20);
+    ctx.fillRect(x+10, y - 45, 10, 40);
+
+    ctx.fillStyle = '#610000ff';
+    ctx.fillRect(x + 1, y - 47, 28, 7);
+    ctx.fillRect(x + 13, y - 45, 5, 10);
+    ctx.fillRect(x + 1, y - 45, 5, 10);
+    ctx.fillRect(x + 24, y - 45, 5, 10);
+
+    // orange color fill style
+    ctx.fillStyle = '#632e1aff';
+    ctx.fillRect(x - 50, y - 20, 30, 120);
+    ctx.fillRect(x + 50, y - 20, 30, 120);
+    ctx.fillRect(x - 20, y + 100, 30, 100);
+    ctx.fillRect(x + 20, y + 100, 30, 100);
+
+    //Fireball 1
+    ctx.beginPath();
+    ctx.fillStyle = "#ff4400";
+    ctx.arc(x + 85, y + 100, 3, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 0.45; 
+    ctx.fillStyle = "#ff5500";
+    ctx.beginPath(); 
+    ctx.arc(x + 78, y + 100, 5, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 0.65;
+    ctx.fillStyle = "#ff7700";
+    ctx.beginPath(); 
+    ctx.arc(x + 71, y + 100, 7, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "#cc2200";
+    ctx.beginPath();
+    ctx.arc(x + 64, y + 100, 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#ff6600";
+    ctx.beginPath();
+    ctx.arc(x + 64, y + 100, 7, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.fillStyle = "#ffcc00";
+    ctx.beginPath(); 
+    ctx.arc(x + 64, y + 100, 4, 0, Math.PI * 2); 
+    ctx.fill();
+
+
+
+    //Fireball 2
+
+    ctx.beginPath();
+    ctx.fillStyle = "#ff4400";
+    ctx.arc(x - 15, y + 100, 3, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 0.45; 
+    ctx.fillStyle = "#ff5500";
+    ctx.beginPath(); 
+    ctx.arc(x - 22, y + 100, 5, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 0.65;
+    ctx.fillStyle = "#ff7700";
+    ctx.beginPath(); 
+    ctx.arc(x - 29, y + 100, 7, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "#cc2200";
+    ctx.beginPath();
+    ctx.arc(x - 36, y + 100, 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#ff6600";
+    ctx.beginPath();
+    ctx.arc(x - 36, y + 100, 7, 0, Math.PI * 2); 
+    ctx.fill();
+
+    ctx.fillStyle = "#ffcc00";
+    ctx.beginPath(); 
+    ctx.arc(x - 36, y + 100, 4, 0, Math.PI * 2); 
+    ctx.fill();
+}
+
 //Put art in here
