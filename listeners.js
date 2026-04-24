@@ -138,6 +138,8 @@ window.addEventListener('keydown', (e) => {
             extraFrame = true;
             swordEquipped = false;
             bowEquipped = false;
+            arrow = [];
+            thingies = 0;
 
             enemies.forEach(enemy => {
                 enemy.x = enemy.homeX;
