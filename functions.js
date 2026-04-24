@@ -876,11 +876,6 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        mapObjects.forEach(obj => {
-            ctx.fillStyle = obj.color;
-            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
-        });
-
          miniBossEnemies.forEach(enemy => {
             if (enemy.isDead) {
                 return;
