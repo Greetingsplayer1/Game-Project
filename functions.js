@@ -844,8 +844,8 @@ function addXp(amount) {
 
 function animate() {
     if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
-        let cameraX = posX - (canvas.width / 2) + 15; 
-        let cameraY = posY - (canvas.height / 2) + 15;
+        let cameraX = posX - (canvas.width / (2 * .5)) + 15; 
+        let cameraY = posY - (canvas.height / (2 * .5)) + 15;
 
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
         ctx.clearRect(0, 0, canvas.width, canvas.height); 
