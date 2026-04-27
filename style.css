@@ -61,6 +61,14 @@ canvas {
     display: none;
 }
 
+#devbuttons {
+    display: none;
+    padding-right: 0px;
+    position: absolute;
+    color: black;
+}
+
+
 #passcode {
     position: absolute;
     top: 0;
