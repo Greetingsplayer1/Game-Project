@@ -57,6 +57,10 @@ canvas {
     display: none;
 }
 
+#DEVBtn {
+    display: none;
+}
+
 #passcode {
     position: absolute;
     top: 0;
