@@ -326,6 +326,7 @@ document.getElementById("testPass").addEventListener('submit', e => {
         chrisBtn.style.display = "block";
     } else if (passcode === "DEVTest") {
         DEVBtn.style.display = "block";
+        devbuttons.style.display = "block";
     }
     
     document.getElementById("testPass").reset();
