@@ -30,6 +30,7 @@ let arrow = [];
 let aimAngle = 0;
 let ARROW_SPEED = 14;
 let ARROW_LIFETIME = 240;
+let arrowDamage = 25;
 let arrowCounter = 40;
 let char = "N/A";
 let xp = 0;

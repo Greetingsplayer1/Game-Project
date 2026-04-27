@@ -43,13 +43,13 @@
                     <button>hello</button>
                     <button>Reset Health</button>
                     <button>Resear Speed</button>
-                    <button>+10 HP</button>
-                    <button>-10 HP</button>
-                    <button>+10 arrows</button>
-                    <button>+10 speed</button>
-                    <button>-10 speed</button>
-                    <button>+10 arrow damage</button>
-                    <button>-10 arrow damage</button>
+                    <button onclick="(() =>  {playerHP += 10, playerMaxHP += 10})()">+10 HP</button>
+                    <button onclick="(() =>  {playerHP -= 10, playerMaxHP -= 10})()">-10 HP</button>
+                    <button onclick="(() =>  {arrowCounter += 10})()">+10 arrows</button>
+                    <button onclick="(() =>  {speedMultiplier += 10})()">+10 speed</button>
+                    <button onclick="(() =>  {speedMultiplier -= 10})()">-10 speed</button>
+                    <button onclick="(() =>  {arrowDamage += 10})()">+10 arrow damage</button>
+                    <button onclick="(() =>  {arrowDamage -= 10})()">-10 arrow damage</button>
                     <button>Reset all</button>
                 </div>
             <div id="imgHolder">

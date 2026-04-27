@@ -14,7 +14,6 @@ window.addEventListener('keydown', (e) => {
             shotTimer = 20;
         
             let vx, vy;
-            let arrowDamage = 25;
 
             if (char === "ranger") {
                 arrowDamage = 50;
