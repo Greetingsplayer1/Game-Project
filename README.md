@@ -1,3 +1,7 @@
+# THIS IS THE LINK TO PLAY THE GAME RIGHT BELOW
+
+[Game Project](https://greetingsplayer1.github.io/Game-Project/)
+
 # Game-Project
 
 This is me and Sebastopolis841's project for web design it is a 2d game that has interaction and more yeah.
