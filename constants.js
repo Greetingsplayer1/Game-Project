@@ -10,7 +10,13 @@ const selectScreen = document.getElementById("selectScreen");
 const chrisBtn = document.getElementById("chrisBtn");
 
 const mapObjects = [
-    
+    //Water castle
+    {x: -4135, y: -795, h: 1840, w: 700},
+    {x: -5975, y: -795, h: 1840, w: 700},
+    {x: -5275, y: -300, h: 1340, w: 1135},
+
+    //Water castle walls
+    {x: -6350, y: 1400, h: 250, w: 3765},
 ];
 
 const messages = [

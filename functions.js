@@ -858,10 +858,11 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        ctx.fillStyle = "red";
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = "5";
 
         mapObjects.forEach(obj => {
-            ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+            ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
         });
 
 
@@ -1352,6 +1353,7 @@ function animate() {
         ctx.fillRect(20, 20, healthWidth, 25);
 
         ctx.strokeStyle = "white";
+        ctx.lineWidth = 1;
         ctx.strokeRect(20, 20, 200, 25);
 
         
