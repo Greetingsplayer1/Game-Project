@@ -17,6 +17,7 @@ const mapObjects = [
 
     //Water castle walls
     {x: -6350, y: 1400, h: 250, w: 3765},
+    {x: -2780, y: 580, h: 820, w: 200}
 ];
 
 const messages = [
