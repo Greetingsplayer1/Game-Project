@@ -76,10 +76,62 @@ let miniBossEnemies = [
 
 let enemies = [
     { 
-        x: 300, y: 300, 
+        x: 3000, y: 3000, 
            hp: 100, maxHp: 100,
         homeX: 300, homeY: 300, 
         patrolX: 300, patrolY: 1020,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+    { 
+        x: -2000, y: 1300, 
+           hp: 100, maxHp: 100,
+        homeX: -2000, homeY: 1300, 
+        patrolX: -2000, patrolY: 1300,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+        { 
+        x: -4000, y: 1370, 
+           hp: 100, maxHp: 100,
+        homeX: -4000, homeY: 1370, 
+        patrolX: -4000, patrolY: 1370,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+    { 
+        x: -3800, y: 2400, 
+           hp: 100, maxHp: 100,
+        homeX: -4000, homeY: 2400, 
+        patrolX: -4000, patrolY: 2400,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+    { 
+        x: -3800, y: 1400, 
+           hp: 100, maxHp: 100,
+        homeX: -4000, homeY: 1400, 
+        patrolX: -4000, patrolY: 1400,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
