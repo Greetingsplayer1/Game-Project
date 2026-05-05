@@ -88,10 +88,6 @@ canvas {
     cursor: pointer;
 }
 
-#chris {
-    display: none;
-}
-
-#map {
+.hidden {
     display: none;
 }

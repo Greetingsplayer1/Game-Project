@@ -300,6 +300,28 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "fighter") {
+        ctx.drawImage(document.getElementById("fighter"),x-25,y-25,80,150);
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "sorcerer") {
+        ctx.drawImage(document.getElementById("sorcerer"),x-25,y-25,80,150);
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "wizard") {
+        ctx.drawImage(document.getElementById("wizard"),x-25,y-25,100,150);
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "paladain") {
+        ctx.drawImage(document.getElementById("paladain"),x-25,y-25,80,150);
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "warlock") {
+        ctx.drawImage(document.getElementById("warlock"),x-25,y-25,80,150);
+
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === 'monk') {
