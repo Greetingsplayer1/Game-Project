@@ -11,14 +11,16 @@ const chrisBtn = document.getElementById("chrisBtn");
 
 const mapObjects = [
     //Water castle
-    {x: -4135, y: -795, h: 1840, w: 700},
-    {x: -5975, y: -795, h: 1840, w: 700},
-    {x: -5275, y: -300, h: 1340, w: 1135},
+    {x: -4125, y: -2950, h: 2240, w: 700},
+    {x: -5965, y: -2950, h: 2240, w: 700},
+    {x: -5265, y: -2325, h: 1620, w: 1135},
 
     //Water castle walls
-    {x: -6350, y: 1400, h: 250, w: 3765},
-    {x: -2780, y: 580, h: 820, w: 200}
-];
+    {x: -6325, y: -275, h: 290, w: 3765},
+    {x: -2750, y: -1280, h: 1000, w: 200},
+    {x: -2750, y: -3660, h: 1450, w: 170},
+    {x: -6325, y: -3660, h: 290, w: 3565}
+]
 
 const messages = [
     "YOU ARE A FOOL how could you die I need a coffee",
