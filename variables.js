@@ -72,6 +72,19 @@ let miniBossEnemies = [
             castleBoss(x,y);
         }
     },
+    { 
+        x: -5325, y: -550, 
+           hp: 2000, maxHp: 2000,
+        homeX: -4225, homeY: -550, 
+        patrolX: -5325, patrolY: -550,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castleBoss(x,y);
+        }
+    },
 ];
 
 let enemies = [
@@ -99,6 +112,32 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             castle(x,y);
+        }
+    },
+    {
+        x: -2700, y: -2100, 
+           hp: 120, maxHp: 120,
+        homeX: -2700, homeY: -2100,
+        patrolX: -2700, patrolY: -2100,
+        size: 40, color: 'white',
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            ice(x,y);
+        }
+    },
+    {
+        x: -2700, y: -1400,
+           hp: 120, maxHp: 120,
+        homeX: -2700, homeY: -1400,
+        patrolX: -2700, patrolY: -1400,
+        size: 40, color: 'white',
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            ice(x,y);
         }
     }
 ];
