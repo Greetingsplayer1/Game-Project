@@ -20,6 +20,8 @@ const mapObjects = [
     {x: -2750, y: -1280, h: 1000, w: 200},
     {x: -2750, y: -3660, h: 1450, w: 170},
     {x: -6325, y: -3660, h: 290, w: 3565},
+    //outer water castle walls
+        {x: -6325, y: -6300, h: 10010, w: 0},
 
     //Dormor walls
     //top
