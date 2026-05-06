@@ -848,7 +848,7 @@ function animate() {
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
         ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
-        ctx.fillStyle = "#2d8a2d"; 
+        ctx.fillStyle = "#7ed957";
         ctx.fillRect(0, 0, canvas.width, canvas.height); 
           ctx.scale(.5, .5);
         ctx.translate(-cameraX, -cameraY);
