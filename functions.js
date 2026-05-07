@@ -663,7 +663,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
     ctx.fillStyle = 'silver';
-    ctx.fillRect(-7.5, -1.5, 15, 3);
+    ctx.fillRect(-7.5, -1.5, 40, 10);
     ctx.restore();}
     if (typeof a.lifetime !== 'number') a.lifetime = ARROW_LIFETIME;
     a.lifetime--;
