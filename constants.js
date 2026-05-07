@@ -47,7 +47,10 @@ const mapObjects = [
     {x: 21175, y: 21275, h: 975, w: 1850},
 
     {x: 24600, y: 21275, h: 975, w: 1850},
-    {x: 28000, y: 21275, h: 975, w: 1850}
+    {x: 28000, y: 21275, h: 975, w: 1850},
+
+    //big border around the entire map.
+    {x: -31150, y: -12900, h: 45150, w: 200}
 ]
 
 const messages = [
