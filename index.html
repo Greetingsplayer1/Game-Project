@@ -12,8 +12,32 @@
         <noscript>
             <h1 style="color: red">You must enable JavaScript to play this game.</h1>
         </noscript>
-        <ul id="left" style="margin-left: 10px; color: white;"><h3>Stealth Game</h3>  <li>Press 'E' for Stealth,</li> <li>'Space' to dagger attack,</li> <li>'Shift' to sprint,</li> <li>'F' to equip sword (Not availible while in stealth),</li> <li>'Shift f' to sheathe sword,</li> <li>'P' to pause,</li><li> 'Q' to equip bow,</li><li>'B' to fire bow.</li></ul>
-        <h3 id='right' style="margin-right: 10px;">Titan’s Reach is a 2D action stealth game set in Chrisheim, a world where giants roam and danger shows up fast. Pick a class, explore the map, grab coins for healing (and XP), and fight enemies before they find you. Use stealth to stay hidden, then switch to your weapon when it’s time to strike. Civilians can get scared too—so move carefully, and don’t let combat spiral out of control. Goal: earn XP, level up, and clear the encounters. When you’ve defeated the final threat, you win.</h3>
+        <div id="left" class="textCard">
+            <h3 class="cardTitle">Stealth Game</h3>
+            <ul class="instructionList">
+                <li><strong>E</strong> — Stealth</li>
+                <li><strong>Space</strong> — dagger attack</li>
+                <li><strong>Shift</strong> — sprint</li>
+                <li><strong>F</strong> — equip sword <em>(not available while in stealth)</em></li>
+                <li><strong>Shift + F</strong> — sheathe sword</li>
+                <li><strong>P</strong> — pause</li>
+                <li><strong>Q</strong> — equip bow</li>
+                <li><strong>B</strong> — fire bow</li>
+            </ul>
+        </div>
+
+        <div id="right" class="textCard">
+            <h3 class="cardTitle">
+                Titan’s Reach is a 2D action stealth game set in Chrisheim, a world where giants roam and danger shows up fast.
+                Pick a class, explore the map, grab coins for healing (and XP), and fight enemies before they find you.
+                Use stealth to stay hidden, then switch to your weapon when it’s time to strike.
+                Civilians can get scared too—so move carefully, and don’t let combat spiral out of control.
+                Goal: earn XP, level up, and clear the encounters.
+                When you’ve defeated the final threat, you win.
+            </h3>
+        </div>
+
+
 
         <div id="canvasHolder">
             <canvas id="myCanvas" width="1000" height="800"></canvas>
