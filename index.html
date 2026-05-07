@@ -67,9 +67,9 @@
                 <button id="reload" onclick="window.location.reload();" class="hidden">Reload Page</button>
                 <br>
                 <div id="devbuttons">
-                    <button>hello</button>
-                    <button>Reset Health</button>
-                    <button>Resear Speed</button>
+                    <button onclick="(() =>  {posX = -10, posY = 1500})()">Spawn</button>
+                    <button onclick="(() =>  {posX = -4730, posY = -600})">Water castle</button>
+                    <button onclick="(() =>  {posX = 23690, posY = 20940})()">Dormor</button>
                     <button onclick="(() =>  {playerHP += 10, playerMaxHP += 10})()">+10 HP</button>
                     <button onclick="(() =>  {playerHP -= 10, playerMaxHP -= 10})()">-10 HP</button>
                     <button onclick="(() =>  {arrowCounter += 10})()">+10 arrows</button>
