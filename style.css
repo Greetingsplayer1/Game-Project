@@ -4,12 +4,23 @@ canvas {
     display: none;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    "texting canvas texts";
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 300px auto 300px;
+  width: auto;
+}
+
 #canvasHolder {
     position: relative;
     width: 1002px;
     height: 802px;
     background-color: #6c4204;
     margin: auto;
+    grid-area: canvas;
+    justify-content: center;
 }
 
 #imgHolder {
@@ -101,4 +112,12 @@ body {
 
 h2 {
     color: lightgray;
+}
+
+#right{
+    grid-area: texting;
+}
+
+#left{
+    grid-area: texts;
 }

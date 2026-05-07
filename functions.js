@@ -909,7 +909,7 @@ function animate() {
             let angleToPlayer = Math.atan2(dy, dx);
             let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
             if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive);
             let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
 
             if (canSeePlayer || tooClose) {
@@ -1084,7 +1084,7 @@ function animate() {
                 let angleToPlayer = Math.atan2(dy, dx);
                 let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
                 if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-                let canSeePlayer = (distance < 500 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+                let canSeePlayer = (distance < 500 && angleDiff < Math.PI / 2 && !stealthActive);
                 let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
 
                 if (canSeePlayer || tooClose) {
@@ -1190,7 +1190,7 @@ function animate() {
             let angleToPlayer = Math.atan2(dy, dx);
             let angleDiff = Math.abs((enemy.angle || 0) - angleToPlayer);
             if (angleDiff > Math.PI) angleDiff = Math.PI * 2 - angleDiff;  
-            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
+            let canSeePlayer = (distance < 400 && angleDiff < Math.PI / 2 && !stealthActive);
             let tooClose = (distance < 40 && !stealthActive && (bladeActive || swordEquipped || bowEquipped));
 
             if (canSeePlayer || tooClose) {
