@@ -20,8 +20,9 @@ const mapObjects = [
     {x: -2750, y: -1280, h: 1000, w: 200},
     {x: -2750, y: -3660, h: 1450, w: 170},
     {x: -6325, y: -3660, h: 290, w: 3565},
+
     //outer water castle walls
-        {x: -6325, y: -6300, h: 10010, w: 0},
+    {x: -6325, y: -6300, h: 10010, w: 0},
 
     //Dormor walls
     //top
@@ -34,7 +35,19 @@ const mapObjects = [
 
     //weird little square things
     {x: 24490, y: 16150, h: 350, w: 355},
-    {x: 22585, y: 16120, h: 380, w: 375}
+    {x: 22585, y: 16120, h: 380, w: 375},
+
+    //Dormor Forts
+    //line things at the bottom
+    {x: 14920, y: 22250, h: 400, w: 8100},
+    {x: 24600, y: 22250, h: 400, w: 10800},
+
+    //upper forts
+    {x: 17770, y: 21275, h: 975, w: 1850},
+    {x: 21175, y: 21275, h: 975, w: 1850},
+
+    {x: 24600, y: 21275, h: 975, w: 1850},
+    {x: 28000, y: 21275, h: 975, w: 1850}
 ]
 
 const messages = [
