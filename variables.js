@@ -247,8 +247,8 @@ let enemies = [
     { 
         x: 22800, y: 18200, 
         hp: 100, maxHp: 100,
-        homeX: 24400, homeY: 16200, 
-        patrolX: 24400, patrolY: 16200,
+        homeX: 22800, homeY: 18200, 
+        patrolX: 22800, patrolY: 18200,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
@@ -260,8 +260,8 @@ let enemies = [
     { 
         x: 24600, y: 18200,
         hp: 120, maxHp: 120,
-        homeX: 24400, homeY: 16200,
-        patrolX: 24400, patrolY: 16200,
+        homeX: 24400, homeY: 18200,
+        patrolX: 24400, patrolY: 18200,
         size: 40, color: 'white',
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: Math.PI,
