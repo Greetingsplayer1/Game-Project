@@ -178,6 +178,16 @@ h3 {
     color: #ffffff;
 }
 
+#reload {
+    position: absolute;
+    width: 150px;
+    height: 75px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: sans-serif;
+    bottom: 175px;
+    left: 425px;
+}
 
 @media (max-width: 1000px) {
     .grid-container {

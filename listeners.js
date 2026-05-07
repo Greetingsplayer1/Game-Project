@@ -169,11 +169,12 @@ window.addEventListener('keydown', (e) => {
             if (isGamePaused) {
                 isGamePaused = false;
 
+                document.getElementById("reload").style.display = "none";
+
                 music.play();
             } else {
                 isGamePaused = true;
 
-                
                 ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
@@ -187,6 +188,8 @@ window.addEventListener('keydown', (e) => {
 
                 ctx.font = "17px sans-serif";
                 ctx.fillText("Keybinds: E - Stealth, Space - Attack, Shift - Sprint, F - Draw/Weild Sword, Shift + F - Sheath Sword, P - Pause.", canvas.width / 2, canvas.height / 2 + 100);
+
+                document.getElementById("reload").style.display = "block";
 
                 music.pause();
             }
