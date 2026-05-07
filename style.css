@@ -6,11 +6,10 @@ canvas {
 
 .grid-container {
   display: grid;
-  grid-template-areas: 
-    "texting canvas texts";
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 300px auto 300px;
-  width: auto;
+  grid:
+    "left canvas right" 100vh
+    /1fr 1100px 1fr;
+  width: 100 vw;
 }
 
 #canvasHolder {
@@ -110,14 +109,14 @@ body {
   margin: 0;
 }
 
-h2 {
+h3 {
     color: lightgray;
 }
 
-#right{
-    grid-area: texting;
+#left{
+    grid-area: left;
 }
 
-#left{
-    grid-area: texts;
+#right{
+    grid-area: right;
 }
