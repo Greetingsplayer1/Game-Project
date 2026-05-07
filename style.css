@@ -98,3 +98,7 @@ body {
   min-height: 120vh;
   margin: 0;
 }
+
+h2 {
+    color: lightgray;
+}
