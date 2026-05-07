@@ -53,6 +53,8 @@ window.addEventListener('keydown', (e) => {
             speedMultiplier = 1.9;
         } else if (char === "chris") {
             speedMultiplier = 5.0;
+        } else if (char === "crashTestDummy") {
+            speedMultiplier = 10.0;
         } else if (char === "rogue") {
             speedMultiplier = 2.5; // Rogue's sprint speed\
          }
@@ -299,8 +301,10 @@ window.addEventListener('keyup', (e) => {
     } else if (char === "rogue") {
         speedMultiplier = 1.7; // Rogue's sprint speed\
     }else if (char === "chris") {
-            speedMultiplier = 3.0;
-        } else {
+        speedMultiplier = 3.0;
+    } else if (char === "crashTestDummy") {
+        speedMultiplier = 5.0;
+    } else {
         speedMultiplier = 1; // Rogue's sprint speed\
     }
 });
@@ -326,6 +330,8 @@ document.getElementById("testPass").addEventListener('submit', e => {
     } else if (passcode === "DEVTest") {
         DEVBtn.style.display = "block";
         document.getElementById("devbuttons").style.display = "block";
+    } else if (passcode === "crashTest") {
+        chooseChar("crashTestDummy");
     }
     
     document.getElementById("testPass").reset();

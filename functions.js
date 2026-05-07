@@ -1,13 +1,15 @@
 function isSpaceBlocked(newX, newY) {
-    for (let obj of mapObjects) {
-        if (newX < obj.x + obj.w &&
-            newX + playerSize > obj.x &&
-            newY < obj.y + obj.h &&
-            newY + playerSize > obj.y) {
-            return true;
+    if (char != "crashTestDummy") {
+        for (let obj of mapObjects) {
+            if (newX < obj.x + obj.w &&
+                newX + playerSize > obj.x &&
+                newY < obj.y + obj.h &&
+                newY + playerSize > obj.y) {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
 }
 
 
@@ -321,6 +323,11 @@ function drawVader(x, y) {
         ctx.restore();
     } else if (char === "warlock") {
         ctx.drawImage(document.getElementById("warlock"),x-25,y-25,80,150);
+
+        ctx.globalAlpha=1.0;
+        ctx.restore();
+    } else if (char === "crashTestDummy") {
+        ctx.drawImage(document.getElementById("crashTestDummy"),x-25,y-25,100,150);
 
         ctx.globalAlpha=1.0;
         ctx.restore();
