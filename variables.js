@@ -1,5 +1,5 @@
-let posX = 23690; 
-let posY = 20940;
+let posX = -10; 
+let posY = 1500;
 let keys = {};
 let stealthActive = false;
 let bladeActive = false;

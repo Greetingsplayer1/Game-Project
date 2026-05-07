@@ -1,13 +1,13 @@
 function isSpaceBlocked(newX, newY) {
-    // for (let obj of mapObjects) {
-    //     if (newX < obj.x + obj.w &&
-    //         newX + playerSize > obj.x &&
-    //         newY < obj.y + obj.h &&
-    //         newY + playerSize > obj.y) {
-    //         return true;
-    //     }
-    // }
-    // return false;
+    for (let obj of mapObjects) {
+        if (newX < obj.x + obj.w &&
+            newX + playerSize > obj.x &&
+            newY < obj.y + obj.h &&
+            newY + playerSize > obj.y) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
