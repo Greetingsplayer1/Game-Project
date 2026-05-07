@@ -662,8 +662,34 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     ctx.translate(a.x, a.y);
     const aAngle = Math.atan2(a.vy, a.vx);
     ctx.rotate(aAngle);
-    ctx.fillStyle = 'silver';
-    ctx.fillRect(-7.5, -1.5, 40, 10);
+    ctx.fillStyle= 'rgba(88, 56, 0, 1)'
+    ctx.fillRect(-14, -1.7, 28, 3.4);
+
+    // Head (compact, sharper tip)
+    ctx.fillStyle = 'silver'
+    ctx.beginPath();
+    ctx.moveTo(11, 0);
+    ctx.lineTo(18, -2.3);
+    ctx.lineTo(18, 2.3);
+    ctx.closePath();
+    ctx.fill();
+
+    // Fletching near the tail (gray/metal look)
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.moveTo(-14, 0);
+    ctx.lineTo(-20, -4);
+    ctx.lineTo(-8, -2.2);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(-14, 0);
+    ctx.lineTo(-20, 4);
+    ctx.lineTo(-8, 2.2);
+    ctx.closePath();
+    ctx.fill();
+
     ctx.restore();}
     if (typeof a.lifetime !== 'number') a.lifetime = ARROW_LIFETIME;
     a.lifetime--;
