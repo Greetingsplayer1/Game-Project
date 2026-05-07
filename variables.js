@@ -85,6 +85,19 @@ let miniBossEnemies = [
             castleBoss(x,y);
         }
     },
+    { 
+        x: 23690, y: 23940,
+        hp: 2000, maxHp: 2000,
+        homeX: 22690, homeY: 23940, 
+        patrolX: 24690, patrolY: 23940,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            fireBoss(x,y);
+        }
+    },
 ];
 
 let enemies = [
@@ -203,6 +216,84 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             castle(x,y);
+        }
+    },
+    { 
+        x: 23000, y: 16200, 
+        hp: 100, maxHp: 100,
+        homeX: 23000, homeY: 16200, 
+        patrolX: 23000, patrolY: 16200,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+    { 
+        x: 24400, y: 16200, 
+        hp: 100, maxHp: 100,
+        homeX: 24400, homeY: 16200, 
+        patrolX: 24400, patrolY: 16200,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: Math.PI,
+        movingToPatrol: true,
+        art: function(x,y) {
+            castle(x,y);
+        }
+    },
+    { 
+        x: 22800, y: 18200, 
+        hp: 100, maxHp: 100,
+        homeX: 24400, homeY: 16200, 
+        patrolX: 24400, patrolY: 16200,
+        size: 40, color: 'white', 
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            fire(x,y);
+        }
+    },
+    { 
+        x: 24600, y: 18200,
+        hp: 120, maxHp: 120,
+        homeX: 24400, homeY: 16200,
+        patrolX: 24400, patrolY: 16200,
+        size: 40, color: 'white',
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: Math.PI,
+        movingToPatrol: true,
+        art: function(x,y) {
+            fire(x,y);
+        }
+    },
+    { 
+        x: 23190, y: 23940,
+        hp: 100, maxHp: 100,
+        homeX: 23190, homeY: 23440,
+        patrolX: 23190, patrolY: 24440,
+        size: 40, color: 'white',
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: 0,
+        movingToPatrol: true,
+        art: function(x,y) {
+            fire(x,y);
+        }
+    },
+    { 
+        x: 24190, y: 23940,
+        hp: 120, maxHp: 120,
+        homeX: 24190, homeY: 23440,
+        patrolX: 24190, patrolY: 24440,
+        size: 40, color: 'white',
+        isDead: false, respawnTimer: 0, scaredTimer: 0,
+        angle: Math.PI,
+        movingToPatrol: true,
+        art: function(x,y) {
+            fire(x,y);
         }
     },
 ];
