@@ -736,6 +736,9 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                     civ.hp = civ.maxHp;
                     addXp(20);
                     civ.scaredTimer = 0;
+                    if (civ.bob) {
+                        bob.push({x: civ.x, y: civ.y});
+                    }
                 }
                 hit = true;
                 break;
@@ -1064,8 +1067,12 @@ function animate() {
             ctx.fillStyle = "lime";
             ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
 
-            ctx.fillStyle = civ.color;
-            ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+            if (civ.bob) {
+                ctx.drawImage(document.getElementById("bob"), civ.x - 25, civ.y - 10);
+            } else if (!civ.bob) {
+                ctx.fillStyle = civ.color;
+                ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+            }
         }
         );
 
@@ -1341,8 +1348,12 @@ function animate() {
             ctx.fillStyle = "lime";
             ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
 
-            ctx.fillStyle = civ.color;
-            ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+            if (civ.bob) {
+                ctx.drawImage(document.getElementById("bob"), civ.x - 25, civ.y - 10);
+            } else if (!civ.bob) {
+                ctx.fillStyle = civ.color;
+                ctx.fillRect(civ.x, civ.y, civ.size, civ.size);
+            }
         }
         );
 
@@ -1367,6 +1378,10 @@ function animate() {
                 ctx.fillStyle = 'gold';
                 ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
             }
+        });
+
+        bob.forEach(bob => {
+            ctx.drawImage(document.getElementById("pileOfBob"), bob.x, bob.y);
         });
         
         drawVader(posX, posY);

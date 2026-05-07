@@ -3,12 +3,12 @@ window.addEventListener('keydown', (e) => {
 
         const key = e.key.toLowerCase();
         keys[key] = true;
-        if (e.key === 'q') {
+        if (key === 'q') {
             bowEquipped = !bowEquipped;
             swordEquipped = false;
         }
 
-        if (e.key === 'b' && bowEquipped && arrowCounter > 0) {
+        if (key === 'b' && bowEquipped && arrowCounter > 0) {
             arrowCounter--;
             isShooting = true;
             shotTimer = 20;
@@ -117,6 +117,9 @@ window.addEventListener('keydown', (e) => {
                         civ.respawnTimer = 400; 
                         civ.hp = civ.maxHp;
                         addXp(20);
+                        if (civ.bob) {
+                            bob.push({x: civ.x, y: civ.y});
+                        }
                     }
                 }
             });
@@ -265,6 +268,9 @@ window.addEventListener('keydown', (e) => {
                                     civ.hp = 50;
                                     addXp(15);
                                     enemy.scaredTimer = 0;
+                                    if (civ.bob) {
+                                        bob.push({x: civ.x, y: civ.y});
+                                    }
                                 }
                             }
                         });

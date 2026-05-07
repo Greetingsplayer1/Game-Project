@@ -43,6 +43,7 @@ let youWin = false;
 let extraFrame = true;
 let winStop = false;
 let thingies = 0;
+let bob = []
 let bossEnemies = [
     { 
         x: -50, y: 300, 
@@ -299,6 +300,6 @@ let enemies = [
 ];
 
 let civilians = [
-    { x: 100, y: 100, homeX : 100, homeY: 500, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false},
-    { x: -600, y: 200, homeX : -600, homeY: 200, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false}
+    { x: 100, y: 100, homeX : 100, homeY: 500, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false, bob: false},
+    { x: -600, y: 200, homeX : -600, homeY: 200, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false, bob: true}
 ];
