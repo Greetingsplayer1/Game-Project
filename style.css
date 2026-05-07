@@ -8,7 +8,8 @@ canvas {
     position: relative;
     width: 1002px;
     height: 802px;
-    background-color: #000070;
+    background-color: #6c4204;
+    margin: auto;
 }
 
 #imgHolder {
@@ -90,4 +91,10 @@ canvas {
 
 .hidden {
     display: none;
+}
+
+body {
+  background-image: linear-gradient(to right, #294714, #32920c);
+  min-height: 100vh;
+  margin: 0;
 }
