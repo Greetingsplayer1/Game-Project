@@ -332,6 +332,7 @@ document.getElementById("testPass").addEventListener('submit', e => {
         document.getElementById("devbuttons").style.display = "block";
     } else if (passcode === "crashTest") {
         chooseChar("crashTestDummy");
+        document.getElementById("devbuttons").style.display = "block";
     }
     
     document.getElementById("testPass").reset();
