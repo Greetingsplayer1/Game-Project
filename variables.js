@@ -45,11 +45,11 @@ let winStop = false;
 let thingies = 0;
 let bob = []
 let bossEnemies = [
-    { 
-        x: -50, y: 300, 
-           hp: 2000, maxHp: 2000,
-        homeX: -50, homeY: 350, 
-        patrolX: -50, patrolY: 1090,
+        { 
+        x: -3300, y: -1700, 
+        hp: 1000, maxHp: 1000,
+        homeX: -3300, homeY: -2500, 
+        patrolX: -3300, patrolY: -900,
         size: 40, color: 'white', 
         isDead: false, respawnTimer: 0, scaredTimer: 0,
         angle: 0,
@@ -61,21 +61,8 @@ let bossEnemies = [
 ];
 let miniBossEnemies = [
     { 
-        x: -500, y: 3000, 
-           hp: 2000, maxHp: 2000,
-        homeX: -50, homeY: 350, 
-        patrolX: -500, patrolY: 1090,
-        size: 40, color: 'white', 
-        isDead: false, respawnTimer: 0, scaredTimer: 0,
-        angle: 0,
-        movingToPatrol: true,
-        art: function(x,y) {
-            castleBoss(x,y);
-        }
-    },
-    { 
         x: -3300, y: -1700, 
-        hp: 2000, maxHp: 2000,
+        hp: 1000, maxHp: 1000,
         homeX: -3300, homeY: -2500, 
         patrolX: -3300, patrolY: -900,
         size: 40, color: 'white', 
@@ -88,7 +75,7 @@ let miniBossEnemies = [
     },
     { 
         x: 23690, y: 23940,
-        hp: 2000, maxHp: 2000,
+        hp: 1000, maxHp: 1000,
         homeX: 22690, homeY: 23940, 
         patrolX: 24690, patrolY: 23940,
         size: 40, color: 'white', 
