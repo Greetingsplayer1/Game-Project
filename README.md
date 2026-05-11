@@ -25,6 +25,10 @@ We will have renaissance style music,
 with cool combat music for battles, 
 and custom music for If you are playing as Chris.
 
+# WE GOT THE MUSIC
+
+it was made by a music student named Wesley Thomas yay
+
 # Game Background
 
 The story of this game takes place in Chrisheim, 
