@@ -197,6 +197,11 @@ h3 {
     cursor: pointer
 }
 
+#warning {
+    margin-top: 270%;
+    color: red;
+}
+
 @media (max-width: 1000px) {
     .grid-container {
         grid:
