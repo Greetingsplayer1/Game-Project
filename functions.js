@@ -37,9 +37,9 @@ function chooseChar(choice) {
         playerBaseHP = 250;
         playerHP = 250;
     } else if (choice === "chris") {
-        playerMaxHP = 9999;
-        playerBaseHp = 9999;
-        playerHP = 9999;
+        playerMaxHP = Infinity;
+        playerBaseHP = Infinity;
+        playerHP = Infinity;
     }
 
     if (choice === "ranger") {
