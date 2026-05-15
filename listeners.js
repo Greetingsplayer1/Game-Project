@@ -56,7 +56,7 @@ window.addEventListener('keydown', (e) => {
         } else if (char === "crashTestDummy") {
             speedMultiplier = 10.0;
         } else if (char === "rogue") {
-            speedMultiplier = 2.5; // Rogue's sprint speed\
+            speedMultiplier = 2.5; // Rogue's sprint speed
          }
         else {
             speedMultiplier = 2;

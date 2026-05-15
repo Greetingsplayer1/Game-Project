@@ -37,7 +37,7 @@ function chooseChar(choice) {
         playerBaseHP = 250;
         playerHP = 250;
     } else if (choice === "chris") {
-        playerMaxHP = 10000000000000000000000000000000000000
+        playerMaxHP = 10000000000000000000000000000000000000;
         playerBaseHP = 10000000000000000000000000000000000000;
         playerHP = 10000000000000000000000000000000000000;
     }
