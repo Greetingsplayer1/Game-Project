@@ -947,7 +947,7 @@ function animate() {
                 enemy.color = '#7f8c8d';
                 let angleToPlayer = Math.atan2(dy, dx);
                 
-                if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                if (!((Math.abs(enemy.x - posX) <= 2) && (Math.abs(enemy.y - posY) <= 2))) {
                     let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
                     let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
@@ -1124,7 +1124,7 @@ function animate() {
                     enemy.color = '#7f8c8d';
                     let angleToPlayer = Math.atan2(dy, dx);
                     
-                    if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                    if (!((Math.abs(enemy.x - posX) <= 2) && (Math.abs(enemy.y - posY) <= 2))) {
                         let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
                         let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
@@ -1232,7 +1232,7 @@ function animate() {
                 enemy.color = '#7f8c8d';
                 let angleToPlayer = Math.atan2(dy, dx);
                 
-                if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                if (!((Math.abs(enemy.x - posX) <= 2) && (Math.abs(enemy.y - posY) <= 2))) {
                     let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
                     let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
