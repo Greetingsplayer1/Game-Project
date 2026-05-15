@@ -947,11 +947,13 @@ function animate() {
                 enemy.color = '#7f8c8d';
                 let angleToPlayer = Math.atan2(dy, dx);
                 
-                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
-                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+                if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                    let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                    let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
-                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
-                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                    if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                    if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                }
 
                 enemy.angle = angleToPlayer; 
             } else {
@@ -1122,11 +1124,13 @@ function animate() {
                     enemy.color = '#7f8c8d';
                     let angleToPlayer = Math.atan2(dy, dx);
                     
-                    let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
-                    let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+                    if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                        let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                        let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
-                    if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
-                    if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                        if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                        if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                    }
 
                     enemy.angle = angleToPlayer; 
                 } else {
@@ -1228,11 +1232,13 @@ function animate() {
                 enemy.color = '#7f8c8d';
                 let angleToPlayer = Math.atan2(dy, dx);
                 
-                let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
-                let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
+                if (!(((enemy.x - posX) <= 2) && ((enemy.y - posY) <= 2))) {
+                    let nextX = enemy.x + Math.cos(angleToPlayer) * 7;
+                    let nextY = enemy.y + Math.sin(angleToPlayer) * 7;
 
-                if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
-                if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                    if (!isSpaceBlocked(nextX, enemy.y)) enemy.x = nextX;
+                    if (!isSpaceBlocked(enemy.x, nextY)) enemy.y = nextY;
+                }
 
                 enemy.angle = angleToPlayer; 
             } else {
