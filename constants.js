@@ -9,6 +9,7 @@ const charMusic = new Audio('media/charSelect.wav');
 const suspense = new Audio('media/suspense.wav');
 const selectScreen = document.getElementById("selectScreen");
 const chrisBtn = document.getElementById("chrisBtn");
+const enemyStopRadius = 3
 
 const mapObjects = [
     //Water castle
