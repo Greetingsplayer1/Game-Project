@@ -1,5 +1,5 @@
 function isSpaceBlocked(newX, newY) {
-    if (char != "crashTestDummy") {
+    if (char != "crashTestDummy" || playerActive === false) {
         for (let obj of mapObjects) {
             if (newX < obj.x + obj.w &&
                 newX + playerSize > obj.x &&
@@ -901,7 +901,8 @@ function animate() {
             ctx.textAlign = "center";
             ctx.fillText(cutsceneText, canvas.width / 2, canvas.height - 50);
         }
-        
+
+        playerActive = true;
         if (!isGameOver && !isGamePaused) {
             let baseSpeed = stealthActive ? 4 : 10;
             let currentSpeed = baseSpeed * speedMultiplier
@@ -912,6 +913,8 @@ function animate() {
             if ((keys['w'] || keys['arrowup']) && !isSpaceBlocked(posX, posY - currentSpeed)) posY -= currentSpeed;
             if ((keys['s'] || keys['arrowdown']) && !isSpaceBlocked(posX, posY + currentSpeed)) posY += currentSpeed;
         }
+        
+        playerActive = false;
         
         
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;

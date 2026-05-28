@@ -45,6 +45,7 @@ let winStop = false;
 let thingies = 0;
 let gold = 0;
 let bob = []
+let playerActive = false;
 let bossEnemies = [
         { 
         x: -3300, y: -1700, 
