@@ -13,8 +13,9 @@ function isSpaceBlocked(newX, newY) {
 }
 
 
-function spawnItem(newX, newY, img) {
-    let item = {x: newX, y: newY, size: 10, isTaken: false, img: img};
+function spawnItem(newX, newY, img, value) {
+    let size = 10 + (10 * ((value - 1)/2));
+    let item = {x: newX - size/2, y: newY - size/2, size: size, isTaken: false, img: img, value: value};
     collectibles.push(item);
 }
 
@@ -1391,10 +1392,10 @@ function animate() {
 
         collectibles.forEach(coin => {
             let isColliding = 
-                coin.x < posX + coinCollisionSize &&
-                coin.x + coin.size > posX &&
-                coin.y < posY + coinCollisionSize &&
-                coin.y + coin.size > posY;
+            coin.x < posX + coinCollisionSize &&
+            coin.x + coin.size > posX &&
+            coin.y < posY + coinCollisionSize &&
+            coin.y + coin.size > posY;
 
             if (isColliding && !coin.isTaken) {
                 coin.isTaken = true;
@@ -1403,7 +1404,9 @@ function animate() {
                 playerHP += 20;
                 if (playerHP > playerMaxHP) playerHP = playerMaxHP;
 
-                addXp(10);
+                addXp(10 * coin.value);
+
+                gold += coin.value;
             }
 
             if (!coin.isTaken) {
@@ -1469,6 +1472,9 @@ function animate() {
         ctx.fillStyle = "white";
         let weaponText3 = bowEquipped? "BOW EQUIPED" : "BOW NOT EQUIPPED";
         ctx.fillText(weaponText3, 20, 220)
+
+        ctx.fillStyle = "gold";
+        ctx.fillText("GOLD: " + gold, 20, 250)
 
         ctx.font = "30px sans-serif";
         ctx.fillStyle = "white";

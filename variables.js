@@ -43,6 +43,7 @@ let youWin = false;
 let extraFrame = true;
 let winStop = false;
 let thingies = 0;
+let gold = 0;
 let bob = []
 let bossEnemies = [
         { 

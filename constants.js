@@ -83,3 +83,12 @@ const messages = [
 ];
 const randomIndex = Math.floor(Math.random() * messages.length);
 const selectedMessage = messages[randomIndex];
+
+const coins = [
+    {x: 200, y: 300, img: "Coin1", $: 1},
+    {x: -400, y: 100, img: "Coin2", $: 1},
+    {x: 500, y: 500, img: "Coin3", $: 1},
+    {x: -6145, y: -1700, img: "Coin1", $: 3},
+    {x: -6145, y: -2000, img: "Coin2", $: 1},
+    {x: -6145, y: -1400, img: "Coin3", $: 1}
+]

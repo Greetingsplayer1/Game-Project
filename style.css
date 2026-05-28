@@ -104,6 +104,7 @@ canvas {
 }
 
 body {
+  background-color: #39611c;
   background-image: linear-gradient(to right, #294714, #32920c);
   min-height: 100vh;
   margin: 0;
