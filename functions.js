@@ -582,6 +582,8 @@ if (bowEquipped) {
 for (let i = arrow.length - 1; i >= 0; i--) {
     const a = arrow[i];
 
+    if (Math.abs(a.x) >= Math.abs(posX + renderDist) || Math.abs(a.y) >= Math.abs(posX + renderDist)) continue;
+
     if (typeof a.vx !== 'number' || isNaN(a.vx)) a.vx = 0;
     if (typeof a.vy !== 'number' || isNaN(a.vy)) a.vy = 0;
 
@@ -701,6 +703,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
         for (let j = 0; j < bossEnemies.length; j++) {
             const enemy = bossEnemies[j];
             if (enemy.isDead) continue;
+            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) continue;
             if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
                 enemy.hp -= a.damage;
                 if (enemy.hp <= 0) {
@@ -720,6 +723,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     for (let j = 0; j < miniBossEnemies.length; j++) {
         const enemy = miniBossEnemies[j];
         if (enemy.isDead) continue;
+        if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) continue;
         if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
             enemy.hp -= a.damage;
             if (enemy.hp <= 0) {
@@ -736,6 +740,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
     for (let j = 0; j < enemies.length; j++) {
         const enemy = enemies[j];
         if (enemy.isDead) continue;
+        if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) continue;
         if (a.x >= enemy.x && a.x <= enemy.x + enemy.size && a.y >= enemy.y && a.y <= enemy.y + enemy.size) {
             enemy.hp -= a.damage;
             if (enemy.hp <= 0) {
@@ -755,6 +760,7 @@ for (let i = arrow.length - 1; i >= 0; i--) {
         for (let j = 0; j < civilians.length; j++) {
             const civ = civilians[j];
             if (civ.isDead) continue;
+            if (Math.abs(civ.x) >= Math.abs(posX + renderDist) || Math.abs(civ.y) >= Math.abs(posX + renderDist)) continue;
             if (a.x >= civ.x && a.x <= civ.x + civ.size && a.y >= civ.y && a.y <= civ.y + civ.size) {
                 civ.hp -= Math.floor(a.damage / 2);
                 if (civ.hp <= 0) {
@@ -929,9 +935,8 @@ function animate() {
 
 
          miniBossEnemies.forEach(enemy => {
-            if (enemy.isDead) {
-                return;
-            }
+            if (enemy.isDead) return;
+            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
 
             let dx = posX - enemy.x;
             let dy = posY - enemy.y;
@@ -1031,6 +1036,7 @@ function animate() {
 
         civilians.forEach(civ => {
             if (civ.isDead) return;
+            if (Math.abs(civ.x) >= Math.abs(posX + renderDist) || Math.abs(civ.y) >= Math.abs(posX + renderDist)) return;
             let dx = posX - civ.x;
             let dy = posY - civ.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
@@ -1109,6 +1115,7 @@ function animate() {
         );
 
         bossEnemies.forEach(enemy => {
+            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
             if (thingies >= miniBossEnemies.length) {
                 let dx = posX - enemy.x;
                 let dy = posY - enemy.y;
@@ -1218,6 +1225,8 @@ function animate() {
                 return;
             }
 
+            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
+
             let dx = posX - enemy.x;
             let dy = posY - enemy.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
@@ -1316,6 +1325,7 @@ function animate() {
 
         civilians.forEach(civ => {
             if (civ.isDead) return;
+            if (Math.abs(civ.x) >= Math.abs(posX + renderDist) || Math.abs(civ.y) >= Math.abs(posX + renderDist)) return;
             let dx = posX - civ.x;
             let dy = posY - civ.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
@@ -1419,6 +1429,7 @@ function animate() {
         });
 
         bob.forEach(bob => {
+            if (Math.abs(bob.x) >= Math.abs(posX + renderDist) || Math.abs(bob.y) >= Math.abs(posX + renderDist)) return;
             ctx.drawImage(document.getElementById("pileOfBob"), bob.x, bob.y);
         });
         

@@ -69,6 +69,7 @@ window.addEventListener('keydown', (e) => {
 
             if (thingies >= miniBossEnemies.length) {
                 bossEnemies.forEach(enemy => {
+                    if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                     let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                     if (d < 150 && !enemy.isDead) { 
                         enemy.hp -= 100;
@@ -84,6 +85,7 @@ window.addEventListener('keydown', (e) => {
             }
 
             miniBossEnemies.forEach(enemy => {
+                if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                 let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                 if (d < 150 && !enemy.isDead) { 
                     enemy.hp -= 100;
@@ -96,6 +98,7 @@ window.addEventListener('keydown', (e) => {
             });
 
             enemies.forEach(enemy => {
+                if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                 let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                 if (d < 150 && !enemy.isDead) { 
                     enemy.hp -= 100;
@@ -109,6 +112,7 @@ window.addEventListener('keydown', (e) => {
             });
 
             civilians.forEach(civ => {
+                if (Math.abs(civ.x) >= Math.abs(posX + renderDist) || Math.abs(civ.y) >= Math.abs(posX + renderDist)) return;
                 let d = Math.sqrt((posX - civ.x)**2 + (posY - civ.y)**2);
                 if (d < 150 && !civ.isDead) { 
                     civ.hp -= 100;
@@ -219,6 +223,7 @@ window.addEventListener('keydown', (e) => {
 
                         if (thingies >= miniBossEnemies.length) {
                             bossEnemies.forEach(enemy => {
+                                if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                                 let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                                 if (d < 150 && !enemy.isDead) { 
                                     enemy.hp -= 100;
@@ -235,6 +240,7 @@ window.addEventListener('keydown', (e) => {
                         }
 
                         miniBossEnemies.forEach(enemy => {
+                            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                             if (d < 150 && !enemy.isDead) { 
                                 enemy.hp -= 100;
@@ -248,6 +254,7 @@ window.addEventListener('keydown', (e) => {
                         });
 
                         enemies.forEach(enemy => {
+                            if (Math.abs(enemy.x) >= Math.abs(posX + renderDist) || Math.abs(enemy.y) >= Math.abs(posX + renderDist)) return;
                             let d = Math.sqrt((posX - enemy.x)**2 + (posY - enemy.y)**2);
                             if (d < 130 && !enemy.isDead) { 
                                 enemy.hp -= 25;
@@ -262,6 +269,7 @@ window.addEventListener('keydown', (e) => {
                         });
 
                         civilians.forEach(civ => {
+                            if (Math.abs(civ.x) >= Math.abs(posX + renderDist) || Math.abs(civ.y) >= Math.abs(posX + renderDist)) return;
                             let d = Math.sqrt((posX - civ.x)**2 + (posY - civ.y)**2);
                             if (d < 130 && !civ.isDead) { 
                                 civ.hp -= 25;
