@@ -12,6 +12,33 @@ function isSpaceBlocked(newX, newY) {
     }
 }
 
+function inShop() {
+    const x = posX;
+    const y = posY;
+
+    for (let obj of shops) {
+        if (x < obj.x + obj.w &&
+        x > obj.x &&
+        y < obj.y + obj.h &&
+        y > obj.y) {
+
+            if (gold > 0 && shopCount == 0) {
+                arrowCounter += 5;
+                gold -= 1;
+                shopCount = 100;
+                inside = true;
+
+                goldTextCount = 0;
+            } else if (shopCount != 0) {
+                shopCount--;
+            } else {
+                goldTextCount = 90;
+            }
+        } else {
+            shopCount = 0;
+        }
+    } 
+}
 
 function spawnItem(newX, newY, img, value) {
     let size = 10 + (10 * ((value - 1)/2));
@@ -933,6 +960,13 @@ function animate() {
             ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
         });
 
+        ctx.strokeStyle = "yellow";
+
+        shops.forEach(s => {
+            ctx.strokeRect(s.x, s.y, s.w, s.h);
+        });
+
+        inShop();
 
          miniBossEnemies.forEach(enemy => {
             if (enemy.isDead) return;
@@ -1420,6 +1454,8 @@ function animate() {
                 addXp(10 * coin.value);
 
                 gold += coin.value;
+
+                goldTextCount = 0;
             }
 
             if (!coin.isTaken) {
@@ -1488,6 +1524,12 @@ function animate() {
         ctx.fillText(weaponText3, 20, 220)
 
         ctx.fillStyle = "gold";
+
+        if (goldTextCount > 0) {
+            ctx.fillStyle = "red";
+            goldTextCount--;
+        }
+
         ctx.fillText("GOLD: " + gold, 20, 250)
 
         ctx.font = "30px sans-serif";

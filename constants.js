@@ -93,3 +93,7 @@ const coins = [
     {x: -6145, y: -2000, img: "Coin2", $: 1},
     {x: -6145, y: -1400, img: "Coin3", $: 1}
 ]
+
+const shops = [
+    {x: 200, y: 1630, h: 300, w: 1300}
+]
