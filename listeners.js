@@ -132,47 +132,7 @@ window.addEventListener('keydown', (e) => {
             });
         }
 
-        if (key === 'r' && isGameOver) {
-            civilians.forEach(civ => {
-                civ.x = civ.homeX;
-                civ.y = civ.homeY;
-                civ.isScared = false;
-
-            });
-
-            posX = -10; 
-            posY = 1300;
-            playerHP = playerMaxHP;
-            isGameOver = false;
-            youWin = false;
-            winStop = false;
-            extraFrame = true;
-            swordEquipped = false;
-            bowEquipped = false;
-            arrow = [];
-            thingies = 0;
-
-            enemies.forEach(enemy => {
-                enemy.x = enemy.homeX;
-                enemy.y = enemy.homeY;
-                enemy.hp = enemy.maxHp;
-                enemy.scaredTimer = 0;
-                enemy.isDead = false;
-                enemy.color = 'white';
-            });
-
-            bossEnemies.forEach(enemy => {
-                enemy.x = enemy.homeX;
-                enemy.y = enemy.homeY;
-                enemy.hp = enemy.maxHp;
-                enemy.scaredTimer = 0;
-                enemy.isDead = false;
-                enemy.color = 'white';
-            });
-
-        }
-
-        if (key === 'r' && winStop) {
+        if (key === 'r' && (winStop || isGameOver)) {
             window.location.reload();
         }
 
