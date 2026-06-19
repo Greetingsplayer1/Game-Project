@@ -169,7 +169,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             ice(x,y);
-        }
+        },
+        xp: 30
     },
     {
         x: -2700, y: -1400,
@@ -182,7 +183,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             ice(x,y);
-        }
+        },
+        xp: 30
     },
     { 
         x: -6200, y: -3200, 
@@ -247,7 +249,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             fire(x,y);
-        }
+        },
+        xp: 50
     },
     { 
         x: 24600, y: 18200,
@@ -260,7 +263,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             fire(x,y);
-        }
+        },
+        xp: 50
     },
     { 
         x: 23190, y: 23940,
@@ -273,7 +277,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             fire(x,y);
-        }
+        },
+        xp: 50
     },
     { 
         x: 24190, y: 23940,
@@ -286,7 +291,8 @@ let enemies = [
         movingToPatrol: true,
         art: function(x,y) {
             fire(x,y);
-        }
+        },
+        xp: 50
     },
 ];
 

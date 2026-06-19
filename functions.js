@@ -747,7 +747,8 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                     enemy.isDead = true;
                     enemy.respawnTimer = 400;
                     enemy.hp = enemy.maxHp;
-                    addXp(430);
+                    if (enemy.xp === undefined) addXp(20);
+                    else addXp(enemy.xp);
                     youWin = true;
                     enemy.scaredTimer = 0;
                 }
@@ -765,7 +766,8 @@ for (let i = arrow.length - 1; i >= 0; i--) {
             enemy.hp -= a.damage;
             if (enemy.hp <= 0) {
                 enemy.isDead = true;
-                addXp(430);
+                if (enemy.xp === undefined) addXp(20);
+                else addXp(enemy.xp);
                 thingies += 1;
                 enemy.scaredTimer = 0;
             }
@@ -784,8 +786,10 @@ for (let i = arrow.length - 1; i >= 0; i--) {
                 enemy.isDead = true;
                 enemy.respawnTimer = 400;
                 enemy.hp = enemy.maxHp;
-                addXp(20)
                 enemy.scaredTimer = 0;
+
+                if (enemy.xp === undefined) addXp(20);
+                else addXp(enemy.xp);
             }
             hit = true;
             break;

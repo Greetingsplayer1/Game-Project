@@ -77,7 +77,8 @@ window.addEventListener('keydown', (e) => {
                             enemy.isDead = true; 
                             enemy.respawnTimer = 400; 
                             enemy.hp = enemy.maxHp;
-                            addXp(430);
+                            if (enemy.xp === undefined) addXp(20);
+                            else addXp(enemy.xp);
                             youWin = true;
                         }
                     }
@@ -91,7 +92,8 @@ window.addEventListener('keydown', (e) => {
                     enemy.hp -= 100;
                     if (enemy.hp <= 0) {
                         enemy.isDead = true;
-                        addXp(430);
+                        if (enemy.xp === undefined) addXp(20);
+                        else addXp(enemy.xp);
                         thingies += 1;
                     }
                 }
@@ -106,7 +108,8 @@ window.addEventListener('keydown', (e) => {
                         enemy.isDead = true; 
                         enemy.respawnTimer = 400; 
                         enemy.hp = enemy.maxHp;
-                        addXp(20);
+                        if (enemy.xp === undefined) addXp(20);
+                        else addXp(enemy.xp);
                     }
                 }
             });
@@ -235,7 +238,8 @@ window.addEventListener('keydown', (e) => {
                                         enemy.isDead = true; 
                                         enemy.respawnTimer = 400; 
                                         enemy.hp = enemy.maxHp;
-                                        addXp(430);   
+                                        if (enemy.xp === undefined) addXp(20);
+                                        else addXp(enemy.xp);
                                         youWin = true;
                                         enemy.scaredTimer = 0;
                                     }
@@ -250,7 +254,8 @@ window.addEventListener('keydown', (e) => {
                                 enemy.hp -= 100;
                                 if (enemy.hp <= 0) {
                                     enemy.isDead = true;
-                                    addXp(430);
+                                    if (enemy.xp === undefined) addXp(20);
+                                    else addXp(enemy.xp);
                                     thingies += 1;
                                     enemy.scaredTimer = 0;
                                 }
@@ -266,7 +271,8 @@ window.addEventListener('keydown', (e) => {
                                     enemy.isDead = true;
                                     enemy.respawnTimer = 400;
                                     enemy.hp = 100; 
-                                    addXp(20);
+                                    if (enemy.xp === undefined) addXp(20);
+                                    else addXp(enemy.xp);
                                     enemy.scaredTimer = 0;
                                 }
                             }
