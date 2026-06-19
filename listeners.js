@@ -129,7 +129,7 @@ window.addEventListener('keydown', (e) => {
             });
         }
 
-        if (key === 'r' && (isGameOver || youWin)) {
+        if (key === 'r' && isGameOver) {
             civilians.forEach(civ => {
                 civ.x = civ.homeX;
                 civ.y = civ.homeY;
@@ -167,6 +167,10 @@ window.addEventListener('keydown', (e) => {
                 enemy.color = 'white';
             });
 
+        }
+
+        if (key === 'r' && winStop) {
+            window.location.reload();
         }
 
         if (key === 'p') {

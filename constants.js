@@ -68,8 +68,9 @@ const mapObjects = [
     {x: 32230, y: -9535, h: 2190, w: 700},
     {x: 31100, y: -8935, h: 1620, w: 1135},
 
-    //hut done
+    //Forest Hut
     {x: 30180, y: -4955, h: 500, w: 650},
+    {x: 30830, y: -4535, h: 70, w: 280},
 ]
 
 const messages = [

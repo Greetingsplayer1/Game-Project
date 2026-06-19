@@ -79,7 +79,7 @@ let miniBossEnemies = [
     },
     { 
         x: 23690, y: 23940,
-        hp: 1000, maxHp: 1000,
+        hp: 1500, maxHp: 1500,
         homeX: 22690, homeY: 23940, 
         patrolX: 24690, patrolY: 23940,
         size: 40, color: 'white', 
@@ -238,7 +238,7 @@ let enemies = [
     },
     { 
         x: 22800, y: 18200, 
-        hp: 100, maxHp: 100,
+        hp: 150, maxHp: 150,
         homeX: 22800, homeY: 18200, 
         patrolX: 22800, patrolY: 18200,
         size: 40, color: 'white', 
@@ -251,7 +251,7 @@ let enemies = [
     },
     { 
         x: 24600, y: 18200,
-        hp: 120, maxHp: 120,
+        hp: 170, maxHp: 170,
         homeX: 24400, homeY: 18200,
         patrolX: 24400, patrolY: 18200,
         size: 40, color: 'white',
@@ -264,7 +264,7 @@ let enemies = [
     },
     { 
         x: 23190, y: 23940,
-        hp: 100, maxHp: 100,
+        hp: 150, maxHp: 150,
         homeX: 23190, homeY: 23440,
         patrolX: 23190, patrolY: 24440,
         size: 40, color: 'white',
@@ -277,7 +277,7 @@ let enemies = [
     },
     { 
         x: 24190, y: 23940,
-        hp: 120, maxHp: 120,
+        hp: 170, maxHp: 170,
         homeX: 24190, homeY: 23440,
         patrolX: 24190, patrolY: 24440,
         size: 40, color: 'white',
