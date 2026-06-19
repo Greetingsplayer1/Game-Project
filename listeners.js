@@ -342,7 +342,7 @@ document.getElementById("testPass").addEventListener('submit', e => {
 
     const passcode = document.getElementById("passcode").value;
 
-    if (passcode === "ChrisIsAmazing") {
+    if (passcode === "ChrisIsGreat") {
         chrisBtn.style.display = "block";
     } else if (passcode === "DEVTest") {
         DEVBtn.style.display = "block";

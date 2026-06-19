@@ -91,7 +91,8 @@ const coins = [
     {x: 500, y: 500, img: "Coin3", $: 1},
     {x: -6145, y: -1700, img: "Coin1", $: 3},
     {x: -6145, y: -2000, img: "Coin2", $: 1},
-    {x: -6145, y: -1400, img: "Coin3", $: 1}
+    {x: -6145, y: -1400, img: "Coin3", $: 1},
+    {x: 2000, y: 1000, img: "Coin1", $: 1}
 ]
 
 const shops = [
