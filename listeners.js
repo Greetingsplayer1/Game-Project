@@ -16,7 +16,7 @@ window.addEventListener('keydown', (e) => {
             let vx, vy;
 
             if (char === "ranger") {
-                arrowDamage = 50;
+                arrowDamage = 60;
             } else if (char === "knight") {
                 arrowDamage = 20;
             } else if (char === "rogue") {
