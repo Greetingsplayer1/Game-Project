@@ -967,12 +967,12 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        ctx.strokeStyle = "red";
-        ctx.lineWidth = "5";
+        // ctx.strokeStyle = "red";
+        // ctx.lineWidth = "5";
 
-        mapObjects.forEach(obj => {
-            ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
-        });
+        // mapObjects.forEach(obj => {
+        //     ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
+        // });
 
         ctx.strokeStyle = "yellow";
 
