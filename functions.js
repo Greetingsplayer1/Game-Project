@@ -100,6 +100,7 @@ function chooseChar(choice) {
 
     canvas.style.display = "block";
     selectScreen.style.display = "none";
+    testPass.style.display = "none";
     animate();
 }
 

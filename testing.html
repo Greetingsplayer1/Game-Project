@@ -1,18 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Testing</title>
+        <title>Titan's Reach</title>
+
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="icon" href="media/coinspin_transparent.gif">
     </head>
     <body>
-        <p>A little testing area for art and whatnot.</p>
+        <div class="grid-container">
+        <noscript>
+            <h1 style="color: red">You must enable JavaScript to play this game. Please enable JavaScript to play.</h1>
+        </noscript>
+        <div id="left" class="textCard">
+            <h3 class="cardTitle">Stealth Game</h3>
+                <ul class="instructionList">
+                    <li><strong>E</strong> — Stealth</li>
+                    <li><strong>Space</strong> — Dagger Attack</li>
+                    <li><strong>Shift</strong> — Sprint</li>
+                    <li><strong>F</strong> — Equip Sword <em>(not available while in stealth)</em></li>
+                    <li><strong>Shift + F</strong> — Sheath Sword</li>
+                    <li><strong>P</strong> — Pause</li>
+                    <li><strong>Q</strong> — Equip Bow</li>
+                    <li><strong>B</strong> — Fire Bow</li>
+                </ul>
+        </div>
 
-        <canvas id="myCanvas" width="1000" height="800" style="border: 1px solid black"></canvas>
+        <div id="right" class="textCard">
+            <h3 class="cardTitle">
+                Titan’s Reach is a 2D action stealth game set in Chrisheim, a world where giants roam and danger shows up fast.
+                Pick a class, explore the map, grab coins for healing (and XP), and fight enemies before they find you.
+                Use stealth to stay hidden, then switch to your weapon when it’s time to strike.
+                Civilians can get scared too—so move carefully, and don’t let combat spiral out of control.
+                Goal: earn XP, level up, and clear the encounters.
+                When you’ve defeated the final threat, you win.
 
-        <script>
-            const canvas = document.getElementById("myCanvas");
-            const ctx = canvas.getContext("2d");
+                <br><br><br>
 
-            
-        </script>
+                This is a testing page. The main game is at: <br><a href="index.html">https://greetingsplayer1.github.io/Game-Project/</a>
+            </h3>
+        </div>
+
+
+
+        <div id="canvasHolder">
+            <form id="testPass"  method="get">
+                <input type="text" id="passcode" placeholder="Enter secret code">
+                <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
+            </form>
+            <canvas id="myCanvas" width="1000" height="800"></canvas>
+                <iframe src="charSelect.html" id="selectScreen"></iframe>
+                <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>
+                <br>
+                <div id="devbuttons">
+                    <button onclick="(() =>  {posX = -10, posY = 1500})()">Spawn</button>
+                    <button onclick="(() =>  {posX = -4730, posY = -600})">Water castle</button>
+                    <button onclick="(() =>  {posX = 23690, posY = 20940})()">Dormor</button>
+                    <button onclick="(() =>  {playerHP += 10, playerMaxHP += 10})()">+10 HP</button>
+                    <button onclick="(() =>  {playerHP -= 10, playerMaxHP -= 10})()">-10 HP</button>
+                    <button onclick="(() =>  {arrowCounter += 10})()">+10 arrows</button>
+                    <button onclick="(() =>  {speedMultiplier += 10})()">+10 speed</button>
+                    <button onclick="(() =>  {speedMultiplier -= 10})()">-10 speed</button>
+                    <button onclick="(() =>  {arrowDamage += 10})()">+10 arrow damage</button>
+                    <button onclick="(() =>  {arrowDamage -= 10})()">-10 arrow damage</button>
+                    <button>Reset all</button>
+                </div>
+            <div id="imgHolder">
+                <img id="coinImg">
+            </div>
+        </div>
+
+        <img id="chris" src="media/chris.png" class="hidden">
+        <img id="fighter" src="media/fighter.svg" class="hidden">
+        <img id="wizard" src="media/wizard.svg" class="hidden">
+        <img id="warlock" src="media/warlock.svg" class="hidden">
+        <img id="paladain" src="media/paladain.svg" class="hidden">
+        <img id="sorcerer" src="media/sorcerer.svg" class="hidden">
+        <img id="crashTestDummy" src="media/crashTestDummy.svg" class="hidden">
+        <img id="pileOfBob" src="media/pileOfBob.svg" class="hidden">
+        <img id="bob" src="media/bob.svg" class="hidden">
+        <img id="map" src="media/map.svg" class="hidden">
+
+        <script src="constants.js">//All of the constants</script>
+        <script src="variables.js">//All of the variables</script>
+        <script src="art.js">//Art for the enemies</script>
+        <script src="functions.js">//All of the functions (Mostly animate).</script>
+        <script src="listeners.js">//All of the event listeners</script>
+        <script src="setup.js">//Runs at startup. Makes the colectibles and then runs animate.</script>
+        </div>
     </body>
 </html>
