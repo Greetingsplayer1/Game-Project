@@ -313,13 +313,18 @@ document.getElementById("testPass").addEventListener('submit', e => {
     const passcode = document.getElementById("passcode").value;
 
     if (passcode === "ChrisIsGreat") {
-        chrisBtn.style.display = "block";
+        if (!chrisExists) {
+            chars.push(chris);
+            lastChar();
+            chrisExists = true;
+        }
+        
     } else if (passcode === "DEVTest") {
-        DEVBtn.style.display = "block";
         document.getElementById("devbuttons").style.display = "block";
     } else if (passcode === "crashTest") {
         chooseChar("crashTestDummy");
         document.getElementById("devbuttons").style.display = "block";
+        showHitboxes = true;
     }
     
     document.getElementById("testPass").reset();

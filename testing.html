@@ -52,17 +52,19 @@
                 <div id="selectScreen">
                     <h1 id="charLabel">Select your character:</h1>
 
-                    <button id="lArr">&#x2B9C;</button>
-                    <button id="rArr">&#x2B9E;</button>
+                    <button id="lArr" onclick="prevChar()">&#x2B9C;</button>
+                    <button id="rArr" onclick="nextChar()">&#x2B9E;</button>
 
-                    <img id="charImg" src="media/fighter.svg" alt="Human fighter. Boring...">
-                    <div id="charName">
-                        <h3>Fighter</h3>
+                    <div id="charImg">
+                        <img src="media/fighter.svg" alt="Human fighter. Boring...">
+                        <div id="charName">
+                            <h3>Fighter</h3>
+                        </div>
                     </div>
                     
-                    <p id="charDesc">Just a basic fighter. No specific strengths nor weaknesses.</p>
+                    <p id="charDesc">Just a basic fighter. No specific strengths nor weaknesses. The most boring of the characters.</p>
 
-                    <button id="play">Play!</button>
+                    <button id="play" onclick="play()">Play!</button>
                 </div>
                 <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>
                 <br>

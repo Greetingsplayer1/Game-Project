@@ -925,6 +925,43 @@ function addXp(amount) {
     levelUp();
 }
 
+function charMove(num) {
+    const char = num - 1;
+
+    charName.innerHTML = chars[char].name;
+    charImg.src = chars[char].src;
+    charDesc.innerHTML = chars[char].desc;
+}
+
+function lastChar() {
+    charShowing = chars.length;
+    charMove(charShowing);
+}
+
+function nextChar() {
+    charShowing += 1;
+    if (charShowing > chars.length) charShowing = 1;
+
+    charMove(charShowing);
+}
+
+function prevChar() {
+    charShowing -= 1;
+    if (charShowing < 1) charShowing = chars.length;
+
+    charMove(charShowing);
+}
+
+function play() {
+    const char = charShowing - 1;
+
+    chooseChar(chars[char].name.toLowerCase())
+}
+
+function log(text) {
+    console.log(text);
+}
+
 function animate() {
     if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
         let cameraX = posX - (canvas.width / (2 * .5)) + 15; 
@@ -968,12 +1005,14 @@ function animate() {
         if (bladeActive && bladeHeight < 25) bladeHeight += 5;
         if (!bladeActive && bladeHeight > 0) bladeHeight -= 5;
 
-        // ctx.strokeStyle = "red";
-        // ctx.lineWidth = "5";
+        if (showHitboxes === true) {
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = "5";
 
-        // mapObjects.forEach(obj => {
-        //     ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
-        // });
+            mapObjects.forEach(obj => {
+                ctx.strokeRect(obj.x, obj.y, obj.w, obj.h);
+            });
+        }
 
         ctx.strokeStyle = "yellow";
 

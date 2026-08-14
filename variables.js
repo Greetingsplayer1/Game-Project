@@ -48,6 +48,9 @@ let goldTextCount = 0;
 let shopCount = 0;
 let bob = []
 let playerActive = false;
+let charShowing = 1;
+let chrisExists = false;
+let showHitboxes = false;
 let bossEnemies = [
         { 
         x: -3300, y: -1700, 
@@ -302,3 +305,11 @@ let civilians = [
     { x: 200, y: 400, homeX : 200, homeY: 400, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false, bob: false},
     { x: -1000, y: 200, homeX : -1000, homeY: 200, size: 35, color: 'cyan', isScared: false, scaredTimer: 0,angle: 0, wanderTimer:0, returnHomeCooldown: 0, hp : 50, maxHp: 50, isDead: false, bob: true}
 ];
+
+let chars = [
+    {
+        name: "Fighter",
+        src: "media/fighter.svg",
+        desc: "Just a basic fighter. No specific strengths nor weaknesses. The most boring of the characters."
+    }
+]
