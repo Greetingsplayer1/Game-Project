@@ -925,39 +925,6 @@ function addXp(amount) {
     levelUp();
 }
 
-function charMove(num) {
-    const char = num - 1;
-
-    charName.innerHTML = chars[char].name;
-    charImg.src = chars[char].src;
-    charDesc.innerHTML = chars[char].desc;
-}
-
-function lastChar() {
-    charShowing = chars.length;
-    charMove(charShowing);
-}
-
-function nextChar() {
-    charShowing += 1;
-    if (charShowing > chars.length) charShowing = 1;
-
-    charMove(charShowing);
-}
-
-function prevChar() {
-    charShowing -= 1;
-    if (charShowing < 1) charShowing = chars.length;
-
-    charMove(charShowing);
-}
-
-function play() {
-    const char = charShowing - 1;
-
-    chooseChar(chars[char].name.toLowerCase())
-}
-
 function log(text) {
     console.log(text);
 }

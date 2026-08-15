@@ -10,9 +10,6 @@ const suspense = new Audio('media/suspense.wav');
 const selectScreen = document.getElementById("selectScreen");
 const chrisBtn = document.getElementById("chrisBtn");
 const testPass = document.getElementById("testPass");
-const charImg = document.getElementById("charImg").getElementsByTagName("img")[0];
-const charName = document.getElementById("charName").getElementsByTagName("h3")[0];
-const charDesc = document.getElementById("charDesc");
 const enemyStopRadius = 3;
 const renderDist = 2500;
 
@@ -111,9 +108,3 @@ const coins = [
 const shops = [
     {x: 200, y: 1630, h: 300, w: 1300}
 ]
-
-const chris = {
-    name: "Chris",
-    src: "media/chris.png",
-    desc: "The most powerful character. Is nearly invincible, and uses his coffee mug to launch splashes of coffee at the enemies."
-}
