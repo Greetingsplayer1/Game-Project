@@ -311,5 +311,25 @@ let chars = [
         name: "Fighter",
         src: "media/fighter.svg",
         desc: "Just a basic fighter. No specific strengths nor weaknesses. The most boring of the characters."
+    },
+    {
+        name: "Paladain",
+        src: "media/paladain.svg",
+        desc: "A tanky religious knight. Moves slowly but is great with a sword and has loads of health."
+    },
+    {
+        name: "Sorcerer",
+        src: "media/sorcerer.svg",
+        desc: "A magic user that uses inate powers. Casts powerful fireballs in place of arrows."
+    },
+    {
+        name: "Wizard",
+        src: "media/wizard.svg",
+        desc: "A magic user that casts spells learned from studying. Casts powerful fireballs in place of arrows."
+    },
+    {
+        name: "Warlock",
+        src: "media/warlock.svg",
+        desc: "A magic user that borrows powerful magics from their patron. Casts powerful fireballs in place of arrows."
     }
 ]

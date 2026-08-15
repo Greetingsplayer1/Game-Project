@@ -318,7 +318,6 @@ document.getElementById("testPass").addEventListener('submit', e => {
             lastChar();
             chrisExists = true;
         }
-        
     } else if (passcode === "DEVTest") {
         document.getElementById("devbuttons").style.display = "block";
     } else if (passcode === "crashTest") {
