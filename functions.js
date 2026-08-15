@@ -929,6 +929,19 @@ function log(text) {
     console.log(text);
 }
 
+function switchScren() {
+    mainScren.style.display = "none"
+    selectScreen.style.display = "block"
+}
+
+function showTex() {
+        text.style.display = "block"
+}
+
+function showOtherTex() {
+        otherText.style.display = "block"
+}
+
 function animate() {
     if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
         let cameraX = posX - (canvas.width / (2 * .5)) + 15; 

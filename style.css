@@ -39,6 +39,69 @@ canvas {
     width: 100%;
 }
 
+#bob {
+    width: 100%;
+    height: 100%;
+}
+
+#bobtwo {
+    position: absolute;
+    top: 300px;
+    left: 10px;
+}
+
+#bobthree {
+    position: absolute;
+    top: 125px;
+    font-size: 67px;
+    left: 10px;
+    color: white;
+}
+
+#bobfour {
+    position: absolute;
+    top: 330px;
+    left: 10px;
+}
+
+#bobfive {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: white;
+    top: 350px;
+}
+
+#bobsix {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: white;
+    top: 350px;
+}
+
+#bobsixpointfive {
+    position: absolute;
+    top: 360px;
+    left: 10px; 
+}
+
+#bobby {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1000000;
+}
+
+#bobbytwo {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1000000;
+}
+
 #selectScreen {
     width: 100%;
     height: 100%;
@@ -47,6 +110,7 @@ canvas {
     font-family: sans-serif;
     color: #FFFFFF;
     font-weight: bold;
+    display: none;
 }
 
 #selectScreen p {
