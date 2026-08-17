@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="style.css">
 
         <link rel="icon" href="media/coinspin_transparent.gif">
+
+        <meta charset="utf-8">
     </head>
     <body>
         <div class="grid-container">
@@ -40,29 +42,27 @@
 
 
         <div id="canvasHolder">
+            <form id="testPass"  method="get">
+                <input type="text" id="passcode" placeholder="Enter secret code">
+                <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
+            </form>
             <canvas id="myCanvas" width="1000" height="800"></canvas>
-                <div id="selectScreen">
-                    <p>Select class to play as:</p>
-                    <button onclick="chooseChar('rogue')">Rogue</button>
-                    <button onclick="chooseChar('knight')">Knight</button>
-                    <button onclick="chooseChar('bard')">Bard</button>
-                    <button onclick="chooseChar('ranger')">Ranger</button>
-                    <button onclick="chooseChar('barbarian')">Barbarian</button>
-                    <button onclick="chooseChar('monk')">Monk</button>
-                    <button onclick="chooseChar('fighter')" style="font-size: 13px">Human Fighter (Boring)</button>
-                    <button onclick="chooseChar('sorcerer')">Sorcerer</button>
-                    <button onclick="chooseChar('warlock')">Warlock</button>
-                    <button onclick="chooseChar('wizard')">Wizard</button>
-                    <button onclick="chooseChar('paladain')">Paladin</button>
-                    <button onclick="chooseChar('artificer')">Artificer</button>
-                    <button onclick="chooseChar('chris')" id="chrisBtn">Chris</button>
-                    <button onclick="chooseChar('DEV')" id="DEVBtn">Tests Character</button>
+                <div id="selectScreen" style="display: block;">
+                    <h1 id="charLabel">Select your character:</h1>
 
+                    <button id="lArr" onclick="prevChar()">&#x2B9C;</button>
+                    <button id="rArr" onclick="nextChar()">&#x2B9E;</button>
 
-                    <form id="testPass"  method="get">
-                        <input type="text" id="passcode" placeholder="Enter secret code">
-                        <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
-                    </form>
+                    <div id="charImg">
+                        <img src="media/fighter.svg" alt="Human fighter. Boring...">
+                        <div id="charName">
+                            <h3>Fighter</h3>
+                        </div>
+                    </div>
+                    
+                    <p id="charDesc">Just a basic fighter. No specific strengths nor weaknesses. The most boring of the characters.</p>
+
+                    <button id="play" onclick="play()">Play!</button>
                 </div>
                 <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>
                 <br>
@@ -101,6 +101,7 @@
         <script src="functions.js">//All of the functions (Mostly animate).</script>
         <script src="listeners.js">//All of the event listeners</script>
         <script src="setup.js">//Runs at startup. Makes the colectibles and then runs animate.</script>
+        <script src="charMoving.js">//Code to select character.</script>
         </div>
     </body>
 </html>
