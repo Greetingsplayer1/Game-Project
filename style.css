@@ -44,6 +44,14 @@ canvas {
     height: 100%;
 }
 
+#bobPic {
+    height: 97%;
+    width: 95%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 #bobtwo {
     position: absolute;
     top: 300px;
