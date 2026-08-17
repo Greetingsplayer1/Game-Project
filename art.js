@@ -233,4 +233,8 @@ function fireBoss(x,y) {
     ctx.fill();
 }
 
+function bobEnemy(x,y) {
+    ctx.drawImage(document.getElementById("bobEnemy"), x - 25, y - 75,125,200);
+}
+
 //Put art in here

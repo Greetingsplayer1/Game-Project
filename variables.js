@@ -104,7 +104,7 @@ let enemies = [
         angle: 0,
         movingToPatrol: true,
         art: function(x,y) {
-            castle(x,y);
+            bobEnemy(x,y);
         }
     },
         { 
