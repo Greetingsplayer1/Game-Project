@@ -917,11 +917,25 @@ function switchScren() {
 }
 
 function showTex() {
-        text.style.display = "block"
+    let currentDisplay = text.style.display;
+    console.log(currentDisplay)
+
+        if(currentDisplay === "") {
+            text.style.display = "block"
+        } else {
+            text.style.display = ""
+        }
 }
 
 function showOtherTex() {
-        otherText.style.display = "block"
+    let currentDisplay = otherText.style.display;
+    console.log(currentDisplay)
+
+        if(currentDisplay === "") {
+            otherText.style.display = "block"
+        } else {
+            otherText.style.display = ""
+        }
 }
 
 function animate() {
