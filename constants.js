@@ -11,6 +11,7 @@ const text = document.getElementById("bobby");
 const otherText = document.getElementById("bobbytwo");
 const mainScren = document.getElementById("lesserbob");
 const selectScreen = document.getElementById("selectScreen");
+const settingsScren = document.getElementById("settingsScreen");
 const chrisBtn = document.getElementById("chrisBtn");
 const testPass = document.getElementById("testPass");
 const enemyStopRadius = 3;

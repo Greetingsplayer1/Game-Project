@@ -916,6 +916,11 @@ function switchScren() {
     selectScreen.style.display = "block"
 }
 
+function settingsScreen() {
+    mainScren.style.display = "none"
+    settingsScren.style.display = "block"
+}
+
 function showTex() {
     let currentDisplay = text.style.display;
     console.log(currentDisplay)
@@ -940,15 +945,16 @@ function showOtherTex() {
 
 function animate() {
     if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
-        let cameraX = posX - (canvas.width / (2 * .5)) + 15; 
-        let cameraY = posY - (canvas.height / (2 * .5)) + 15;
+        let zoom = .5;
+        let cameraX = posX - (canvas.width / (2 * zoom)) + 15; 
+        let cameraY = posY - (canvas.height / (2 * zoom)) + 15;
 
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
         ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
         ctx.fillStyle = "#7ed957";
         ctx.fillRect(0, 0, canvas.width, canvas.height); 
-          ctx.scale(.5, .5);
+          ctx.scale(zoom, zoom);
         ctx.translate(-cameraX, -cameraY);
 
         ctx.drawImage(document.getElementById("map"), -31024, -13000, 67048, 45400);
