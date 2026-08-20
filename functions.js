@@ -916,6 +916,11 @@ function switchScren() {
     selectScreen.style.display = "block"
 }
 
+function goHome() {
+    mainScren.style.display = "block"
+    settingsScren.style.display = "none"
+}
+
 function settingsScreen() {
     mainScren.style.display = "none"
     settingsScren.style.display = "block"
@@ -945,7 +950,6 @@ function showOtherTex() {
 
 function animate() {
     if (!isGamePaused && char != "N/A" && !isGameOver && !winStop) {
-        let zoom = .5;
         let cameraX = posX - (canvas.width / (2 * zoom)) + 15; 
         let cameraY = posY - (canvas.height / (2 * zoom)) + 15;
 

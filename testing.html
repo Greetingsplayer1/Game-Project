@@ -94,8 +94,13 @@
                     <button id="play" onclick="play()">Play!</button>
                 </div>
                 <div id="settingsScreen">
+                    <button onclick="goHome()" id="backbutton">Back</button>
                     <p>Hello, this is the settings screen!</p>
                     <p>still under construction though see ya later</p>
+                    <label for="slider">Adjust Value For In Game Zoom: </label>
+                    <input type="range" id="slider" step="0.1" min=".3" max="1" value="0.5">
+                    <p>Zoom Level: <span id="displayValue">0.5</span></p>
+
                 </div>
                 <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>
                 <br>

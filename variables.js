@@ -1,3 +1,4 @@
+let zoom = .5;
 let posX = -10; 
 let posY = 1500;
 let keys = {};

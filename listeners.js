@@ -1,3 +1,12 @@
+slider.addEventListener('input', 
+        function() {
+            zoom = this.value;
+            
+            display.textContent = zoom;
+
+            console.log("Variable updated to:", zoom);
+        });
+
 window.addEventListener('keydown', (e) => {
     if (char != "N/A") {
 
