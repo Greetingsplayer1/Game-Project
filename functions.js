@@ -58,7 +58,7 @@ function spawnItem(newX, newY, img, value) {
 
 function chooseChar(choice) {
     charMusic.pause();
-    music.play();
+    if (playMusic) music.play();
 
     char = choice;
 
@@ -101,6 +101,7 @@ function chooseChar(choice) {
     canvas.style.display = "block";
     selectScreen.style.display = "none";
     testPass.style.display = "none";
+    playing = true;
     animate();
 }
 
@@ -946,6 +947,20 @@ function showOtherTex() {
         } else {
             otherText.style.display = ""
         }
+}
+
+function toggleMusic() {
+    if  ( musicToggle.checked === true) {
+        if (playing) {
+            music.play();
+        } else {
+            charMusic.play();
+        }
+    } else {
+        music.pause();
+        charMusic.pause();
+        playMusic = false;
+    }
 }
 
 function animate() {

@@ -46,10 +46,6 @@
 
 
         <div id="canvasHolder">
-            <form id="testPass"  method="get">
-                <input type="text" id="passcode" placeholder="Enter secret code">
-                <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
-            </form>
             <canvas id="myCanvas" width="1000" height="800"></canvas>
                 <div id="lesserbob">
                     <img id="bobPic" src="media/homeMenu.svg">
@@ -77,6 +73,11 @@
                     <button onclick="settingsScreen()" id="bobseven">Settings</button>
                 </div>
                 <div id="selectScreen">
+                    <form id="testPass"  method="get">
+                        <input type="text" id="passcode" placeholder="Enter secret code">
+                        <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
+                    </form>
+
                     <h1 id="charLabel">Select your character:</h1>
 
                     <button id="lArr" onclick="prevChar()">&#x2B9C;</button>
@@ -100,6 +101,12 @@
                     <label for="slider">Adjust Value For In Game Zoom: </label>
                     <input type="range" id="slider" step="0.1" min=".3" max="1" value="0.5">
                     <p>Zoom Level: <span id="displayValue">0.5</span></p>
+                    <p>Music: 
+                        <label class="switch" onclick="toggleMusic()">
+                            <input type="checkbox" checked id="music???">
+                            <span class="slider round"></span>
+                        </label>
+                    </p>
 
                 </div>
                 <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>

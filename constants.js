@@ -16,6 +16,7 @@ const slider = document.getElementById('slider');
 const display = document.getElementById('displayValue');
 const chrisBtn = document.getElementById("chrisBtn");
 const testPass = document.getElementById("testPass");
+const musicToggle = document.getElementById("music???");
 const enemyStopRadius = 3;
 const renderDist = 2500;
 
