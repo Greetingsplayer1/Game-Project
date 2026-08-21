@@ -930,7 +930,7 @@ function showTex() {
     let currentDisplay = text.style.display;
     console.log(currentDisplay)
 
-        if(currentDisplay === "") {
+        if(currentDisplay === "" && otherText.style.display === "") {
             text.style.display = "block"
         } else {
             text.style.display = ""
@@ -941,7 +941,7 @@ function showOtherTex() {
     let currentDisplay = otherText.style.display;
     console.log(currentDisplay)
 
-        if(currentDisplay === "") {
+        if(currentDisplay === "" && text.style.display === "") {
             otherText.style.display = "block"
         } else {
             otherText.style.display = ""
