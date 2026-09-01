@@ -932,7 +932,7 @@ function showTex() {
     console.log(currentDisplay)
 
         if(currentDisplay === "" && otherText.style.display === "") {
-            text.style.display = "block"
+            text.style.display = "flex";
         } else {
             text.style.display = ""
         }
@@ -943,9 +943,9 @@ function showOtherTex() {
     console.log(currentDisplay)
 
         if(currentDisplay === "" && text.style.display === "") {
-            otherText.style.display = "block"
+            otherText.style.display = "flex"
         } else {
-            otherText.style.display = ""
+            otherText.style.display = "";
         }
 }
 

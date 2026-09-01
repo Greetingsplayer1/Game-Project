@@ -83,13 +83,17 @@ canvas {
 #bobfive {
     position: absolute;
     color: white;
-    top: 450px;
+    top: 350px;
+    width: 350px;
+    font-family: sans-serif;
 }
 
 #bobsix {
     position: absolute;
     color: white;
-    top: 450px;
+    top: 300px;
+    width: 300px;
+    font-family: sans-serif;
 }
 
 #bobsixpointfive {
@@ -113,19 +117,33 @@ canvas {
 }
 
 #bobby {
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
     display: none;
     z-index: 1000000;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #bobbytwo {
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
     display: none;
     z-index: 1000000;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #selectScreen {
