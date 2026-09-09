@@ -15,7 +15,7 @@
             <h1 style="color: red">You must enable JavaScript to play this game. Please enable JavaScript to play.</h1>
         </noscript>
         <div id="left" class="textCard">
-            <h3 class="cardTitle">Stealth Game</h3>
+            <h3 class="cardTitle">Titan's Reach</h3>
                 <ul class="instructionList">
                     <li><strong>E</strong> — Stealth</li>
                     <li><strong>Space</strong> — Dagger Attack</li>
@@ -42,12 +42,38 @@
 
 
         <div id="canvasHolder">
-            <form id="testPass"  method="get">
-                <input type="text" id="passcode" placeholder="Enter secret code">
-                <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
-            </form>
             <canvas id="myCanvas" width="1000" height="800"></canvas>
-                <div id="selectScreen" style="display: block;">
+                <div id="lesserbob">
+                    <img id="bobPic" src="media/homeMenu.svg" style="z-index: 0;">
+                    <h1 id="bobthree">Titan's Reach</h1>
+                    <button onclick="switchScren()" id="bobtwo">Character Selection</button>
+                    <button id="bobfour" onclick="showTex()">Controls</button>
+                    <div id="bobby" onclick="showTex()">
+                    <p id="bobfive">
+                    E — Stealth<br>
+                    Space — Dagger Attack<br>
+                    Shift — Sprint<br>
+                    F — Equip Sword (not available while in stealth)<br>
+                    Shift + F — Sheath Sword<br>
+                    P — Pause<br>
+                    Q — Equip Bow<br>
+                    B — Fire Bow
+                    </p>
+                    </div>
+                    <button id="bobsixpointfive" onclick="showOtherTex()">Story</button>
+                    <div id="bobbytwo" onclick="showOtherTex()">
+                    <p id="bobsix">
+                   Titan’s Reach is a 2D action stealth game set in Chrisheim, a world where giants roam and danger shows up fast. Pick a class, explore the map, grab coins for healing (and XP), and fight enemies before they find you. Use stealth to stay hidden, then switch to your weapon when it’s time to strike. Civilians can get scared too—so move carefully, and don’t let combat spiral out of control. Goal: earn XP, level up, and clear the encounters. When you’ve defeated the final threat, you win.
+                    </p>
+                    </div>
+                    <button onclick="settingsScreen()" id="bobseven">Settings</button>
+                </div>
+                <div id="selectScreen">
+                    <form id="testPass"  method="get">
+                        <input type="text" id="passcode" placeholder="Enter secret code">
+                        <button type="submit" action="submit" id="submitBtn" style="width: 50px; height: 56px;">Enter Code</button>
+                    </form>
+
                     <h1 id="charLabel">Select your character:</h1>
 
                     <button id="lArr" onclick="prevChar()">&#x2B9C;</button>
@@ -63,6 +89,21 @@
                     <p id="charDesc">Just a basic fighter. No specific strengths nor weaknesses. The most boring of the characters.</p>
 
                     <button id="play" onclick="play()">Play!</button>
+                </div>
+                <div id="settingsScreen">
+                    <button onclick="goHome()" id="backbutton">Back</button>
+                    <p>Hello, this is the settings screen!</p>
+                    <p>still under construction though see ya later</p>
+                    <label for="slider">Adjust Value For In Game Zoom: </label>
+                    <input type="range" id="slider" step="0.1" min=".3" max="1" value="0.5">
+                    <p>Zoom Level: <span id="displayValue">0.5</span></p>
+                    <p>Music: 
+                        <label class="switch" onclick="toggleMusic()">
+                            <input type="checkbox" checked id="music???">
+                            <span class="slider round"></span>
+                        </label>
+                    </p>
+
                 </div>
                 <button id="reload" onclick="window.location.reload();" class="hidden">Main Menu</button>
                 <br>
