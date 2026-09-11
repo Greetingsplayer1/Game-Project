@@ -342,7 +342,12 @@ function drawVader(x, y) {
         ctx.globalAlpha=1.0;
         ctx.restore();
     } else if (char === "fighter") {
-        ctx.drawImage(document.getElementById("fighter"),x-25,y-25,80,150);
+        if (dmgdTimer == 0) {
+            ctx.drawImage(document.getElementById("fighter"),x-25,y-25,80,150);
+        } else {
+            ctx.drawImage(document.getElementById("fighterDmgd"),x-25,y-25,80,150);
+            dmgdTimer--;
+        }
 
         ctx.globalAlpha=1.0;
         ctx.restore();
@@ -1370,6 +1375,7 @@ function animate() {
 
             if (isColliding && !enemy.isDead && damageCooldown === 0) {
                 playerHP -= 10;
+                dmgdTimer = 15;
                 damageCooldown = 30; 
                 
                 if (playerHP <= 0) {

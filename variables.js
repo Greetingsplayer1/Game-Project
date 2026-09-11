@@ -52,6 +52,7 @@ let playerActive = false;
 let showHitboxes = false;
 let playing = false;
 let playMusic = true;
+let dmgdTimer = 0;
 let bossEnemies = [
         { 
         x: -3300, y: -1700, 
